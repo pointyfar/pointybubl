@@ -1,0 +1,22 @@
+{{ define "main" }}      
+
+<div class="card">
+  <header class="card-header">
+    <div class="card-header-title">
+      List of all {{ .Type | pluralize }}
+    </div>
+  </header>
+  <div class="card-content">
+    <div class="content">
+      <ul>
+        {{ range .Pages }}
+          <li>
+            <a href="{{.Permalink}}">{{.Title}}</a>
+          </li>
+        {{ end }}
+      </ul>
+    </div>
+  </div>
+</div>
+    
+{{ end }}

@@ -1,0 +1,16 @@
+{{ partial "head.html" . }}
+<div class="wrapper">
+  {{ partial "header.html" . }}
+  <section class="section">
+    <div class="container">
+      <div class="columns">
+        <div class="column is-three-quarters">
+          {{ block "main" . }}
+          {{ end }}
+        </div>
+        {{ partial "sidebar.html" . }}
+      </div>
+    </div>
+  </section>
+</div>
+{{ partial "footer.html" . }} {{ partial "foot.html" . }}

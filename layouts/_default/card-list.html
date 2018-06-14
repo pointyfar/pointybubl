@@ -1,0 +1,42 @@
+{{ $.Scratch.Set "hasImg" false }}
+{{ if ( gt ( len (.Resources.ByType "image")) 0 ) }}
+  {{ $.Scratch.Set "hasImg" true }}
+{{ end }}
+
+<div class="column is-half">
+  <div class="card">
+    <div class="card-content">
+      <div class="media">
+        <div class="media-left">
+          <figure class="image">
+            {{if $.Scratch.Get "hasImg"}} 
+              {{ range first 1 (.Resources.ByType "image")  }}
+                <img src="{{ ( .Fill "100x100" ).Permalink }}" >
+              {{ end }}
+            {{ else }}
+              <img src="{{.Site.BaseURL}}img/placeholder-100.png" >
+            {{ end }}
+          </figure>
+        </div>
+        <div class="media-content content">
+          <h4 class="title"><a href="{{.RelPermalink}}">{{.Title}}</a></h4>
+          {{ with .PublishDate }}
+          <p class="content is-small">
+            <time datetime="{{ .Format "2006-01-02T15:04:05-07:00" }}">{{ .Format "02 Jan 2006" }}</time>
+          </p>
+          {{ end }}
+          <p class="">
+            {{ with .Params.authors }}
+              {{ delimit . ", " }}
+            {{ else }}
+              {{ .Site.Params.author.name }}
+            {{ end }}
+          </p>
+        </div>
+      </div>
+
+      <div class="content">
+      </div>
+    </div>
+  </div>
+</div>

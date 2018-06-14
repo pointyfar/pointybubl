@@ -1,0 +1,8 @@
+{{ $resourcemd := ( print (.Get "resource") ".md" )}}
+{{ $resource := .Get "resource" }}
+
+{{ with .Page.Resources.GetMatch $resourcemd }}
+<div class="{{ $resource }}">
+  {{ partial "utils/box" (dict "title" $resource "content" .Content ) }}
+</div>
+{{ end }}

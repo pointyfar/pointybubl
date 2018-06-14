@@ -1,0 +1,20 @@
+{{ if isset .Site.Params "socialdata" }}
+  {{ $list := index .Site.Data .Site.Params.socialdata }}
+  {{ $.Scratch.Set "socialmessage" ( $list.label | default "Follow me!" ) }}
+  <div class="card">
+    <header class="card-header">
+      <div class="card-header-title">
+        {{ $.Scratch.Get "socialmessage" }}
+      </div>
+    </header>
+    <div class="card-content">
+      <div class="content">
+        <div class="social-buttons">
+          {{ range $list.social }}
+            <a class="social-button" {{with .color}}style="color:{{.}}"{{end}} href="{{.url}}"><i class="{{.icon}}"></i></a>
+          {{ end }}
+        </div>
+      </div>
+    </div>
+  </div>
+{{ end }}

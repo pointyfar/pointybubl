@@ -1,0 +1,23 @@
+{{ $pag := .paginator}}
+<nav class="pagination is-small" role="navigation" aria-label="pagination">
+  {{ if ne $pag.PageNumber 1 }}
+    <a class="pagination-previous" title="Go to firt page" href="{{ $pag.First.URL | absURL }}">First</a>
+  {{ end }}
+  {{ if $pag.HasPrev }}
+    <a class="pagination-previous" title="Go to the first page" href="{{ $pag.Prev.URL | absURL }}" >Previous</a>
+  {{ end }}
+  {{ if $pag.HasNext }}
+    <a class="pagination-next" title="Go to the next page" href="{{ $pag.Next.URL | absURL }}">Next</a>
+  {{ end }}
+  {{ if ne $pag.PageNumber $pag.TotalPages }}
+    <a class="pagination-next" title="Go to the last page" href="{{ $pag.Last.URL | absURL }}">Last</a>
+  {{ end }}
+  
+  <ul class="pagination-list">
+    {{ range $pag.Pagers }}
+      <li>
+        <a href="{{ .URL | absURL }}" class="pagination-link {{ if eq . $pag }} is-current{{ end }}" >{{ .PageNumber }}</a>
+      </li>
+    {{ end }}
+  </ul>
+</nav>

@@ -1,0 +1,22 @@
+label = "Legal Notices"
+type = "links"
+
+[[links]]
+  label = "Privacy Notice"
+  url = "#"
+
+[[links]]
+  label = "fore illum"
+  url = "#"
+
+[[links]]
+  label = "sunt esse"
+  url = "#"
+
+[[links]]
+  label = "velit tamen"
+  url = "#"
+
+[[links]]
+  label = "quid legam"
+  url = "#"

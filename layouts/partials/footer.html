@@ -1,0 +1,25 @@
+{{ $context := . }}
+<footer class="footer">
+  <div class="container">
+    <div class="columns is-multiline">
+      <div class="column is-4">
+        <div class="columns is-multiline">
+          {{ with .Site.Params.footer.left }}
+            {{ range . }}
+              {{ partial "footer/items.html" (dict "context" $context "list" . ) }}
+            {{ end }}
+          {{ end }}
+        </div>
+      </div>
+      <div class="column is-6 is-offset-2">
+        <div class="columns is-multiline">
+          {{ with .Site.Params.footer.right }}
+            {{ range . }}
+              {{ partial "footer/items.html" (dict "context" $context "list" . ) }}
+            {{ end }}
+          {{ end }}
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>

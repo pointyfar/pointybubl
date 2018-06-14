@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html{{ with .Site.LanguageCode }} lang="{{ . }}"{{ end }}>
+
+<head>
+  {{ partial "head/meta.html" . }}  
+  {{ partial "head/fonts.html" . }}
+  {{ partial "head/cdns.html" . }}
+  {{ partial "head/css.html" . }}
+  
+  {{ .Hugo.Generator }}
+  
+</head>
+
+<body>

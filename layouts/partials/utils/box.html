@@ -1,0 +1,12 @@
+<div class="card">
+  {{ with .title }}
+  <header class="card-header">
+    <p class="card-header-title">{{ . | title }}</p>
+  </header>
+  {{ end }}
+  <div class="card-content">
+    <div class="content">
+      {{ .content }}
+    </div>
+  </div>
+</div>

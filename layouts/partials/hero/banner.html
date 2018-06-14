@@ -1,0 +1,23 @@
+<section class="hero is-light {{- if .IsHome }} is-medium {{ end }}">
+  <div class="hero-wrapper" {{ if and .IsHome (isset .Site.Params.hero "background") }}style="background:url('{{.Site.Params.hero.background}}') no-repeat center; background-size: cover;"{{end}}>
+    <div class="hero-body {{ if and .IsHome (isset .Site.Params.hero "background") }}transparent{{end}} {{with .Site.Params.hero.bgislight }}{{if .}}light-bg{{end}}{{else}}dark-bg{{end}}">
+      <div class="container brand">
+        <h1 class="title brand-title"><a href="{{.RelPermalink}}">{{ if (or .IsHome .IsPage) }}{{ .Title }}{{ else }}{{ .Title | singularize }}{{end}}</a></h1>
+        <h2 class="subtitle">
+          {{ if .IsHome }} 
+            {{ if (isset .Site.Params "subtitle") }}
+            {{ .Site.Params.subtitle }}
+            {{ end }}
+          {{ else if .IsPage }}
+          by 
+            {{ with .Params.author }}
+            {{ . }}
+            {{ else }} {{ .Site.Params.author.name }}
+            {{ end }}
+          {{ end }}
+        </h2>
+      </div>
+    </div>
+  </div>
+  {{ partial "hero/subnav.html" . }}
+</section>

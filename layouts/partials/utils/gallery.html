@@ -1,0 +1,69 @@
+<div>
+{{ $.Scratch.Set "hasImg" false }}
+
+<div class="card gallery">
+  <header class="card-header">
+    <div class="tabs">
+      <ul>
+        {{ range $i, $e := (.Resources.ByType "image")  }}
+        <li class="{{if eq $i 0}}is-active{{end}}"><a class="gallery-tab" data-target="tab-{{$i}}">{{add $i 1}}</a></li>
+        {{ end }}
+      </ul>
+    </div>
+  </header>
+  {{ range $i, $e := (.Resources.ByType "image")  }}
+  <div class="gallery-content {{if eq $i 0}}gallery-content-show{{end}}" id="tab-{{$i}}">
+    <div class="card-image">
+      <img class="gallery-img" src="{{$e.Permalink}}">      
+    </div>
+    <div class="card-content has-text-centered">
+      {{ $e.Title }}
+    </div>
+</div>
+{{ end }}
+</div>
+
+<script>
+
+var gt = document.getElementsByClassName('gallery-tab');
+for(let i=0; i<gt.length; i++){
+  gt[i].addEventListener("click",show_gallery);
+  gt[i].addEventListener("click",toggle_active);
+  
+}
+function toggle_active(){
+  console.log(this.classList)
+  for(let i=0; i<gt.length; i++){
+    gt[i].parentElement.classList.remove('is-active')
+  }
+  if(!this.parentElement.classList.contains('is-active')) {
+    this.parentElement.classList.add('is-active')
+    
+  }
+  
+}
+function show_gallery() {
+  event = event || window.event;
+  var source = event.target || event.srcElement;
+  var gc = document.getElementsByClassName('gallery-content');
+  var show_class="gallery-content-show";
+  var target = this.dataset.target;
+  
+  
+  for(let i=0; i<gc.length; i++){
+    if(gc[i].id == target) {
+      if(!(gc[i].classList).contains(show_class)) {
+        gc[i].classList.add(show_class)
+      }
+    } else {
+      if(gc[i].classList.contains(show_class)) {
+        gc[i].classList.remove(show_class);
+      }
+    }
+  }
+}
+</script>
+
+
+</div>
+

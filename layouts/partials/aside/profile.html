@@ -1,0 +1,32 @@
+{{ with .Site.Params.author }}
+<div class="card">
+  {{ with .photo }}
+  <div class="card-image">
+    <figure class="image">
+      <img class="" src="{{ . | relURL }}" alt="Profile Photo">
+    </figure>
+  </div>
+  {{ end }}
+  <div class="card-content">
+    <div class="media">
+      <div class="media-content">
+        <p class="title is-4">
+          {{ with .header }}{{ . }}{{ else }}Meet the Author{{ end }}
+        </p>
+      </div>
+    </div>
+
+    <div class="content">
+      {{ with .blurb }}
+        <p>{{.}}</p>
+      {{ end }}
+      {{ with .aboutSection }}
+      <em><a href="{{.}}" class="content is-small">Read More...</a></em>
+      {{end}}
+    </div>
+  </div>
+</div>
+
+{{ end }}
+
+

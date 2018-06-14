@@ -1,0 +1,18 @@
+name = "pointyfood"
+license = "MIT"
+licenselink = "https://github.com/pointyfar/pointyfood/blob/master/LICENSE.md"
+description = "Theme built with Bulma.css, ideal for blogs, with extra features specifically for showcasing recipes."
+homepage = "https://pointy.netlify.com/"
+tags = ["blog", "bulma", "page bundles", "food", "photography", "images", "print-friendly" ]
+features = ["page bundles", "image gallery"]
+min_version = "0.41"
+
+[author]
+  name = "PointyFar"
+  homepage = ""
+
+# If porting an existing theme
+[original]
+  name = ""
+  homepage = ""
+  repo = ""

@@ -1,0 +1,75 @@
+@media print {
+  body {
+    font-size: 10pt;
+    line-height: 1.3;
+  }
+  
+  nav,
+  img,
+  .container.categories,
+  .column.sidebar
+  {
+    display: none !important;
+  }
+  
+  .hero, .hero-wrapper, .hero.is-medium .hero-body {
+    background: none !important;
+    padding: 0;
+  }
+  
+  figure > .card-content:before {
+    content: "[see image online]";
+  }
+  .section {
+    padding: 0;
+  }
+  
+  .column.is-three-quarters {
+    width: 100%;
+  }
+  .card.post-card > .card-content {
+    padding: 0
+  }
+  .card.post-card > .card-content > .content {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  .card.post-card > .card-content > .content > *
+  {
+    order: 3;
+    width: 100%;
+  }
+  .card.post-card > .card-content > .content > .ingredients {
+    order: 1;
+    width: 40%;
+    margin: 0 0 1rem 0;
+  }
+  .card.post-card > .card-content > .content ul  {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .card.post-card > .card-content > .content ul li:before {
+    content: '\25A2';
+    margin-right: 0.5rem;
+  }
+  
+  .card.post-card > .card-content > .content ul li {
+
+  }
+  .card.post-card > .card-content > .content > .ingredients > .card {
+    height: 100%;
+  }
+  .card.post-card > .card-content > .content > .ingredients > .card > .card-content,
+  .card.post-card > .card-content > .content > .procedure > .card > .card-content 
+  {
+    padding: .25rem;
+  }
+  .card.post-card > .card-content > .content > .procedure {
+    order: 2;
+    width: 60%;
+    margin: 0 0 1rem 0;
+        
+  }
+}

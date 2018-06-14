@@ -1,0 +1,20 @@
+{{ $list := index .context.Site.Data .list }}
+{{ if eq ( $list.type) "links" }}
+<div class="column is-6 footer-list">
+  <div class="title is-6">{{ $list.label }}</div>
+  <ul>
+    {{ range  $list.links }}
+    <li><a href="{{ .url }}">{{.label}}</a></li>
+    {{ end }}
+  </ul>
+</div>
+  {{ else if eq ($list.type) "image" }}
+  <div class="column is-12 footer-list">
+    <img src="{{ $list.url }}" alt="{{$list.label}}">
+  </div>
+  {{ else }}
+  <div class="column is-12 footer-list">
+    {{ $list.text }}
+  </div>
+  {{ end }}
+  

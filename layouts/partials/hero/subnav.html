@@ -1,0 +1,36 @@
+{{- $.Scratch.Set "featured" (slice ) -}}
+{{- if isset .Site.Params.subnav "usetaxonomy" -}}
+  {{- if isset .Site.Taxonomies .Site.Params.subnav.usetaxonomy -}}
+    {{- $catcount := .Site.Params.subnav.taxonomycount | default 3 -}}
+    {{- $tax := (index .Site.Taxonomies .Site.Params.subnav.usetaxonomy) -}}
+    <div class="container categories">
+      <nav class="navbar" role="navigation" aria-label="main navigation" >
+        {{- with .Site.Params.subnav.featuredterms -}}
+          {{- range . -}}
+            {{- if isset (index $.Site.Taxonomies $.Site.Params.subnav.usetaxonomy) . -}}
+              {{- $.Scratch.Add "featured" . -}}
+            {{- end -}}
+          {{- end -}}
+        {{- end -}}
+        {{- range $k, $v := $tax -}}
+        {{- if not ( in ($.Scratch.Get "featured") $k ) -}}
+          {{- $.Scratch.Add "featured" $k -}}
+        {{- end -}}
+        {{- end -}}
+
+        {{- $.Scratch.Set "displaycount" 0 -}}
+        {{- range first $catcount ($.Scratch.Get "featured") -}}
+          <a class="navbar-item is-hidden-mobile" href="{{$.Site.BaseURL}}{{$.Site.Params.subnav.usetaxonomy}}/{{- . | urlize -}}">{{- . | title -}}</a>
+          {{- $.Scratch.Set "displaycount" (add ($.Scratch.Get "displaycount") 1 ) -}}
+        {{- end -}}
+        {{- if lt ($.Scratch.Get "displaycount") $catcount -}}
+          {{- range first $catcount ($.Scratch.Get "featured") -}}
+            <a class="navbar-item is-hidden-mobile" href="{{$.Site.BaseURL}}{{$.Site.Params.subnav.usetaxonomy}}/{{- . | urlize -}}">{{- . | title -}}</a>
+            {{- $.Scratch.Set "displaycount" (add ($.Scratch.Get "displaycount") 1 ) -}}
+          {{- end -}}
+        {{- end -}}
+        <a class="navbar-item" href="{{.Site.BaseURL}}{{.Site.Params.subnav.usetaxonomy}}/">All {{.Site.Params.subnav.usetaxonomy | title -}}</a>
+      </nav>
+    </div>
+  {{- end -}}
+{{- end -}}

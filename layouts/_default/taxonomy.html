@@ -1,0 +1,33 @@
+{{ define "main" }}      
+{{ $currentTerm := .Data.Term }}
+{{ $currentTaxonomy := .Type | singularize }}
+
+<div class="card">
+  <div class="card-content">
+    <div class="content">
+      {{ range $key, $taxonomy := (index .Site.Taxonomies .Type )}}
+        {{ if eq $currentTerm $key }}
+        <h4>
+          {{ $tagURL := printf "tags/%s" $currentTerm | relURL }}
+          <a href="{{$tagURL}}">
+            Found {{$taxonomy.Count}} {{if gt $taxonomy.Count 1 }} entries{{else}} entry{{ end}} in {{ $currentTaxonomy }} 
+            <em>{{ $currentTerm }}</em>:
+          </a>
+        </h4>
+        {{ end }}
+      {{ end }}
+      <div class="columns">
+      {{ range .Pages }}
+        {{ .Render "card-list" }}
+      {{ end }}
+    </div>
+      
+    </div>
+  </div>
+  <footer class="card-footer">
+
+  </footer>
+</div>
+
+    
+{{ end }}

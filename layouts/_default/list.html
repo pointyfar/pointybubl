@@ -1,0 +1,25 @@
+{{ define "main" }}      
+
+{{ $pages := where .Site.RegularPages "Type" "in" .Section }}
+{{ $paginator := .Paginate $pages  }}
+{{ $isNodeOrHome := (or .IsNode .IsHome )}}
+{{ $.Scratch.Set "postCount" ( $paginator.PageSize ) }}
+        
+{{ if gt $paginator.TotalPages 1 }}
+  {{ partial "utils/paginator.html" ( dict "paginator" $paginator ) }}
+{{ end }}
+
+{{ range ($paginator.Pages.GroupByDate "2006") }}
+  <h2 class="is-size-2">{{ .Key }}</h2>
+  <div class="columns is-multiline">
+  {{ range .Pages }}
+    {{ .Render "card-list" }}
+  {{ end }}
+</div>
+{{ end }}
+
+{{ if gt $paginator.TotalPages 1 }}
+  {{ partial "utils/paginator.html" ( dict "paginator" $paginator ) }}
+{{ end }}
+    
+{{ end }}

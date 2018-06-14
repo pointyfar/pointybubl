@@ -1,0 +1,76 @@
+baseURL = "localhost:1313/subdir/"
+languageCode = "en-us"
+title = "Pointy's"
+
+# Only use if exampleSite is inside theme folder
+themesDir = "../../"
+
+theme = "pointyfood"
+paginate = 8
+
+#sectionPagesMenu = "main"
+
+[[menu.main]]
+  name = "Attributions"
+  title = "Attributions"
+  weight = 100
+  identifier = "attributions"
+  url = "/attributions/"
+
+[[menu.main]]
+  name = "About"
+  title = "About the Author"
+  weight = 110
+  identifier = "about"
+  url = "/about/"
+
+[[menu.main]]
+    name = "Recipes"
+    title = "Recipes and Food Section"
+    weight = 120
+    identifier = "post"
+    url = "/food/"
+
+[[menu.main]]
+    name = "Lorem"
+    title = "Lorem Ipsum"
+    weight = 130
+    identifier = "lorem"
+    url = "/lorem/"
+
+[params]
+  copyright = "© 2018 PointyFar"
+  subtitle = "[Food] Blog Template for Hugo"
+  mainSections = ["food", "post", "wonderland"]
+  
+  socialdata = "social"
+
+[params.xhero]
+  #background = "//localhost:1313/subdir/img/hero-background.jpeg"
+  background = "//localhost:1313/subdir/img/hero-background-dark.jpeg"
+  #background = "//localhost:1313/subdir/img/hero-background-light.jpeg"
+  bgislight = false
+
+[params.xauthor]
+  name = "Pointy Far"
+  short = "Pointy"
+  photo = "/img/hello.jpeg"
+  header = "Howdy!"
+  blurb = " This is params author blurb. Configure me! \
+            Possumus quorum aliqua aut anim ut eiusmod exquisitaque ut consequat. \
+            O id sempiternum, voluptate quo ingeniis. \
+            Duis ab et nulla incurreret, litteris qui possumus."
+  aboutSection = "/about/"
+
+[params.xsubnav]
+  usetaxonomy = "tags"
+  taxonomycount = 3
+  featuredterms = ["queen"]
+  
+  
+  
+[params.footer]
+  xright = ["footerlinks", "otherlinks"]
+  xleft = ["copyright", "footertext", "footerimage"]
+  
+  

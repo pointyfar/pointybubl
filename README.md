@@ -1,4 +1,5 @@
-# pointyfood: A Hugo Theme
+# pointyBUBL: A Hugo Theme 
+BU[LMA] + BL[OG]
 
 Theme built with Bulma.css. Ideal for blogs, includes image gallery, and handles page resources. Optional sidebar and footer.
 

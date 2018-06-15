@@ -3,7 +3,7 @@
   {{ with .photo }}
   <div class="card-image">
     <figure class="image">
-      <img class="" src="{{ . | relURL }}" alt="Profile Photo">
+      <img class="" src="{{$.Site.BaseURL}}{{ . }}" alt="Profile Photo">
     </figure>
   </div>
   {{ end }}
@@ -20,7 +20,7 @@
       {{ with .blurb }}
         <p>{{.}}</p>
       {{ end }}
-      {{ with .aboutSection }}
+      {{ with .aboutsection }}
       <em><a href="{{.}}" class="content is-small">Read More...</a></em>
       {{end}}
     </div>

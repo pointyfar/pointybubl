@@ -3,11 +3,11 @@ BU[LMA] + BL[OG]
 
 Theme built with Bulma.css. Ideal for blogs, includes image gallery, and handles page resources. Optional sidebar and footer.
 
-![Theme Screenshot](https://github.com/pointyfar/pointyfood/blob/master/images/screenshot.png)
+![Theme Screenshot](https://github.com/pointyfar/pointybubl/blob/master/images/screenshot.png)
 
 ## Preview the theme
 
-Grab the theme from https://github.com/pointyfar/pointyfood
+Grab the theme from https://github.com/pointyfar/pointybubl
 
 Navigate to `/exampleSite` and run `hugo server`
 
@@ -162,7 +162,7 @@ If you have your content organised in page bundles as described in [https://gohu
 
 Which renders this:
 
-![Resource Screenshot](https://github.com/pointyfar/pointyfood/blob/master/images/screenshot-resource.png)
+![Resource Screenshot](https://github.com/pointyfar/pointybubl/blob/master/images/screenshot-resource.png)
 
 You can use the shortcode for non-bundled images as well, passing a `src` parameter instead of `resource`:
 
@@ -170,7 +170,7 @@ You can use the shortcode for non-bundled images as well, passing a `src` parame
 {{% image src="//localhost:1313/img/hello.jpeg" caption="Hello" alt="Hello" %}}
 ```
 
-![Src Screenshot](https://github.com/pointyfar/pointyfood/blob/master/images/screenshot-src-image.png)
+![Src Screenshot](https://github.com/pointyfar/pointybubl/blob/master/images/screenshot-src-image.png)
 
 
 #### Image gallery 
@@ -182,7 +182,7 @@ show_gallery: true
 ```
 on a post's front matter. This will display a gallery of all the resources it finds of type `image`.
 
-![Image Gallery](https://github.com/pointyfar/pointyfood/blob/master/images/screenshot-gallery.png) 
+![Image Gallery](https://github.com/pointyfar/pointybubl/blob/master/images/screenshot-gallery.png) 
 
 It will use the `.Title` attribute as caption if set.
 
@@ -225,13 +225,13 @@ Procedure here:
 ```
 Renders:
 
-![Ingredients and Procedure Screenshot](https://github.com/pointyfar/pointyfood/blob/master/images/screenshot-recipes.png)
+![Ingredients and Procedure Screenshot](https://github.com/pointyfar/pointybubl/blob/master/images/screenshot-recipes.png)
 
 #### Print-friendly 
 
 This theme includes a `print.css` that strips images from posts. If an `ingredients` and/or `procedure` box is included, these will be moved to the top of the page.
 
-![PDF screenshot](https://github.com/pointyfar/pointyfood/blob/master/images/screenshot-pdf.png)
+![PDF screenshot](https://github.com/pointyfar/pointybubl/blob/master/images/screenshot-pdf.png)
 
 
 ### Customising the theme CSS

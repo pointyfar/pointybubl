@@ -150,7 +150,7 @@ figure.profile {
   justify-content: center;
 }
 
-.procedure, .ingredients {
+.procedure, .ingredients, .resource-box {
   margin: 2rem 0;
 }
 

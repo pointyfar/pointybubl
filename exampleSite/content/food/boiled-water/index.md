@@ -17,6 +17,9 @@ Irure singulis offendit et non aute officia, nam minim fabulas an se sunt duis e
 
 {{% image resource="images/pots-on-gas-stove.jpeg" caption="Pots on Gas Stove" %}}
 
+{{< box resource="more-text" >}}
+
+
 An quo nulla legam nulla hic a culpa sed velit, sed cupidatat exquisitaque, ne possumus sed mandaremus. Qui nisi quid ubi mentitum ad incididunt anim ubi proident imitarentur ex te nisi quae enim quamquam, deserunt comprehenderit ubi deserunt. Senserit arbitrantur eu deserunt aut mentitum magna sunt voluptate velit, illum a senserit an eram, admodum sunt consequat qui nisi quo qui multos incididunt, si qui praetermissum ita doctrina export quem a enim ab veniam mandaremus ad deserunt. Magna vidisse sed voluptate, aliqua a senserit aut amet.Ut an sempiternum, nam ab aliqua enim export. Mandaremus velit dolor o aute, possumus esse quis mandaremus culpa ut ita se eram singulis do constias quid veniam te nisi, malis iis incididunt ad aute, iis aute nescius imitarentur ut eu qui fugiat fugiat duis, sint incididunt adipisicing. Aute occaecat ingeniis. Id elit expetendis, irure laborum exquisitaque.
 
 

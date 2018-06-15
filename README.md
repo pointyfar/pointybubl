@@ -1,6 +1,8 @@
 # pointyfood: A Hugo Theme
 
-Built with Bulma.css, ideal for blogs, with extra features specifically for showcasing recipes.
+Theme built with Bulma.css. Ideal for blogs, includes image gallery, and handles page resources. Optional sidebar and footer.
+
+![Theme Screenshot](https://github.com/pointyfar/pointyfood/blob/master/images/screenshot.png)
 
 ## Preview the theme
 
@@ -48,6 +50,9 @@ This theme can optionally show a secondary nav bar under the hero image.
 
 Having the above example confiuration means the secondary nav will be populated with `3` links from the `categories` taxonomy which will include the category `"queen"` and two others. Please note that the list will be sorted alphabetically. 
 
+![Secondary Nav](/images/screenshot-subnav.png)
+
+
 ### Configure hero image 
 
 You can choose to feature a hero image on the home page by adding the absolute path to the image. Specifying `bgislight` sets the corresponding contrasting font color for the text.
@@ -57,7 +62,7 @@ You can choose to feature a hero image on the home page by adding the absolute p
   background = "//localhost:1313/subdir/img/hero-background-dark.jpeg"
   bgislight = false
 ```
-  
+
 ### Configure sidebar
 
 The sidebar will be rendered if either the author box or the social box (or both) are configured.
@@ -151,7 +156,7 @@ url = "//localhost:1313/subdir/img/hero-background.jpeg"
 If you have your content organised in page bundles as described in [https://gohugo.io/content-management/organization/#page-bundles](https://gohugo.io/content-management/organization/#page-bundles) you can take advantage of the shortcode included in this theme:
 
 ```
-{{%/* image resource="images/pineapple-on-beach.jpeg" caption="Pineapple on Beach" alt="Pineapple" */%}}
+{{% image resource="images/pineapple-on-beach.jpeg" caption="Pineapple on Beach" alt="Pineapple" %}}
 ```
 
 Which renders this:
@@ -161,7 +166,7 @@ Which renders this:
 You can use the shortcode for non-bundled images as well, passing a `src` parameter instead of `resource`:
 
 ```
-{{%/* image src="//localhost:1313/img/hello.jpeg" caption="Hello" alt="Hello" */%}}
+{{% image src="//localhost:1313/img/hello.jpeg" caption="Hello" alt="Hello" %}}
 ```
 
 ![Src Screenshot](https://github.com/pointyfar/pointyfood/blob/master/images/screenshot-src-image.png)
@@ -182,9 +187,9 @@ It will use the `.Title` attribute as caption if set.
 
 
 
-#### Recipe pages
+#### Content boxes (e.g. for recipes)
 
-While this theme can be used as a general blog theme, it has some additional functions for featuring recipes.
+This theme includes a `box` shortcode for including markdown content within posts. You can use this to display ingredients and procedures for recipes, for example.
 
 Using the `box` shortcode, pass a `resource` parameter pointing to the corresponding content: 
 

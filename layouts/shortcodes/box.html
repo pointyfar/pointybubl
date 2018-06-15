@@ -2,7 +2,11 @@
 {{ $resource := .Get "resource" }}
 
 {{ with .Page.Resources.GetMatch $resourcemd }}
-<div class="{{ $resource }}">
-  {{ partial "utils/box" (dict "title" $resource "content" .Content ) }}
+  {{ $.Scratch.Set "title" $resource }}
+  {{ with .Title }}
+  {{ $.Scratch.Set "title" . }}
+  {{ end }}
+<div class="resource-box {{ $resource }}">
+  {{ partial "utils/box" (dict "title" ($.Scratch.Get "title") "content" .Content ) }}
 </div>
 {{ end }}

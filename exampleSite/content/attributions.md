@@ -10,9 +10,6 @@ This project uses the following assets:
 
 - stock photos from [pexels.com](pexels.com) which are under the CC0 license.
   
-  - [anise-spices-seeds.jpeg]
-    (https://www.pexels.com/photo/directly-above-shot-of-dried-decoration-247113/)
-
   - [hero-background.jpeg]
     (https://www.pexels.com/photo/chopping-board-colorful-colourful-knife-616360/)
 
@@ -21,9 +18,6 @@ This project uses the following assets:
 
   - [hero-background-light.jpeg]
     (https://www.pexels.com/photo/white-mug-filled-with-coffee-beside-baked-pastries-on-paper-plate-all-on-top-of-white-wood-surface-951234/)
-
-  - [pineapple-on-beach.jpeg]
-    (https://www.pexels.com/photo/sea-beach-sand-water-139229/)
 
   - [food-eggs-box.jpg]
     (https://www.pexels.com/photo/food-eggs-8483/)

@@ -26,7 +26,7 @@ Ingredients here:
 
 {{< box resource="ingredients" >}}
 
-End Ingredients--
+End Ingredients.
 
 Procedure here:
 

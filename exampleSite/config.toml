@@ -25,11 +25,11 @@ paginate = 8
   url = "/about/"
 
 [[menu.main]]
-    name = "Recipes"
-    title = "Recipes and Food Section"
-    weight = 120
-    identifier = "post"
-    url = "/food/"
+  name = "Recipes"
+  title = "Recipes and Food Section"
+  weight = 120
+  identifier = "food"
+  url = "/food/"
 
 [[menu.main]]
     name = "Lorem"
@@ -40,21 +40,21 @@ paginate = 8
 
 [params]
   copyright = "© 2018 PointyFar"
-  subtitle = "[Food] Blog Template for Hugo"
+  subtitle = "Blog Template for Hugo"
   mainSections = ["food", "post", "wonderland"]
   
   socialdata = "social"
 
-[params.xhero]
-  #background = "//localhost:1313/subdir/img/hero-background.jpeg"
-  background = "//localhost:1313/subdir/img/hero-background-dark.jpeg"
-  #background = "//localhost:1313/subdir/img/hero-background-light.jpeg"
+[params.hero]
+  #background = "img/hero-background.jpeg"
+  background = "img/hero-background-dark.jpeg"
+  #background = "img/hero-background-light.jpeg"
   bgislight = false
 
-[params.xauthor]
+[params.author]
   name = "Pointy Far"
   short = "Pointy"
-  photo = "/img/hello.jpeg"
+  photo = "img/hello.jpeg"
   header = "Howdy!"
   blurb = " This is params author blurb. Configure me! \
             Possumus quorum aliqua aut anim ut eiusmod exquisitaque ut consequat. \
@@ -62,7 +62,7 @@ paginate = 8
             Duis ab et nulla incurreret, litteris qui possumus."
   aboutSection = "/about/"
 
-[params.xsubnav]
+[params.subnav]
   usetaxonomy = "tags"
   taxonomycount = 3
   featuredterms = ["queen"]
@@ -70,7 +70,7 @@ paginate = 8
   
   
 [params.footer]
-  xright = ["footerlinks", "otherlinks"]
-  xleft = ["copyright", "footertext", "footerimage"]
+  left = ["footerlinks", "otherlinks", "footerlinks"]
+  right = ["copyright", "footertext", "footerimage"]
   
   

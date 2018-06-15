@@ -56,11 +56,11 @@ Having the above example confiuration means the secondary nav will be populated 
 
 ### Configure hero image 
 
-You can choose to feature a hero image on the home page by adding the absolute path to the image. Specifying `bgislight` sets the corresponding contrasting font color for the text.
+You can choose to feature a hero image on the home page by adding the path to the image. Specifying `bgislight` sets the corresponding contrasting font color for the text.
 
 ```toml
 [params.hero]
-  background = "//localhost:1313/subdir/img/hero-background-dark.jpeg"
+  background = "img/hero-background-dark.jpeg"
   bgislight = false
 ```
 
@@ -125,7 +125,7 @@ These are arrays with each element pointing to a data file. Each data file may b
 ```toml
 label = "Hello"
 type = "image"
-url = "//localhost:1313/subdir/img/hero-background.jpeg"
+url = "img/hero-background.jpeg"
 ```
 
 - links
@@ -167,7 +167,7 @@ Which renders this:
 You can use the shortcode for non-bundled images as well, passing a `src` parameter instead of `resource`:
 
 ```
-{{% image src="//localhost:1313/img/hello.jpeg" caption="Hello" alt="Hello" %}}
+{{% image src="img/hello.jpeg" caption="Hello" alt="Hello" %}}
 ```
 
 ![Src Screenshot](https://github.com/pointyfar/pointybubl/blob/master/images/screenshot-src-image.png)

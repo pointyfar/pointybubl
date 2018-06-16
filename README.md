@@ -53,6 +53,15 @@ Having the above example confiuration means the secondary nav will be populated 
 
 ![Secondary Nav](/images/screenshot-subnav.png)
 
+### Configure brand 
+
+The theme uses `params.title` to populate the top left of the nav bar. The hero banner on the index page also uses this value. 
+
+The subtitle uses the `params.subtitle` value on the index page. `.RegularPages` use the post author if configured on the post front matter, and defaults to the `.Site.Author`.
+
+```
+title = "Pointy's"
+```
 
 ### Configure hero image 
 
@@ -78,12 +87,15 @@ You can optionally add an author box on the sidebar
   short = "Pointy"
   photo = "img/hello.jpeg"
   header = "Howdy!"
-  blurb = " This is params author blurb. Configure me! \
-            Possumus quorum aliqua aut anim ut eiusmod exquisitaque ut consequat. \
-            O id sempiternum, voluptate quo ingeniis. \
-            Duis ab et nulla incurreret, litteris qui possumus."
+  blurb = """ 
+            This is params author blurb. Configure me! 
+            Possumus quorum aliqua aut anim ut eiusmod exquisitaque ut consequat. 
+            O id sempiternum, voluptate quo ingeniis. 
+            Duis ab et nulla incurreret, litteris qui possumus.
+          """
   aboutSection = "/about/"
 ```
+![Author Box Screenshot](https://github.com/pointyfar/pointybubl/blob/master/images/screenshot-author-box.png)
 
 #### Configure social buttons 
 
@@ -110,6 +122,9 @@ label = "I am social!"
 
 `color` is optional and `#7a7a7a` will be used by default.
 
+![Social Box Screenshot](https://github.com/pointyfar/pointybubl/blob/master/images/screenshot-social-box.png)
+
+
 ### Configure footer
 
 You can add an optional footer by defining a left and/or a right side.
@@ -122,11 +137,11 @@ right = ["copyright", "footertext", "footerimage"]
 These are arrays with each element pointing to a data file. Each data file may be defined as one of three types of footer items:
 
 - image
-```toml
-label = "Hello"
-type = "image"
-url = "img/hero-background.jpeg"
-```
+  ```toml
+  label = "Hello"
+  type = "image"
+  url = "img/hero-background.jpeg"
+  ```
 
 - links
   ```toml

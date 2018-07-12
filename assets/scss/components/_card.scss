@@ -1,0 +1,29 @@
+.content figure {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.card-figure {
+  margin-bottom: 2rem;
+}
+.card-header {
+  align-items: baseline;
+}
+.card.post-card {
+  header.post-header {
+    padding: 0.75rem 1.5rem;
+
+    .card-header-title {
+      padding: 0;
+      margin: 0;
+    }
+    .card-header-author {
+      flex: 0 1 auto;
+    }
+    @include until(550px) {
+      display: flex;
+      flex-direction: column;
+
+    }
+  }
+}

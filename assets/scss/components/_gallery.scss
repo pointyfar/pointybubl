@@ -1,0 +1,38 @@
+.gallery {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 2rem;
+  header {
+    flex: 0 1 auto;
+  }
+}
+.gallery-content {
+  display: none; 
+  &.gallery-content-show {
+    display: flex;
+    flex: 1 0 auto;
+    flex-direction: column;
+    align-items: stretch;
+    .card-image {
+      height: 450px; 
+      width: 100%; 
+      flex: 1 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      justify-content: center;
+      img.gallery-img {
+        max-width: 100% !important;
+        max-height: 100% !important;
+        height: auto;
+        object-fit: contain;
+        overflow: hidden;
+      }
+    }
+    .card-content {
+      flex: 0 1 auto;
+      padding: 0.5rem;
+    }
+  }
+}
+

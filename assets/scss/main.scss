@@ -1,0 +1,47 @@
+
+@import "bulma/sass/utilities/initial-variables";
+@import "bulma/sass/utilities/functions";
+@import "variables.scss";
+
+$family-primary: $family-sans-serif!default;
+
+{{ with .Site.Params.scss.customFontBody }} 
+$custom-font-body: {{.}};
+$family-primary: {{.}};
+{{ end }}
+
+{{ with .Site.Params.scss.primary }} 
+$primary: {{.}};
+$link: $primary;
+{{ end }}
+
+{{ with .Site.Params.scss.primaryInvert }} 
+$primary-invert: {{.}};
+{{ end }}
+
+{{ with .Site.Params.scss.brandFont }} 
+$brand-font: {{.}};
+{{ else }}
+$brand-font: $family-primary;
+{{ end }}
+
+{{ with .Site.Params.scss.footnote }} 
+$foot-note: "{{.}}";
+{{ else }}
+$foot-note: "Notes:";
+{{ end }}
+
+
+
+
+@import "bulma/bulma";
+@import "components/wrapper";
+@import "components/hero";
+@import "components/card";
+@import "components/profile";
+@import "components/brand";
+@import "components/social";
+@import "components/content";
+@import "components/tags";
+@import "components/footer";
+@import "components/gallery";

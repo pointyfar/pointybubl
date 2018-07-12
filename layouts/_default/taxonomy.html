@@ -2,7 +2,7 @@
 {{ $currentTerm := .Data.Term }}
 {{ $currentTaxonomy := .Type | singularize }}
 
-<div class="card">
+<div class="card card-list-container">
   <div class="card-content">
     <div class="content">
       {{ range $key, $taxonomy := (index .Site.Taxonomies .Type )}}
@@ -16,7 +16,7 @@
         </h4>
         {{ end }}
       {{ end }}
-      <div class="columns">
+      <div class="columns is-multiline is-desktop">
       {{ range .Pages }}
         {{ .Render "card-list" }}
       {{ end }}

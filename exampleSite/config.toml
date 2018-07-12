@@ -5,7 +5,7 @@ title = "Pointy's"
 # Only use if exampleSite is inside theme folder
 themesDir = "../../"
 
-theme = "pointybubl"
+theme = "pointyfood"
 paginate = 8
 
 #sectionPagesMenu = "main"
@@ -44,7 +44,15 @@ paginate = 8
   mainSections = ["food", "post", "wonderland"]
   
   socialdata = "social"
-
+  
+[params.scss]
+  customFontBody = "Georgia,Utopia,Charter,serif"
+  brandFont = "'Oswald', sans-serif"
+  primary = "CadetBlue"
+  primaryInvert = "#fff"
+  
+  footnote = "FOOTNOTE:"
+  
 [params.hero]
   #background = "img/hero-background.jpeg"
   background = "img/hero-background-dark.jpeg"

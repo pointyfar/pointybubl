@@ -3,8 +3,7 @@ hugo*
 
 # Generated files at default location
 /public/
-/resources/_gen
 
 # Theme exampleSite
 /exampleSite/public/
-/exampleSite/resources/_gen
+

@@ -24,10 +24,16 @@
     <link rel="stylesheet" href="{{- $styles.Permalink -}}" integrity="{{- $styles.Data.Integrity -}}" media="screen">
   {{- end -}}
 {{- else -}}
-  {{- $genscss := readDir "/resources/_gen/assets/scss/scss/" -}}
+  {{ with .Site.Params.themePath }}
+    {{ $.Scratch.Set "themePath" . }}
+  {{ else }}
+    {{ $.Scratch.Set "themePath" "/themes/pointybubl" }}
+  {{ end }}
+  {{ $scsspath := (printf "%s/resources/_gen/assets/scss/scss/" ($.Scratch.Get "themePath") ) }}
+  {{- $genscss := readDir $scsspath -}}
   {{- range $genscss -}}
     {{- if in (print .Name) ".json" -}}
-    {{- $json := (getJSON (printf "/resources/_gen/assets/scss/scss/%s" .Name)) -}}
+    {{- $json := (getJSON (printf "%s%s" $scsspath .Name)) -}}
     {{- $cssPath := index $json "Target" -}}
     <link rel="stylesheet" href="{{$baseURL}}{{$cssPath}}" media="screen">
     {{- end -}}

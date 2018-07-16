@@ -44,6 +44,7 @@ paginate = 8
   mainSections = ["food", "post", "wonderland"]
   
   socialdata = "social"
+  usePipes = false
   
 [params.scss]
   customFontBody = "Georgia,Utopia,Charter,serif"

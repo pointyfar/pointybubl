@@ -1,14 +1,35 @@
-<!--<link rel="stylesheet" href="{{.Site.BaseURL}}{{ "vendor/bulma.css" }}" />
+<link rel="stylesheet" href="{{.Site.BaseURL}}css/print.css" />
+{{- $baseURL := .Site.BaseURL -}}
 
-<link rel="stylesheet" href="{{.Site.BaseURL}}{{ "css/style.css" }}" />-->
-<link rel="stylesheet" href="{{.Site.BaseURL}}{{ "css/print.css" }}" />
+{{/* usepipes = true unless set to false */}}
 
-{{ if .Site.IsServer }}
-  {{ $cssOpts := (dict "targetPath" "styles/main.css" "enableSourceMap" true ) }}
-  {{ $styles := resources.Get "scss/main.scss" | resources.ExecuteAsTemplate "style.main.scss" . | toCSS $cssOpts }}
-  <link rel="stylesheet" href="{{ $styles.Permalink }}" media="screen">
-{{ else }}
-  {{ $cssOpts := (dict "targetPath" "styles/main.css" ) }}
-  {{ $styles := resources.Get "scss/main.scss" | resources.ExecuteAsTemplate "style.main.scss" . | toCSS $cssOpts | minify | fingerprint }}
-  <link rel="stylesheet" href="{{ $styles.Permalink }}" integrity="{{ $styles.Data.Integrity }}" media="screen">
-{{ end }}
+{{- if isset .Site.Params "usepipes" -}}
+  {{- if .Site.Params.usepipes -}}
+    {{- $.Scratch.Set "usepipes" true -}}
+  {{- else -}}
+    {{- $.Scratch.Set "usepipes" false -}}
+  {{- end -}}
+{{- else -}}
+{{- $.Scratch.Set "usepipes" true -}}
+{{- end -}}
+
+{{- if ($.Scratch.Get "usepipes") -}}
+  {{- if .Site.IsServer -}}
+    {{- $cssOpts := (dict "targetPath" "styles/main.css" "enableSourceMap" true ) -}}
+    {{- $styles := resources.Get "scss/main.scss" | resources.ExecuteAsTemplate "style.main.scss" . | toCSS $cssOpts -}}
+    <link rel="stylesheet" href="{{- $styles.Permalink -}}" media="screen">
+  {{- else -}}
+    {{- $cssOpts := (dict "targetPath" "styles/main.css" ) -}}
+    {{- $styles := resources.Get "scss/main.scss" | resources.ExecuteAsTemplate "style.main.scss" . | toCSS $cssOpts | minify | fingerprint -}}
+    <link rel="stylesheet" href="{{- $styles.Permalink -}}" integrity="{{- $styles.Data.Integrity -}}" media="screen">
+  {{- end -}}
+{{- else -}}
+  {{- $genscss := readDir "/resources/_gen/assets/scss/scss/" -}}
+  {{- range $genscss -}}
+    {{- if in (print .Name) ".json" -}}
+    {{- $json := (getJSON (printf "/resources/_gen/assets/scss/scss/%s" .Name)) -}}
+    {{- $cssPath := index $json "Target" -}}
+    <link rel="stylesheet" href="{{$baseURL}}{{$cssPath}}" media="screen">
+    {{- end -}}
+  {{- end -}}
+{{- end -}}

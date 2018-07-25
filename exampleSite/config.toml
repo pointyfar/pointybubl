@@ -43,10 +43,11 @@ paginate = 8
   subtitle = "Blog Template for Hugo"
   mainSections = ["food", "post", "wonderland"]
   
-  socialdata = "social"
-  usePipes = true
+  xsocialdata = "social"
+  usePipes = true   ## setting to false DOES NOT WORK if exampleSite is inside themesDir. 
+                    ## MOVE exampleSite outside themesDir and put theme inside themes folder.
   
-[params.scss]
+[params.xscss]
   customFontBody = "Georgia,Utopia,Charter,serif"
   brandFont = "'Oswald', sans-serif"
   primary = "CadetBlue"
@@ -54,13 +55,13 @@ paginate = 8
   
   footnote = "FOOTNOTE:"
   
-[params.hero]
+[params.xhero]
   #background = "img/hero-background.jpeg"
-  background = "img/hero-background-dark.jpeg"
+  #background = "img/hero-background-dark.jpeg"
   #background = "img/hero-background-light.jpeg"
   bgislight = false
 
-[params.author]
+[params.xauthor]
   name = "Pointy Far"
   short = "Pointy"
   photo = "img/hello.jpeg"
@@ -71,14 +72,14 @@ paginate = 8
             Duis ab et nulla incurreret, litteris qui possumus."
   aboutSection = "/about/"
 
-[params.subnav]
+[params.xsubnav]
   usetaxonomy = "tags"
   taxonomycount = 3
   featuredterms = ["queen"]
   
   
   
-[params.footer]
+[params.xfooter]
   left = ["footerlinks", "otherlinks", "footerlinks"]
   right = ["copyright", "footertext", "footerimage"]
   

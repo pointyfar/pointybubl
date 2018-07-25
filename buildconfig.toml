@@ -1,4 +1,5 @@
 # original from https://github.com/pamubay/hugo-builder-theme
+# hugo -b build:main.scss --gc --config buildconfig.toml -d static
 
 baseURL = "http://example.org/"
 languageCode = "en-us"

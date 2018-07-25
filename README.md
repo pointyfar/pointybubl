@@ -1,7 +1,7 @@
 # pointyBUBL: A Hugo Theme 
 BU[LMA] + BL[OG]
 
-Theme built with Bulma.css. Ideal for blogs, includes image gallery, and handles page resources. Optional sidebar and footer.
+Blog theme built with Bulma.css. Includes image gallery, with optional sidebar and footer. Handles page resources. Uses Hugo Pipes!
 
 ![Theme Screenshot](https://github.com/pointyfar/pointybubl/blob/master/images/screenshot.png)
 
@@ -31,7 +31,7 @@ The theme comes with an `exampleSite` folder, which has a `config.toml` file inc
 
 ### Configure menus for navbar
 
-This theme takes advantage of Hugo's Section Menus for Lazy Bloggers documented here: https://gohugo.io/templates/menu-templates/#section-menu-for-lazy-bloggers
+You can take advantage of Hugo's Section Menus for Lazy Bloggers documented here: https://gohugo.io/templates/menu-templates/#section-menu-for-lazy-bloggers
 
 You would only need to set `sectionPagesMenu= "main"` in your `config.toml` file.
 
@@ -49,7 +49,7 @@ This theme can optionally show a secondary nav bar under the hero image.
   featuredterms = ["queen"]
 ```
 
-Having the above example confiuration means the secondary nav will be populated with `3` links from the `categories` taxonomy which will include the category `"queen"` and two others. Please note that the list will be sorted alphabetically. 
+Having the above example confiuration means the secondary nav will be populated with `3` links from the `categories` taxonomy which will include the category `"queen"` (and two others). Please note that the list will be sorted alphabetically. 
 
 ![Secondary Nav](/images/screenshot-subnav.png)
 
@@ -65,7 +65,7 @@ title = "Pointy's"
 
 ### Configure hero image 
 
-You can choose to feature a hero image on the home page by adding the path to the image. Specifying `bgislight` sets the corresponding contrasting font color for the text.
+You can choose to feature a hero image on the home page by adding the path to the image. Specifying `bgislight` sets the corresponding contrasting font color for the text, i.e. `true` means dark font color will be used.
 
 ```toml
 [params.hero]
@@ -103,7 +103,7 @@ You can optionally add an author box on the sidebar
 socialdata = "social"
 ```
 
-You can add a social box on the sidebar by pointing `params.socialdata` to a file in your `data` folder. The `exampleSite` has a `social.toml` data file which has the following contents:
+You can add a social box on the sidebar by pointing `params.socialdata` to a file in your `data` folder. The `exampleSite` has a sample `social.toml` data file which has the following contents:
 ```toml
 label = "I am social!"
 
@@ -203,7 +203,7 @@ It will use the `.Title` attribute as caption if set.
 
 
 
-#### Content boxes (e.g. for recipes)
+#### Content boxes
 
 This theme includes a `box` shortcode for including markdown content within posts. You can use this to display ingredients and procedures for recipes, for example.
 

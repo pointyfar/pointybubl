@@ -8,6 +8,19 @@ authors:
 categories: 
   - dinner
 show_gallery: true
+resources:
+  - src: "images/food-eggs-box.jpg"
+    title: "eggs"
+    params:
+        weight: 10
+  - src: "images/food-pot-kitchen-cooking.jpg"
+    title: "pot"
+    params:
+        weight: 30
+  - src: "images/sliced-egg.jpeg"
+    title: "sliced eggs"
+    params:
+        weight: 20
 
 ---
 

@@ -2,13 +2,8 @@ baseURL = "/"
 languageCode = "en-us"
 title = "Pointy's"
 
-# Only use if exampleSite is inside theme folder
-#themesDir = "../../"
-
 #theme = "pointyfood"
 paginate = 8
-
-#sectionPagesMenu = "main"
 
 [[menu.main]]
   name = "Attributions"
@@ -38,15 +33,20 @@ paginate = 8
     identifier = "lorem"
     url = "/lorem/"
 
+######### 
+######### remove underscores "_" to try out custom params
+######### 
+
 [params]
   copyright = "© 2018 PointyFar"
   subtitle = "Blog Template for Hugo"
   mainSections = ["food", "post", "wonderland"]
-  socialdata = "social"
+  _socialdata = "social"
   
   #usePipes = false
   
-[params.scss]
+  
+[params._scss]
   customFontBody = "Georgia,Utopia,Charter,serif"
   brandFont = "'Oswald', sans-serif"
   primary = "CadetBlue"
@@ -54,13 +54,13 @@ paginate = 8
   
   footnote = "FOOTNOTE:"
   
-[params.hero]
+[params._hero]
   #background = "img/hero-background.jpeg"
   background = "img/hero-background-dark.jpeg"
   #background = "img/hero-background-light.jpeg"
   bgislight = false
 
-[params.author]
+[params._author]
   name = "Pointy Far"
   short = "Pointy"
   photo = "img/hello.jpeg"
@@ -71,14 +71,14 @@ paginate = 8
             Duis ab et nulla incurreret, litteris qui possumus."
   aboutSection = "/about/"
 
-[params.subnav]
+[params._subnav]
   usetaxonomy = "tags"
   taxonomycount = 3
   featuredterms = ["queen"]
   
   
   
-[params.footer]
+[params._footer]
   left = ["footerlinks", "otherlinks", "footerlinks"]
   right = ["copyright", "footertext", "footerimage"]
   

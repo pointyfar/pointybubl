@@ -9,10 +9,9 @@
             {{- .Site.Params.subtitle }}
             {{- end }}
           {{- else if .IsPage }}
-          by 
             {{- with .Params.author }}
-            {{- . }}
-            {{- else }} {{- .Site.Params.author.name }}
+              by {{- . }}
+            {{- else }}{{- with .Site.Params.author.name }}by {{.}}{{end}}
             {{- end }}
           {{- end }}
         </h2>

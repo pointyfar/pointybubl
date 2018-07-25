@@ -5,13 +5,13 @@
   <header class="card-header">
     <div class="tabs">
       <ul>
-        {{ range $i, $e := (.Resources.ByType "image")  }}
+        {{ range $i, $e := ( sort (.Resources.ByType "image") ".Params.weight")  }}
         <li class="{{if eq $i 0}}is-active{{end}}"><a class="gallery-tab" data-target="tab-{{$i}}">{{add $i 1}}</a></li>
         {{ end }}
       </ul>
     </div>
   </header>
-  {{ range $i, $e := (.Resources.ByType "image")  }}
+  {{ range $i, $e := ( sort (.Resources.ByType "image") ".Params.weight")  }}
   <div class="gallery-content {{if eq $i 0}}gallery-content-show{{end}}" id="tab-{{$i}}">
     <div class="card-image">
       <img class="gallery-img" src="{{$e.Permalink}}">      
@@ -32,7 +32,7 @@ for(let i=0; i<gt.length; i++){
   
 }
 function toggle_active(){
-  console.log(this.classList)
+
   for(let i=0; i<gt.length; i++){
     gt[i].parentElement.classList.remove('is-active')
   }

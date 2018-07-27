@@ -30,7 +30,7 @@ $foot-note: "{{.}}";
 $foot-note: "Notes:";
 {{ end }}
 
-
+@import "variables";
 
 
 @import "bulma/bulma";

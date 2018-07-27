@@ -23,13 +23,24 @@ If you are deploying your Hugo site on Netlify, please note that you need to add
 
 https://gohugo.io/hosting-and-deployment/hosting-on-netlify/#use-hugo-themes-with-netlify
 
+1. Add `pointybubl` as submodule
+  ```bash
+  git submodule add https://github.com/pointyfar/pointybubl.git themes/pointybubl/
+  ```
+1. Configure your Hugo site to use `pointybubl` as its theme and then run `hugo server`
+  ```toml
+  # config.toml
+  theme = "pointybubl"
+  ```
+  ![Installing Theme](https://github.com/pointyfar/pointybubl/blob/master/images/screenshot-installing-theme.png)
+
 
 ## Configuring the theme 
 
-The theme comes with an `exampleSite` folder, which has a `config.toml` file included. 
+The theme comes with an `exampleSite` folder, which has a `config.toml` file included. A copy of the `config.toml` file also exists under the theme's root, with most options commented out so as not to interfere with your own options set.
 
 
-### Configure menus for navbar
+### Configure menus for top navbar
 
 You can take advantage of Hugo's Section Menus for Lazy Bloggers documented here: https://gohugo.io/templates/menu-templates/#section-menu-for-lazy-bloggers
 
@@ -51,7 +62,7 @@ This theme can optionally show a secondary nav bar under the hero image.
 
 Having the above example confiuration means the secondary nav will be populated with `3` links from the `categories` taxonomy which will include the category `"queen"` (and two others). Please note that the list will be sorted alphabetically. 
 
-![Secondary Nav](/images/screenshot-subnav.png)
+![Secondary nav](https://github.com/pointyfar/pointybubl/blob/master/images/screenshot-subnav.png)
 
 ### Configure brand 
 
@@ -251,23 +262,47 @@ This theme includes a `print.css` that strips images from posts. If an `ingredie
 
 ### Customising the theme CSS
 
+This theme uses the shiny new [Hugo Pipes](https://gohugo.io/hugo-pipes/)!
+
 This theme uses [Bulma](https://bulma.io/) base styles. Follow their [instructions for customising Bulma](https://bulma.io/documentation/overview/customize/) using Sass.
 
-Alternatively:
-- write your own css files under `<YOUR-HUGO-SITE>/static/css/` to override the theme's `style.css`, or
-- copy `/layouts/partials/head/css.html` to `<YOUR-HUGO-SITE>/layouts/partials/head/css.html` and add/remove references to css files as you please.
+You can define custom values in `<YOUR-HUGO-SITE>/assets/scss/_variables.scss`.
+
+```scss 
+$primary: hotpink;
+
+```
+
+You can also configure a limited set of scss variables from your `config.toml` file:
+
+```toml
+[params.scss]
+  primary = "hotpink"
+```
+
+The above will both result in
+
+![Hotpink primary](https://github.com/pointyfar/pointybubl/blob/master/images/screenshot-configure-scss.png)
+
+If you would prefer **NOT** to use Hugo Pipes set your config to 
+
+```toml
+[params]
+  usePipes = false
+```
+This will use the pre-generated css files in `themes/pointybubl/static/generated_styles/main.min.*.css` instead.
 
 ### Adding Fontawesome and/or other assets
 
-This theme itself does not come with Fontawesome out of the box (though the exampleSite does). Simply add the references to `<YOUR-HUGO-SITE>/layouts/partials/head/cdns.html` as necessary.
+This theme itself does not come with Fontawesome out of the box (though the exampleSite does). Simply add the references to `<YOUR-HUGO-SITE>/layouts/partials/head/extra-head.html` as necessary.
 
 ```html
-<!-- exampleSite/layouts/partials/head/cdns.html -->
+<!-- exampleSite/layouts/partials/head/extra-head.html -->
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
 
 ```
 
-Any assets or scripts that may need to be included at the bottom of the html may be added to `/layouts/partials/foot/js.html`.
+Any assets or scripts that may need to be included at the bottom of the html may be added to `/layouts/partials/foot/extra-foot.html`.
 
 
 

@@ -1,0 +1,49 @@
+{{ $context := .context }}
+{{ $sp := .sp }}
+{{ $pos := .position }}
+<div class="tags-wrapper">
+  <div class="tags">
+      {{ if isset $sp "tag_section" }}
+        {{ if eq $sp.tag_section.position $pos }}
+        <div class="tags-group">
+          {{ if isset $sp.tag_section "label" }}
+            <span class="section-tag-label">{{ $sp.tag_section.label }}</span>
+          {{ end }}
+          {{ with $context.Section }}
+            <a href="{{ . | absURL }}"><span class="tag is-dark section-tag">{{.}}</span></a>
+          {{end}}
+        </div>
+        {{ end }}
+      {{ end }}
+    
+    {{ if isset $sp "display_taxonomies" }}
+    
+      {{ range where $sp.display_taxonomies "position" $pos }}
+      
+        {{ if isset $context.Params .name }}
+          {{ $pname := .name }}
+          <div class="tags-group">
+            {{ if isset . "labeled" }}
+              {{ if .labeled }}{{ .name | title }}: {{end}}
+            {{ end }}
+            {{ if isset . "style" }}
+              {{ if eq .style "list" }}
+              
+                <ul class="taglist {{$pname}}-taglist">
+                {{ range (index $context.Params .name) }}
+                  <li><a href="{{ printf "/%s/%s" $pname . | absURL }}">{{ . }}</a></li>
+                {{ end }}
+                </ul>
+              {{ end }}
+            {{ else }}
+              {{ range (index $context.Params .name) }}
+                <a href="{{ printf "/%s/%s" $pname . | absURL }}"><span class="tag {{$pname}}-tag">{{ . }}</span></a>          
+              {{ end }}
+            {{ end }}
+          </div>
+        {{ end }}
+        
+      {{ end }}
+    {{ end }}
+  </div>
+</div>

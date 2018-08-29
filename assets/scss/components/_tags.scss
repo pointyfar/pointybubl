@@ -4,7 +4,18 @@
   align-items: center;
   justify-content: flex-start;
   .tags {
+    align-items: baseline;
     margin-bottom: 0.5rem;
     margin-right: .5rem;
+    .tags-group {
+      margin-right: .5rem;
+      ul.taglist {
+          list-style: square;
+          margin-left: 2rem;
+      }
+    }
+    .tag {
+      margin-right: .25rem;
+    }
   }
 }

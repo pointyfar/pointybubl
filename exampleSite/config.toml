@@ -47,7 +47,7 @@ paginate = 8
   usePipes = true   ## setting to false DOES NOT WORK if exampleSite is inside themesDir. 
                     ## MOVE exampleSite outside themesDir and put theme inside themes folder.
   
-[params.xscss]
+[params._scss]
   customFontBody = "Georgia,Utopia,Charter,serif"
   brandFont = "'Oswald', sans-serif"
   primary = "CadetBlue"
@@ -55,13 +55,13 @@ paginate = 8
   
   footnote = "FOOTNOTE:"
   
-[params.xhero]
+[params._hero]
   #background = "img/hero-background.jpeg"
   #background = "img/hero-background-dark.jpeg"
   #background = "img/hero-background-light.jpeg"
   bgislight = false
 
-[params.xauthor]
+[params._author]
   name = "Pointy Far"
   short = "Pointy"
   photo = "img/hello.jpeg"
@@ -72,15 +72,46 @@ paginate = 8
             Duis ab et nulla incurreret, litteris qui possumus."
   aboutSection = "/about/"
 
-[params.xsubnav]
+[params._subnav]
   usetaxonomy = "tags"
   taxonomycount = 3
   featuredterms = ["queen"]
   
   
   
-[params.xfooter]
+[params._footer]
   left = ["footerlinks", "otherlinks", "footerlinks"]
   right = ["copyright", "footertext", "footerimage"]
   
+
+[params.tag_section]
+  position = "head"
+  label = "Filed under: "
+
+[[params.display_taxonomies]]
+  position = "head"
+  name = "cuisine"
+  labeled = true
   
+[[params.display_taxonomies]]
+  position = "head"
+  name = "difficulty"
+  labeled = true
+
+[[params.display_taxonomies]]
+  position = "foot"
+  name = "tags"
+  style = "list"
+  labeled = true
+  
+[[params.display_taxonomies]]
+  position = "foot"
+  name = "category"
+  labeled = true
+
+  
+[taxonomies]
+  category = "categories"
+  tag = "tags"
+  difficulty = "difficulty"
+  cuisine = "cuisine"

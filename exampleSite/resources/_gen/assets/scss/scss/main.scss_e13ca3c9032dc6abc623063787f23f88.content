@@ -1,3 +1,17 @@
+.tag.cuisine-tag {
+  background-color: aliceblue;
+  color: black; }
+
+.tags .section-tag-label {
+  color: black; }
+
+.xtags {
+  display: flex;
+  flex-direction: column; }
+
+.tags-group {
+  display: block; }
+
 /*! bulma.io v0.7.1 | MIT License | github.com/jgthms/bulma */
 @keyframes spinAround {
   from {
@@ -6789,8 +6803,16 @@ figure.profile {
   align-items: center;
   justify-content: flex-start; }
   .tags-wrapper .tags {
+    align-items: baseline;
     margin-bottom: 0.5rem;
     margin-right: .5rem; }
+    .tags-wrapper .tags .tags-group {
+      margin-right: .5rem; }
+      .tags-wrapper .tags .tags-group ul.taglist {
+        list-style: square;
+        margin-left: 2rem; }
+    .tags-wrapper .tags .tag {
+      margin-right: .25rem; }
 
 .footer {
   padding-bottom: 2rem; }

@@ -1,3 +1,4 @@
+{{ $context := .context }}
 {{- if .context.Content -}}
 <div class="card post-card">
   {{- if .isNodeOrHome -}}
@@ -16,6 +17,9 @@
   
   
   <div class="card-content">
+    
+    {{ partial "content/tagwrapper.html" (dict "context" $context "sp" .sp "position" "head") }}
+    
     {{ if .context.Params.show_gallery }}
     {{ partial "utils/gallery.html" .context }}
     {{ end }}
@@ -29,20 +33,8 @@
         <p><em><a class="content is-small" href="{{ .context.RelPermalink }}">{{- if .context.Truncated -}} Read More... {{- else -}}Go to page{{- end -}}</a></em></p>
       {{ end }}
     </div>
-    
-    <div class="tags-wrapper">
-      <div class="tags">
-        {{ with .context.Section }}<span class="tag is-dark section-tag">{{.}}</span>{{end}}
-        {{ if isset .context.Params "categories" }}
-          {{ range .context.Params.categories }}<span class="tag is-primary category-tag">{{ . }}</span>{{ end }}
-        {{ end }}
-        {{ if isset .context.Params "tags" }}
-          {{ range .context.Params.tags }}<span class="tag tag-tag">{{ . }}</span>{{ end }}
-        {{ end }}
-    </div>
-    </div>
-    
-    
+
+    {{ partial "content/tagwrapper.html" (dict "context" $context "sp" .sp "position" "foot") }}
     
   </div>
   

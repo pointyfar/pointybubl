@@ -1,6 +1,10 @@
 {{ $resourcemd := ( print (.Get "resource") ".md" )}}
 {{ $resource := .Get "resource" }}
 
+{{ with .Get "title" }}
+{{ $.Scratch.Set "title" . }}
+{{ end }}
+
 {{ with .Page.Resources.GetMatch $resourcemd }}
   {{ $.Scratch.Set "title" $resource }}
   {{ with .Title }}
@@ -9,4 +13,8 @@
 <div class="resource-box {{ $resource }}">
   {{ partial "utils/box" (dict "title" ($.Scratch.Get "title") "content" .Content ) }}
 </div>
+{{ end }}
+
+{{ with .Inner }}
+  {{ partial "utils/box" (dict "title" ($.Scratch.Get "title") "content" . ) }}
 {{ end }}

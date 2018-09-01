@@ -39,3 +39,8 @@
     {{- end -}}
   {{- end -}}
 {{- end -}}
+
+
+{{ if .Site.Params.Extra.themeVariant }}
+<link rel="stylesheet" href="https://unpkg.com/bulmaswatch/{{.Site.Params.Extra.themeVariant}}/bulmaswatch.min.css">
+{{ end }}

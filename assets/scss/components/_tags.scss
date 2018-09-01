@@ -1,6 +1,7 @@
 .tags-wrapper {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: flex-start;
   .tags {
@@ -13,6 +14,9 @@
           list-style: square;
           margin-left: 2rem;
       }
+    }
+    .taglist-group {
+      flex: 1 1 100%;
     }
     .tag {
       margin-right: .25rem;

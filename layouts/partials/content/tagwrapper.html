@@ -3,7 +3,7 @@
 {{ $pos := .position }}
 <div class="tags-wrapper">
   <div class="tags">
-      {{ if isset $sp "tag_section" }}
+      {{ if and ( isset $sp "tag_section" ) ( .context.Section ) }}
         {{ if eq $sp.tag_section.position $pos }}
         <div class="tags-group">
           {{ if isset $sp.tag_section "label" }}
@@ -17,18 +17,15 @@
       {{ end }}
     
     {{ if isset $sp "display_taxonomies" }}
-    
       {{ range where $sp.display_taxonomies "position" $pos }}
-      
         {{ if isset $context.Params .name }}
           {{ $pname := .name }}
-          <div class="tags-group">
+          <div class="tags-group {{if isset . "style"}}{{if eq .style "list"}}taglist-group{{end}}{{end}}">
             {{ if isset . "labeled" }}
-              {{ if .labeled }}{{ .name | title }}: {{end}}
+              {{ if .label }}{{ .label }}{{else}}{{.name | title }}{{end}}
             {{ end }}
             {{ if isset . "style" }}
               {{ if eq .style "list" }}
-              
                 <ul class="taglist {{$pname}}-taglist">
                 {{ range (index $context.Params .name) }}
                   <li><a href="{{ printf "/%s/%s" $pname . | absURL }}">{{ . }}</a></li>
@@ -42,7 +39,6 @@
             {{ end }}
           </div>
         {{ end }}
-        
       {{ end }}
     {{ end }}
   </div>

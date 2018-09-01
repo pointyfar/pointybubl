@@ -41,6 +41,13 @@ cuisine:
 - Admodum aliqua voluptate vidisse, possumus minim fabulas. 
 - Et irure culpa velit fabulas, mentitum e quae laborum. 
 {{% /box %}}
+
+{{% box title="Stuff in a box" %}}
+- Vidisse magna incurreret iis se senserit ne consequat. 
+- Admodum aliqua voluptate vidisse, possumus minim fabulas. 
+- Et irure culpa velit fabulas, mentitum e quae laborum. 
+{{% /box %}}
+
 - Illum excepteur in probant ne admodum et laboris. 
 - Consequat noster iis probant instituendarum, arbitror ea doctrina. 
 - Ne quamquam o quamquam iis occaecat ipsum ut fabulas efflorescere.

@@ -1,0 +1,12 @@
+<svg  width="{{with $.Site.Params.placeholder.size}}{{.}}{{else}}100{{end}}" 
+      height="{{with $.Site.Params.placeholder.size}}{{.}}{{else}}100{{end}}">
+  <rect x="0" y="0" 
+        fill="#888"
+        width="{{with $.Site.Params.placeholder.size}}{{.}}{{else}}100{{end}}" 
+        height="{{with $.Site.Params.placeholder.size}}{{.}}{{else}}100{{end}}" 
+        />
+  <text x="50%" y="50%" alignment-baseline="middle" text-anchor="middle" fill="#fff" 
+        style="font-size: {{with $.Site.Params.placeholder.text_size}}{{.|safeHTMLAttr}}{{else}}10px{{end}}">
+    {{with $.Site.Params.placeholder.text}}{{.}}{{end}}
+  </text>    
+</svg>

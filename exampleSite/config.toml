@@ -43,9 +43,18 @@ paginate = 8
   subtitle = "Blog Template for Hugo"
   mainSections = ["food", "post", "wonderland"]
   
-  xsocialdata = "social"
+  _socialdata = "social"
   usePipes = true   ## setting to false DOES NOT WORK if exampleSite is inside themesDir. 
                     ## MOVE exampleSite outside themesDir and put theme inside themes folder.
+  
+[params._placeholder]
+  ## use img 
+  _img = "/img/placeholder-100.png"
+  
+  ## use svg
+  size = "100px"
+  text = "[no image available]"
+  text_size = "9px"
   
 [params._scss]
   customFontBody = "Georgia,Utopia,Charter,serif"
@@ -95,19 +104,22 @@ paginate = 8
   
 [[params.display_taxonomies]]
   position = "head"
-  name = "difficulty"
-  labeled = true
-
-[[params.display_taxonomies]]
-  position = "foot"
   name = "tags"
   style = "list"
   labeled = true
-  
+  label = "Tags: "
+
+[[params.display_taxonomies]]
+  position = "head"
+  name = "difficulty"
+  labeled = true
+  label = "Difficulty: "
+
 [[params.display_taxonomies]]
   position = "foot"
   name = "categories"
   labeled = true
+  label = "Categorised: "
 
   
 [taxonomies]

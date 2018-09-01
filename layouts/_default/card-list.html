@@ -8,15 +8,19 @@
     <div class="card-content">
       <div class="media">
         <div class="media-left">
-          <figure class="image">
-            {{if $.Scratch.Get "hasImg"}} 
+          {{if $.Scratch.Get "hasImg"}} 
+            <figure class="image">
               {{ range first 1 (.Resources.ByType "image")  }}
                 <img src="{{ ( .Fill "100x100" ).Permalink }}" >
               {{ end }}
-            {{ else }}
-              <img src="{{.Site.BaseURL}}img/placeholder-100.png" >
-            {{ end }}
-          </figure>
+            </figure>
+          {{ else if isset .Site.Params.placeholder "img" }}
+            <figure class="image">
+              <img src="{{.Site.Params.placeholder.img | absURL}}" >
+            </figure>
+          {{ else }}
+            {{ partial "utils/placeholder-svg.html" . }}
+          {{ end }}
         </div>
         <div class="media-content content">
           <h4 class="title"><a href="{{.RelPermalink}}">{{.Title}}</a></h4>

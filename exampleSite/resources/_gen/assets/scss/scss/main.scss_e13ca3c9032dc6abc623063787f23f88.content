@@ -6719,6 +6719,9 @@ body {
   margin-left: 0;
   margin-right: 0; }
 
+.card {
+  margin-bottom: 2rem; }
+
 .card-figure {
   margin-bottom: 2rem; }
 
@@ -6800,6 +6803,7 @@ figure.profile {
 .tags-wrapper {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: flex-start; }
   .tags-wrapper .tags {
@@ -6811,6 +6815,8 @@ figure.profile {
       .tags-wrapper .tags .tags-group ul.taglist {
         list-style: square;
         margin-left: 2rem; }
+    .tags-wrapper .tags .taglist-group {
+      flex: 1 1 100%; }
     .tags-wrapper .tags .tag {
       margin-right: .25rem; }
 

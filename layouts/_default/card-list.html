@@ -7,6 +7,8 @@
   <div class="card">
     <div class="card-content">
       <div class="media">
+      
+      {{ if ne true $.Site.Params.placeholder.disabled }}
         <div class="media-left">
           {{if $.Scratch.Get "hasImg"}} 
             <figure class="image">
@@ -22,6 +24,8 @@
             {{ partial "utils/placeholder-svg.html" . }}
           {{ end }}
         </div>
+        {{ end }}
+        
         <div class="media-content content">
           <h4 class="title"><a href="{{.RelPermalink}}">{{.Title}}</a></h4>
           {{ with .PublishDate }}

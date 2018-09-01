@@ -9,8 +9,8 @@
       <span class="card-header-author has-text-weight-normal">
         {{ with .context.Params.authors }}{{ delimit . ", "}}
         {{ else }}{{ .context.Site.Params.author.name }}
-        {{ end }}
-        {{ with .context.PublishDate }} on <time datetime="{{ .Format "2006-01-02T15:04:05-07:00" }}">{{ .Format "02 Jan 2006" }}</time>{{ end }}
+        {{ end }}xx
+        {{ with .context.PublishDate }}<time datetime="{{ .Format "2006-01-02T15:04:05-07:00" }}">{{ .Format "02 Jan 2006" }}</time>{{ end }}
       </span>
     </header>
   {{ end }}

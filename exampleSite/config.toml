@@ -47,7 +47,8 @@ paginate = 8
   usePipes = true   ## setting to false DOES NOT WORK if exampleSite is inside themesDir. 
                     ## MOVE exampleSite outside themesDir and put theme inside themes folder.
   
-[params._placeholder]
+[params.placeholder]
+  #disabled = true
   ## use img 
   _img = "/img/placeholder-100.png"
   

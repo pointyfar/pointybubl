@@ -8,3 +8,8 @@
   {{- $styles := resources.Get "scss/main.scss" | resources.ExecuteAsTemplate "style.main.scss" . | toCSS $cssOpts | minify | fingerprint -}}
   <link rel="stylesheet" href="{{- $styles.Permalink -}}" integrity="{{- $styles.Data.Integrity -}}" media="screen">
 {{- end -}}
+
+
+{{ if .Site.Params.Extra.themeVariant }}
+<link rel="stylesheet" href="https://unpkg.com/bulmaswatch/{{.Site.Params.Extra.themeVariant}}/bulmaswatch.min.css">
+{{ end }}

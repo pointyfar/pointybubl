@@ -39,6 +39,14 @@ https://gohugo.io/hosting-and-deployment/hosting-on-netlify/#use-hugo-themes-wit
 
 The theme comes with an `exampleSite` folder, which has a `config.toml` file included. A copy of the `config.toml` file also exists under the theme's root, with most options commented out so as not to interfere with your own options set.
 
+### Configure bulmaswatch
+Automatic theming is available through
+[bulmaswatch](https://jenil.github.io/bulmaswatch/).
+
+``` toml
+[params.extra]
+  themeVariant = "nuclear"
+```
 
 ### Configure menus for top navbar
 

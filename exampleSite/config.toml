@@ -8,6 +8,9 @@ themesDir = "../../"
 theme = "pointybubl"
 paginate = 8
 
+[params.extra]
+  themeVariant = "nuclear"
+
 #sectionPagesMenu = "main"
 
 [[menu.main]]

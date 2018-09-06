@@ -5,7 +5,7 @@ title = "Pointy's"
 # Only use if exampleSite is inside theme folder
 themesDir = "../../"
 
-theme = "pointyfood"
+theme = "pointybubl"
 paginate = 8
 
 #sectionPagesMenu = "main"

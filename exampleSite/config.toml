@@ -9,7 +9,16 @@ theme = "pointybubl"
 paginate = 8
 
 #sectionPagesMenu = "main"
+[author]
+  name = "Foo Bar" 
+  email = "Foo.Bar@example.com"   
+  bio = "Foo Bar's bio."  
+  [author.photo]    
+    url = "images/me.jpg" 
+    width = 400     
+    height = 400
 
+    
 [[menu.main]]
   name = "Attributions"
   title = "Attributions"

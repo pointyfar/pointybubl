@@ -5,6 +5,8 @@ Blog theme built with Bulma.css. Includes image gallery, with optional sidebar a
 
 ![Theme Screenshot](https://github.com/pointyfar/pointybubl/blob/master/images/screenshot.png)
 
+#### ----- This is a work in progress -----
+
 ## Preview the theme
 
 Grab the theme from https://github.com/pointyfar/pointybubl
@@ -377,13 +379,6 @@ The above will both result in
 
 ![Hotpink primary](https://github.com/pointyfar/pointybubl/blob/master/images/screenshot-configure-scss.png)
 
-If you would prefer **NOT** to use Hugo Pipes set your config to 
-
-```toml
-[params]
-  usePipes = false
-```
-This will use the pre-generated css files in `themes/pointybubl/static/generated_styles/main.min.*.css` instead.
 
 ### Adding Fontawesome and/or other assets
 

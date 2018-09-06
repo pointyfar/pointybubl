@@ -4,7 +4,7 @@
 {{ $paginator := .Paginate $pages  }}
 {{ $isNodeOrHome := (or .IsNode .IsHome )}}
 {{ $.Scratch.Set "postCount" ( $paginator.PageSize ) }}
-
+{{ .Site.Author }}
 <div class="columns is-multiline">
 {{- range first ( $.Scratch.Get "postCount" ) ( $pages.ByPublishDate.Reverse ) -}}
 <div class="column is-12">

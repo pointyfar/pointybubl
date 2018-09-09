@@ -19,11 +19,29 @@
     {{ range .Site.Menus.main }}
     <a class="navbar-item {{if or ($currentPage.IsMenuCurrent "main" .) ($currentPage.HasMenuCurrent "main" .) }} active{{end}}" href="{{ .URL }}" title="{{ .Title }}">{{ .Name }}</a>
     {{ end}}
+    {{ if isset .Site.Params.search "enabled" }}
+    {{ if .Site.Params.search.enabled }}
+    <div class="navbar-item">
+      <button class="button" id="launchSearchModal">
+        {{if isset .Site.Params.search "icon"}}
+        <i class="{{ .Site.Params.search.label | default "fas fa-search"}}"></i>
+        {{ else }}
+        {{ .Site.Params.search.label | default "Search"}}
+        {{ end }}
+      </button>
+    </div>
+    {{ end }}
+    {{ end }}
 
   </div>
 </div>
 </nav>
 
+{{ if isset .Site.Params.search "enabled" }}
+{{ if .Site.Params.search.enabled }}
+  {{partial "utils/search-modal.html" . }}
+{{ end }}
+{{ end }}
 
 <script>
   /* From Bulma */

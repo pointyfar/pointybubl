@@ -1,11 +1,12 @@
 # pointyBUBL: A Hugo Theme 
 BU[LMA] + BL[OG]
 
-Blog theme built with Bulma.css. Includes image gallery, with optional sidebar and footer. Handles page resources. Uses Hugo Pipes!
+Blog theme built with Bulma.css. Includes image gallery, site search (with lunr.js), and optional sidebar and footer in the layout. Handles page resources. Uses Hugo Pipes!
 
 ![Theme Screenshot](https://github.com/pointyfar/pointybubl/blob/master/images/screenshot.png)
 
-#### ----- This is a work in progress -----
+
+# This is a work in progress. Features are subject to change without notice. 
 
 ## Preview the theme
 
@@ -49,6 +50,29 @@ You can take advantage of Hugo's Section Menus for Lazy Bloggers documented here
 You would only need to set `sectionPagesMenu= "main"` in your `config.toml` file.
 
 Alternatively, set up each menu item individually following the documentation at https://gohugo.io/templates/menu-templates/#site-config-menus
+
+### Configure search 
+
+![Search](https://github.com/pointyfar/pointybubl/blob/master/images/screenshot-search.png)
+
+This theme includes a search feature powered by [lunr.js](https://lunrjs.com/). To enable, set `params.search.enabled` to `true`. Optionally configure whether to display an icon (eg if you are using fontawesome icons) and label. If `icon` is set to true, you **must** configure the `label` as well, which will be used in the icon class definition. If `icon` is set to `false`, the `label` field will be used to label the button.
+
+```toml
+[params.search]
+  enabled = true
+  icon = true
+  label = "fas fa-search"
+```
+
+#### Generate search index
+
+The search functionality takes advantage of Hugo's output formats feature. To use this, include the following configuration (as a minimum, and in addition to other output formats you may have):
+
+```toml
+[outputs]
+  home = ["HTML", "JSON"]
+```
+![Search Results](https://github.com/pointyfar/pointybubl/blob/master/images/screenshot-search-results.png)
 
 
 ### Configure secondary nav bar 
@@ -400,6 +424,7 @@ Open source is awesome! This theme would not be possible without the efforts of 
 
 - [Hugo](https://gohugo.io/)
 - [Bulma](https://bulma.io/)
+- [lunr.js](https://lunrjs.com/)
 
 This theme's exampleSite also uses 
 

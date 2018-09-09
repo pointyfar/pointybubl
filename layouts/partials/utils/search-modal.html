@@ -1,0 +1,66 @@
+    <div class="modal" id="searchModal">
+      <div class="modal-background"></div>
+      <div class="modal-card">
+        <header class="modal-card-head">
+          <div class="modal-card-title">
+            <div class="modal-title-wrapper">
+            <div class="field has-addons">
+              <div class="control">
+                <input class="input" type="text" placeholder="Search..." id="searchbox">
+              </div>
+              <div class="control">
+                <button class="button" id="searchButton">
+                  Search
+                </button>
+              </div>
+              <div class="control">
+                <button class="button" aria-label="close" id="clearModal">Reset</button>
+              </div>
+            </div>
+            
+              <button class="delete" aria-label="close" id="closeModal">Cancel</button>
+            
+            </div>
+          </div>
+        </header>
+        <section class="modal-card-body" id="resultsContainer">
+          <div class="content"> 
+            <ol id="searchResults">
+            </ol>
+          </div>
+        </section>
+        <footer class="modal-card-foot">
+          <div class="content" id="searchStats"> 
+          </div>
+        </footer>
+      </div>
+    </div>
+
+    
+  <script src="https://unpkg.com/lunr/lunr.js"></script>
+  <script src="{{"js/search.js"|absURL}}"></script>
+  
+  <script>
+  var siteUrl = "{{"index.json" | absURL}}?nocache=" + (new Date()).toISOString().slice(0,10);
+  
+  var searchModal = document.getElementById("searchModal");
+  document.getElementById("launchSearchModal").addEventListener("click", toggleModal);
+  document.getElementById("closeModal").addEventListener("click", toggleModal);
+  
+  var modalBg = document.getElementsByClassName("modal-background");
+  for (var i = 0; i < modalBg.length; i++) {
+    modalBg[i].addEventListener('click', toggleModal);
+  }
+  
+  function toggleModal() {
+    if(searchModal.classList.contains("is-active")) {
+      searchModal.classList.remove("is-active")
+    } else {
+      var site = getSiteData(siteUrl);
+      searchModal.classList.add("is-active")
+    }
+    
+  }
+  
+  </script>
+    

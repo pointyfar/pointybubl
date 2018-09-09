@@ -55,6 +55,11 @@ paginate = 8
   _socialdata = "social"
   usePipes = true   ## setting to false DOES NOT WORK if exampleSite is inside themesDir. 
                     ## MOVE exampleSite outside themesDir and put theme inside themes folder.
+
+[params.search]
+  enabled = true
+  icon = true
+  label = "fas fa-search"
   
 [params.placeholder]
   #disabled = true
@@ -137,3 +142,6 @@ paginate = 8
   tag = "tags"
   difficulty = "difficulty"
   cuisine = "cuisine"
+  
+[outputs]
+  home = ["HTML", "JSON"]

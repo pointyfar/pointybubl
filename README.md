@@ -328,13 +328,13 @@ Using the `box` shortcode, pass a `resource` parameter pointing to the correspon
 ```md
 Ingredients here:
 
-{{< box resource="ingredients" >}}
+{{< box resource="ingredients" />}}
 
 End Ingredients.
 
 Procedure here:
 
-{{< box resource="procedure" >}}
+{{< box resource="procedure" />}}
 ```
 ```md
 <!-- ingredients.md-->

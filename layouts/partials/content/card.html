@@ -37,7 +37,17 @@
     {{ partial "content/tagwrapper.html" (dict "context" $context "sp" .sp "position" "foot") }}
     
   </div>
-  
+  {{ if not .isNodeOrHome }}
+  <footer class="card-footer">
+    {{ with .context.PrevInSection }}
+    <a href="{{.Permalink}}" class="card-footer-item">Previously: {{.Title}}</a>
+    {{end}}
+    <a href="{{.context.Section | absURL}}" class="card-footer-item">See all: {{.context.Section}}</a>
+    {{ with .context.NextInSection }}
+    <a href="{{.Permalink}}" class="card-footer-item">Up Next: {{.Title}}</a>
+    {{end}}
+  </footer>
+  {{ end }}
 
 </div>
 {{- end -}}

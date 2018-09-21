@@ -1,13 +1,12 @@
-baseURL = "//optimistic-mccarthy-f0b1ce.netlify.com"
+baseURL = "/"
 languageCode = "en-us"
 title = "Pointy's"
 
+########### DO NOT USE
 contentDir = "exampleSite/content"
 dataDir = "exampleSite/data"
 staticDir = ["static", "exampleSite/static"]
-
-############### Do not use this value!!
-themesDir = "../"
+###########
 
 theme = "pointybubl"
 paginate = 8

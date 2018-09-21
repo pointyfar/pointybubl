@@ -23,6 +23,8 @@ function getSiteData(url) {
       var searchbox = document.getElementById("searchbox");
       var term = searchbox.value;
       
+      document.getElementById("searchResults").innerHTML = "";
+      
       var results = idx.search(term);
           results.forEach(populateResults);
       
@@ -38,15 +40,16 @@ function getSiteData(url) {
     document.getElementById("closeModal").addEventListener("click", clearResults);
     
     function clearResults() {
-      
       var clear = document.getElementById("searchResults");     
+    
       while (clear.hasChildNodes()) {
         clear.removeChild(clear.lastChild);
       }
       document.getElementById("searchbox").value = "";
       document.getElementById("searchStats").innerHTML = "";
-      
     }
+    
+    
     
     function populateResults(x) {
       var node = document.createElement("LI");                 

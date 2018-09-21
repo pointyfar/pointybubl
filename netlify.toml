@@ -1,4 +1,3 @@
 [build]
-  base    = "exampleSite"
-  publish = "public"
-  command = "hugo --baseURL http://optimistic-mccarthy-f0b1ce.netlify.com"
+  publish = "exampleSite/public"
+  command = "cd exampleSite && hugo --baseURL http://optimistic-mccarthy-f0b1ce.netlify.com"

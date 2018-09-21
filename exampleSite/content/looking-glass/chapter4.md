@@ -2,7 +2,8 @@
 title: "CHAPTER IV. Tweedledum And Tweedledee"
 date: 2018-04-27T17:49:40+10:00
 draft: false
-author: "Lewis Carroll"
+authors:
+  - "Lewis Carroll"
 tags:
   - chapter
   - tweedledee 

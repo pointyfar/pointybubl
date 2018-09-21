@@ -1,0 +1,75 @@
+{{ define "main" }}      
+
+  {{ $currentTerm := .Data.Term }}
+  {{ $currentTaxonomy := .Type }}
+  {{ $author := (or (or .Params.name .Params.title) ($currentTerm | title ))}}
+
+    <div class="card card-list-container">
+        
+      <div class="card-content">
+        <div class="content">
+          <p class="title">{{$author}}</p>
+              {{ with .Resources.ByType "image" }}
+              <div class="" style="float:left; padding-right: 2rem; padding-bottom: 2rem;">
+              {{ range first 1 . }}
+              <figure class="image author-image">
+                <img class="" src="{{.RelPermalink}}" alt="{{$author}}">
+              </figure>
+              {{ end }}
+            </div>
+              {{ end }}
+            {{with .Content}}
+            <div class="" >{{.}}</div>
+            {{end}}
+          <hr>
+          {{ range $key, $taxonomy := (index .Site.Taxonomies .Type )}}
+            {{ if eq $currentTerm $key }}
+            <h4>
+              {{ $tagURL := printf "%s/%s"  $currentTaxonomy $currentTerm | relURL }}
+              <a href="{{$tagURL}}">
+                Found {{$taxonomy.Count}} {{if gt $taxonomy.Count 1 }} entries{{else}} entry{{ end}} by {{$author}}:
+              </a>
+            </h4>
+            {{ end }}
+          {{ end }}
+          <ul>
+            {{ range .Pages }}
+            <li>
+              <a href="{{.Permalink}}">{{.Title}}</a>
+              {{ with .PublishDate }} &middot; <time datetime="{{ .Format "2006-01-02T15:04:05-07:00" }}">{{ .Format "02 Jan 2006" }}</time>{{ end }}
+            </li>
+            {{ end }}
+          </ul>
+          
+          {{ $authorless := where $.Site.RegularPages "Params.authors" nil }}
+          {{ with .Site.Params.authors }}
+            {{ range . }}
+              {{ if and .default (eq .name $currentTerm) }}
+              <h4>
+                {{ $tagURL := printf "%s/%s"  $currentTaxonomy $currentTerm | relURL }}
+                <a href="{{$tagURL}}">
+                  Found {{len $authorless}} {{if gt (len $authorless) 1 }} entries{{else}} entry{{ end}} by {{$author}}:
+                </a>
+              </h4>
+              <ul>
+                {{ range $authorless }}
+                  <li>
+                    <a href="{{.Permalink}}">{{.Title}}</a>
+                    {{ with .PublishDate }} &middot; <time datetime="{{ .Format "2006-01-02T15:04:05-07:00" }}">{{ .Format "02 Jan 2006" }}</time>{{ end }}
+                  </li>
+                {{ end }}
+              </ul>
+              {{ end }}
+            {{ end }}
+          {{ end }}
+          
+        </div>
+      </div>
+      <footer class="card-footer">
+
+      </footer>
+    </div>
+
+        
+
+  {{ end }}

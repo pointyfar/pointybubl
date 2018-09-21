@@ -39,3 +39,6 @@ This project uses the following assets:
   
   - [hello.jpeg]
     (https://www.pexels.com/photo/photo-of-orange-yellow-and-red-hello-molding-clay-954599/)
+
+  -  [smile-peas.jpeg](https://www.pexels.com/photo/food-health-plate-preparation-414553/)
+  

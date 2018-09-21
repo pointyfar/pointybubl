@@ -2,7 +2,8 @@
 title: "CHAPTER IX. Queen Alice"
 date: 2018-04-27T17:49:51+10:00
 draft: false
-author: "Lewis Carroll"
+authors:
+  - "Lewis Carroll"
 tags:
   - chapter
   - queen 

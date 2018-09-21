@@ -2,7 +2,8 @@
 title: "CHAPTER XII. Which Dreamed it?"
 date: 2018-04-27T17:59:21+10:00
 draft: false
-author: "Lewis Carroll"
+authors:
+  - "Lewis Carroll"
 tags:
   - chapter
   - cat

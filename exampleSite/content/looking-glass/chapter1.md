@@ -2,7 +2,8 @@
 title: "CHAPTER I. Looking-Glass house"
 date: 2018-04-27T17:49:25+10:00
 draft: false
-author: "Lewis Carroll"
+authors:
+  - "Lewis Carroll"
 tags:
   - chapter
   - Cat 

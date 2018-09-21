@@ -13,7 +13,18 @@
           {{- else if .IsPage }}
             {{- with .Params.authors }}
               by {{ delimit . ", " }}
-            {{- else }}{{- with .Site.Params.author.name }}by {{.}}{{end}}
+              {{ range . }}
+              <a href="{{ (printf "authors/%s" ( . |urlize)) | absURL}}">{{.}}</a>
+              {{ end }}
+            {{- else }}
+              {{ with .Site.Params.authors }}
+                {{ range . }}
+                  {{ if .default }}
+                    {{ $authorpage := (printf "authors/%s" .name )}}
+                    {{ with $.Site.GetPage $authorpage }}by <a href="{{ $authorpage | absURL}}">{{.Title}}</a>{{ end }}
+                  {{ end }}
+                {{ end }}
+              {{ end }}
             {{- end }}
           {{- end }}
         </h2>

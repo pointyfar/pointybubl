@@ -2,7 +2,8 @@
 title: "CHAPTER VI. Humpty Dumpty"
 date: 2018-04-27T17:49:44+10:00
 draft: false
-author: "Lewis Carroll"
+authors:
+  - "Lewis Carroll"
 tags:
   - chapter
   - egg 

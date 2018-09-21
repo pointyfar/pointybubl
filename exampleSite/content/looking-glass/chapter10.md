@@ -2,7 +2,8 @@
 title: "CHAPTER X. Shaking"
 date: 2018-04-27T17:49:54+10:00
 draft: false
-author: "Lewis Carroll"
+authors:
+  - "Lewis Carroll"
 tags:
   - chapter
   - queen 

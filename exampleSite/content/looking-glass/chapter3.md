@@ -2,7 +2,8 @@
 title: "CHAPTER III. Looking-Glass Insects"
 date: 2018-04-27T17:49:36+10:00
 draft: false
-author: "Lewis Carroll"
+authors: 
+  - "Lewis Carroll"
 tags:
   - chapter
   - insects 

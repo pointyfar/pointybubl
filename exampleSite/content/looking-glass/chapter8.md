@@ -2,7 +2,8 @@
 title: "CHAPTER VIII. ‘It’s my own Invention’"
 date: 2018-04-27T17:49:48+10:00
 draft: false
-author: "Lewis Carroll"
+authors:
+  - "Lewis Carroll"
 tags:
   - chapter
 ---

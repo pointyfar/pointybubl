@@ -2,7 +2,8 @@
 title: "CHAPTER II. The Garden of Live Flowers"
 date: 2018-04-27T17:49:33+10:00
 draft: false
-author: "Lewis Carroll"
+authors:
+  - "Lewis Carroll"
 tags:
   - chapter
   - garden 

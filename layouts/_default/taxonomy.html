@@ -1,6 +1,6 @@
 {{ define "main" }}      
 {{ $currentTerm := .Data.Term }}
-{{ $currentTaxonomy := .Type | singularize }}
+{{ $currentTaxonomy := .Type }}
 
 <div class="card card-list-container">
   <div class="card-content">
@@ -10,7 +10,7 @@
         <h4>
           {{ $tagURL := printf "tags/%s" $currentTerm | relURL }}
           <a href="{{$tagURL}}">
-            Found {{$taxonomy.Count}} {{if gt $taxonomy.Count 1 }} entries{{else}} entry{{ end}} in {{ $currentTaxonomy }} 
+            Found {{$taxonomy.Count}} {{if gt $taxonomy.Count 1 }} entries{{else}} entry{{ end}} in {{ $currentTaxonomy | singularize }} 
             <em>{{ $currentTerm }}</em>:
           </a>
         </h4>

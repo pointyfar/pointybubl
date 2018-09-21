@@ -2,7 +2,8 @@
 title: "CHAPTER VII. The Lion and the Unicorn"
 date: 2018-04-27T17:49:47+10:00
 draft: false
-author: "Lewis Carroll"
+authors:
+  - "Lewis Carroll"
 tags:
   - chapter
   - king 

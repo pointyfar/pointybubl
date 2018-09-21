@@ -2,7 +2,8 @@
 title: "CHAPTER V. Wool and Water"
 date: 2018-04-27T17:49:42+10:00
 draft: false
-author: "Lewis Carroll"
+authors:
+  - "Lewis Carroll"
 tags:
   - chapter
   - queen 

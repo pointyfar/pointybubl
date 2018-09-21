@@ -9,15 +9,6 @@ theme = "pointybubl"
 paginate = 8
 
 #sectionPagesMenu = "main"
-[author]
-  name = "Foo Bar" 
-  email = "Foo.Bar@example.com"   
-  bio = "Foo Bar's bio."  
-  [author.photo]    
-    url = "images/me.jpg" 
-    width = 400     
-    height = 400
-
     
 [[menu.main]]
   name = "Attributions"
@@ -52,9 +43,7 @@ paginate = 8
   subtitle = "Blog Template for Hugo"
   mainSections = ["food", "post", "wonderland"]
   
-  _socialdata = "social"
-  usePipes = true   ## setting to false DOES NOT WORK if exampleSite is inside themesDir. 
-                    ## MOVE exampleSite outside themesDir and put theme inside themes folder.
+  socialdata = "social"
 
 [params.search]
   enabled = true
@@ -71,7 +60,7 @@ paginate = 8
   text = "[no image available]"
   text_size = "9px"
   
-[params._scss]
+[params.scss]
   customFontBody = "Georgia,Utopia,Charter,serif"
   brandFont = "'Oswald', sans-serif"
   primary = "CadetBlue"
@@ -79,14 +68,19 @@ paginate = 8
   
   footnote = "FOOTNOTE:"
   
-[params._hero]
+[params.hero]
   #background = "img/hero-background.jpeg"
-  #background = "img/hero-background-dark.jpeg"
+  background = "img/hero-background-dark.jpeg"
   #background = "img/hero-background-light.jpeg"
   bgislight = false
 
-[params._author]
-  name = "Pointy Far"
+[[params.authors]]
+  name = "default-author"
+  default = true
+  
+[[params.authors]]
+  name = "pointy-far"
+  featured = true
   short = "Pointy"
   photo = "img/hello.jpeg"
   header = "Howdy!"
@@ -96,14 +90,14 @@ paginate = 8
             Duis ab et nulla incurreret, litteris qui possumus."
   aboutSection = "/about/"
 
-[params._subnav]
-  usetaxonomy = "tags"
+[params.subnav]
+  usetaxonomy = "authors"
   taxonomycount = 3
-  featuredterms = ["queen"]
+  featuredterms = ["me"]
   
   
   
-[params._footer]
+[params.footer]
   left = ["footerlinks", "otherlinks", "footerlinks"]
   right = ["copyright", "footertext", "footerimage"]
   
@@ -138,6 +132,7 @@ paginate = 8
   tag = "tags"
   difficulty = "difficulty"
   cuisine = "cuisine"
+  author = "authors"
   
 [outputs]
   home = ["HTML", "JSON"]

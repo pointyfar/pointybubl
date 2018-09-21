@@ -12,9 +12,10 @@
             {{- end }}
           {{- else if .IsPage }}
             {{- with .Params.authors }}
-              by {{ delimit . ", " }}
-              {{ range . }}
-              <a href="{{ (printf "authors/%s" ( . |urlize)) | absURL}}">{{.}}</a>
+            {{ $authcount := len . }}by 
+              {{ range $i, $e := . }}
+              <a href="{{ (printf "authors/%s" ( $e |urlize)) | absURL}}">{{$e}}</a>
+              {{ if gt $authcount (add 1 $i) }},{{end}}
               {{ end }}
             {{- else }}
               {{ with .Site.Params.authors }}

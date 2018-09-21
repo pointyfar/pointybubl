@@ -30,6 +30,13 @@ $foot-note: "{{.}}";
 $foot-note: "Notes:";
 {{ end }}
 
+{{ if isset .Site.Params.hero "background" }}
+$bg: "{{.Site.Params.hero.background | absURL}}";
+.hero-wrapper-bg {
+  background:url($bg) no-repeat center; background-size: cover;
+}
+{{end}}
+
 @import "variables";
 
 

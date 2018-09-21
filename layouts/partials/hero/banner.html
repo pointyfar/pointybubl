@@ -1,5 +1,5 @@
 <section class="hero is-primary {{- if .IsHome }} is-medium {{ end }}">
-  <div class="hero-wrapper" {{ if and .IsHome (isset .Site.Params.hero "background") }}style="background:url('{{.Site.BaseURL}}{{.Site.Params.hero.background}}') no-repeat center; background-size: cover;"{{end}}>
+  <div class="hero-wrapper {{if .IsHome}} hero-wrapper-bg{{end}}">
     <div class="hero-body {{ if and .IsHome (isset .Site.Params.hero "background") }}transparent{{end}} {{with .Site.Params.hero.bgislight }}{{if .}}light-bg{{end}}{{else}}dark-bg{{end}}">
       <div class="container brand">
         <h1 class="title brand-title">

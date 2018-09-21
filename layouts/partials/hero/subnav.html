@@ -29,7 +29,7 @@
             {{- $.Scratch.Set "displaycount" (add ($.Scratch.Get "displaycount") 1 ) -}}
           {{- end -}}
         {{- end -}}
-        <a class="navbar-item" href="{{.Site.BaseURL}}{{.Site.Params.subnav.usetaxonomy}}/">All {{.Site.Params.subnav.usetaxonomy | title -}}</a>
+        <a class="navbar-item" href="{{.Site.Params.subnav.usetaxonomy | absURL}}">All {{.Site.Params.subnav.usetaxonomy | title -}}</a>
       </nav>
     </div>
   {{- end -}}

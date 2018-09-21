@@ -10,7 +10,7 @@
   </div>
 {{ else if eq ($list.type) "image" }}
   <div class="column is-12 footer-list">
-    <img src="{{ .context.Site.BaseURL }}{{ $list.url }}" alt="{{$list.label}}">
+    <img src="{{ $list.url | absURL }}" alt="{{$list.label}}">
   </div>
 {{ else }}
   <div class="column is-12 footer-list">

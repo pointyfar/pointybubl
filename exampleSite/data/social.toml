@@ -2,6 +2,11 @@ label = "I am social!"
 
 [[social]]
   url = "http://www.twitter.com"
+  icon = "fas fa-search"
+  color = "#855130"
+
+[[social]]
+  url = "http://www.twitter.com"
   icon = "fab fa-twitter"
   color = "#55acee"
 

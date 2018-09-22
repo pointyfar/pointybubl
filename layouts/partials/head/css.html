@@ -1,10 +1,10 @@
-<link rel="stylesheet" href="{{"css/print.css" | absURL }}" />
+<link rel="stylesheet" href="{{"css/print.css" | absURL }}" media="print" /> 
 {{- if .Site.IsServer -}}
-  {{- $cssOpts := (dict "targetPath" "styles/main.css" "enableSourceMap" true ) -}}
+  {{- $cssOpts := (dict "targetPath" "css/main.css" "enableSourceMap" true ) -}}
   {{- $styles := resources.Get "scss/main.scss" | resources.ExecuteAsTemplate "style.main.scss" . | toCSS $cssOpts -}}
   <link rel="stylesheet" href="{{- $styles.Permalink -}}" media="screen">
 {{- else -}}
-  {{- $cssOpts := (dict "targetPath" "styles/main.css" ) -}}
+  {{- $cssOpts := (dict "targetPath" "css/main.css" ) -}}
   {{- $styles := resources.Get "scss/main.scss" | resources.ExecuteAsTemplate "style.main.scss" . | toCSS $cssOpts | minify | fingerprint -}}
   <link rel="stylesheet" href="{{- $styles.Permalink -}}" integrity="{{- $styles.Data.Integrity -}}" media="screen">
 {{- end -}}

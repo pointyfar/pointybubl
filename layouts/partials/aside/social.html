@@ -11,7 +11,9 @@
       <div class="content">
         <div class="social-buttons">
           {{ range $list.social }}
-            <a class="social-button" {{with .color}}style="color:{{.}}"{{end}} href="{{.url}}"><i class="{{.icon}}"></i></a>
+            <a class="icon social-button" href="{{.url}}" {{with .color}}style="color:{{.}}"{{end}} >
+              <i class="{{.icon}}"></i>
+            </a>
           {{ end }}
         </div>
       </div>

@@ -10,6 +10,31 @@
     <div class="card-content">
       <div class="content">
         <div class="social-buttons">
+          
+          <span class="icon has-text-info">
+            <i class="fas fa-info-circle"></i>
+          </span>
+          <a class="icon social-button">
+            <i class="fas fa-search"></i>
+          </a>
+          <span class="icon social-button">
+            <i class="fas fa-search"></i>
+          </span>
+          <a href="#">
+          <span class="icon social-button">
+            <i class="fas fa-search"></i>
+          </span>
+          </a>
+          <span class="icon has-text-success">
+            <i class="fas fa-check-square"></i>
+          </span>
+          <span class="icon has-text-warning">
+            <i class="fas fa-exclamation-triangle"></i>
+          </span>
+          <span class="icon has-text-danger">
+            <i class="fas fa-ban"></i>
+          </span>
+          
           {{ range $list.social }}
             <a class="icon social-button" href="{{.url}}" {{with .color}}style="color:{{.}}"{{end}} >
               <i class="{{.icon}}"></i>

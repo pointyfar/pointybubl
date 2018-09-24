@@ -42,7 +42,10 @@
     {{ with .context.PrevInSection }}
     <a href="{{.Permalink}}" class="card-footer-item">Previously: {{.Title}}</a>
     {{end}}
-    <a href="{{.context.Section | absURL}}" class="card-footer-item">See all: {{.context.Section}}</a>
+    <a href="{{ if .context.Section }}{{.context.Section | absURL}}{{else}}{{.context.Site.BaseURL}}{{end}}" class="card-footer-item">
+      {{ if .context.Section }}See all: {{.context.Section}}
+      {{ else }}Home{{end}}
+    </a>
     {{ with .context.NextInSection }}
     <a href="{{.Permalink}}" class="card-footer-item">Up Next: {{.Title}}</a>
     {{end}}

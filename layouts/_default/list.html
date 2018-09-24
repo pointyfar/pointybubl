@@ -9,6 +9,14 @@
   {{ partial "utils/paginator.html" ( dict "paginator" $paginator ) }}
 {{ end }}
 
+{{ if eq $paginator.PageNumber 1 }}
+{{ with .Content }}
+<div class="content">
+<hr>{{ . }}<hr>
+</div>
+{{ end }}
+{{ end }}
+
 {{ range ($paginator.Pages.GroupByDate "2006") }}
   <h2 class="is-size-2">{{ .Key }}</h2>
   <div class="columns is-multiline">

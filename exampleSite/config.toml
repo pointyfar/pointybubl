@@ -8,6 +8,11 @@ themesDir = "../../"
 theme = "pointybubl"
 paginate = 8
 
+pygmentsUseClassic = false
+pygmentsUseClasses = true
+pygmentsCodeFences = true
+pygmentsCodeFencesGuessSyntax = true
+
 #sectionPagesMenu = "main"
     
 [[menu.main]]
@@ -59,6 +64,7 @@ paginate = 8
   size = "100px"
   text = "[no image available]"
   text_size = "9px"
+  authorsTaxonomy = "authors"
   
 [params.scss]
   customFontBody = "Georgia,Utopia,Charter,serif"
@@ -81,14 +87,6 @@ paginate = 8
 [[params.authors]]
   name = "pointy-far"
   featured = true
-  short = "Pointy"
-  photo = "img/hello.jpeg"
-  header = "Howdy!"
-  blurb = " This is params author blurb. Configure me! \
-            Possumus quorum aliqua aut anim ut eiusmod exquisitaque ut consequat. \
-            O id sempiternum, voluptate quo ingeniis. \
-            Duis ab et nulla incurreret, litteris qui possumus."
-  aboutSection = "/about/"
 
 [params.subnav]
   usetaxonomy = "authors"

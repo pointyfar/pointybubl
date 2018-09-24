@@ -5,18 +5,25 @@
   {{ $author := (or (or .Params.name .Params.title) ($currentTerm | title ))}}
 
     <div class="card card-list-container">
-        
+      {{ with .Params.image }}
+      <div class="card-image">
+        <figure class="image">
+          <img src="{{. | absURL }}" alt="Profile Photo">
+        </figure>
+      </div>
+      {{ end }}
       <div class="card-content">
+        
         <div class="content">
           <p class="title">{{$author}}</p>
               {{ with .Resources.ByType "image" }}
-              <div class="" style="float:left; padding-right: 2rem; padding-bottom: 2rem;">
-              {{ range first 1 . }}
-              <figure class="image author-image">
-                <img class="" src="{{.RelPermalink}}" alt="{{$author}}">
-              </figure>
-              {{ end }}
-            </div>
+                <div class="" style="float:left; padding-right: 2rem; padding-bottom: 2rem;">
+                {{ range first 1 . }}
+                  <figure class="image author-image">
+                    <img class="" src="{{.RelPermalink}}" alt="{{$author}}">
+                  </figure>
+                {{ end }}
+                </div>
               {{ end }}
             {{with .Content}}
             <div class="" >{{.}}</div>

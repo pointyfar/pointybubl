@@ -42,11 +42,11 @@ You can optionally configure for each post or content page to display its sectio
 
 will result in a post having the following *before* the content: 
 
-![Tags](https://github.com/pointyfar/pointybubl/blob/master/images/screenshot-tags-tags.png) 
+![Tags](https://github.com/pointyfar/pointybubl/raw/master/images/screenshot-tags-tags.png) 
 
 and the following *after*:
 
-![Tags](https://github.com/pointyfar/pointybubl/blob/master/images/screenshot-tags-list.png) 
+![Tags](https://github.com/pointyfar/pointybubl/raw/master/images/screenshot-tags-list.png) 
 
 Note that each group of taxonomy values (e.g. 'eggy' and 'boiled' under Cuisine above) gets assigned a class with the in the format `tag <taxonomy>-tag`. In the case of the `cuisine` taxonomy, that will be `tag cuisine-tag`. This is so you can easily configure custom styles for each taxonomy should it be necessary. 
 

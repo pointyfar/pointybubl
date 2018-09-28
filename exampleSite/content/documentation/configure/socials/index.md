@@ -28,4 +28,4 @@ label = "I am social!"
 
 `color` is optional and `#7a7a7a` will be used by default.
 
-![Social Box Screenshot](https://github.com/pointyfar/pointybubl/blob/master/images/screenshot-social-box.png)
+![Social Box Screenshot](https://github.com/pointyfar/pointybubl/raw/master/images/screenshot-social-box.png)

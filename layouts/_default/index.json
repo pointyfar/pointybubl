@@ -5,7 +5,6 @@
   {{- range $i, $e := .Site.RegularPages -}}
   {
     "i": {{$i}},
-    "sub": {{if lt $i (sub $len -1) }}"lt"{{else}}"not"{{end}},
     "contents":{{ .Content | plainify | jsonify }},
     "permalink": "{{ .Permalink }}",
     "title": "{{ .Title }}"

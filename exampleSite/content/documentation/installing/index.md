@@ -23,5 +23,5 @@ Configure your Hugo site to use `pointybubl` as its theme and then run `hugo ser
   # config.toml
   theme = "pointybubl"
   ```
-  ![Installing Theme](https://github.com/pointyfar/pointybubl/blob/master/images/screenshot-installing-theme.png)
+  ![Installing Theme](https://github.com/pointyfar/pointybubl/raw/master/images/screenshot-installing-theme.png)
 

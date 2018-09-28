@@ -41,7 +41,7 @@ Procedure here:
 ```
 Renders:
 
-![Ingredients and Procedure Screenshot](https://github.com/pointyfar/pointybubl/blob/master/images/screenshot-recipes.png)
+![Ingredients and Procedure Screenshot](https://github.com/pointyfar/pointybubl/raw/master/images/screenshot-recipes.png)
 
 Alternatively, enclose your content inside the shortcode and pass it a `title` parameter instead. The ingredients box above, for example, could be written this way:
 

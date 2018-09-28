@@ -11,6 +11,6 @@ show_gallery: true
 ```
 on a post's front matter. This will display a gallery of all the resources it finds of type `image`.
 
-![Image Gallery](https://github.com/pointyfar/pointybubl/blob/master/images/screenshot-gallery.png) 
+![Image Gallery](https://github.com/pointyfar/pointybubl/raw/master/images/screenshot-gallery.png) 
 
 It will use the `.Title` attribute as caption if set.

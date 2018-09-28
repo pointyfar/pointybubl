@@ -5,7 +5,7 @@ title = "Pointy's"
 # Only use if exampleSite is inside theme folder
 themesDir = "../../"
 
-theme = "pointybubl"
+theme = "pointybubl-clean2"
 paginate = 8
 
 pygmentsUseClassic = false
@@ -13,6 +13,8 @@ pygmentsUseClasses = true
 pygmentsCodeFences = true
 pygmentsCodeFencesGuessSyntax = true
 
+preserveTaxonomyNames = true 
+pluralizeListTitles = false
 #sectionPagesMenu = "main"
     
 [[menu.main]]
@@ -49,7 +51,8 @@ pygmentsCodeFencesGuessSyntax = true
   mainSections = ["food", "post", "wonderland"]
   
   socialdata = "social"
-
+  authorsTaxonomy = "authors"
+  
 [params.search]
   enabled = true
   icon = true
@@ -64,15 +67,15 @@ pygmentsCodeFencesGuessSyntax = true
   size = "100px"
   text = "[no image available]"
   text_size = "9px"
-  authorsTaxonomy = "authors"
   
 [params.scss]
-  customFontBody = "Georgia,Utopia,Charter,serif"
+  # customFontBody = "Georgia,Utopia,Charter,serif"
   brandFont = "'Oswald', sans-serif"
   primary = "CadetBlue"
   primaryInvert = "#fff"
   
   footnote = "FOOTNOTE:"
+  linkColor = "navy"
   
 [params.hero]
   #background = "img/hero-background.jpeg"
@@ -82,16 +85,16 @@ pygmentsCodeFencesGuessSyntax = true
 
 [[params.authors]]
   name = "default-author"
-  default = true
   
 [[params.authors]]
+  #default = true
   name = "pointy-far"
   featured = true
 
 [params.subnav]
   usetaxonomy = "authors"
   taxonomycount = 3
-  featuredterms = ["me"]
+  featuredterms = ["lewis-carroll"]
   
   
   

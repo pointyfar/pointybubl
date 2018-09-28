@@ -7,8 +7,16 @@
   <div class="card">
     <div class="card-content">
       <div class="media">
-      
-      {{ if ne true $.Site.Params.placeholder.disabled }}
+        {{ $hasplaceholder := false }}
+        
+        {{ if isset $.Site.Params "placeholder"  }}
+          {{ $hasplaceholder = true }}
+          {{ if isset $.Site.Params.placeholder "disabled" }}
+            {{ if eq true $.Site.Params.placeholder.disabled }}{{ $hasplaceholder = false }}{{ end }}
+          {{ end }}
+        {{ end }}
+        
+      {{ if $hasplaceholder }}
         <div class="media-left">
           {{if $.Scratch.Get "hasImg"}} 
             <figure class="image">

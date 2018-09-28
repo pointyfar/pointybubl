@@ -15,4 +15,4 @@ This theme can optionally show a secondary nav bar under the hero image.
 
 Having the above example confiuration means the secondary nav will be populated with `3` links from the `categories` taxonomy which will include the category `"queen"` (and two others). Please note that the list will be sorted alphabetically. 
 
-![Secondary nav](https://github.com/pointyfar/pointybubl/blob/master/images/screenshot-subnav.png)
+![Secondary nav](https://github.com/pointyfar/pointybubl/raw/master/images/screenshot-subnav.png)

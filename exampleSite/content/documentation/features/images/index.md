@@ -12,7 +12,7 @@ If you have your content organised in page bundles as described in [https://gohu
 
 Which renders this:
 
-![Resource Screenshot](https://github.com/pointyfar/pointybubl/blob/master/images/screenshot-resource.png)
+![Resource Screenshot](https://github.com/pointyfar/pointybubl/raw/master/images/screenshot-resource.png)
 
 ---
 
@@ -22,4 +22,4 @@ You can use the shortcode for non-bundled images as well, passing a `src` parame
 {{%/* image src="img/hello.jpeg" caption="Hello" alt="Hello" */%}}
 ```
 
-![Src Screenshot](https://github.com/pointyfar/pointybubl/blob/master/images/screenshot-src-image.png)
+![Src Screenshot](https://github.com/pointyfar/pointybubl/raw/master/images/screenshot-src-image.png)

@@ -24,5 +24,5 @@ You can also configure a limited set of scss variables from your `config.toml` f
 
 The above will both result in
 
-![Hotpink primary](https://github.com/pointyfar/pointybubl/blob/master/images/screenshot-configure-scss.png)
+![Hotpink primary](https://github.com/pointyfar/pointybubl/raw/master/images/screenshot-configure-scss.png)
 

@@ -23,7 +23,6 @@ You can see the theme at work in the [demo site](#).
 
 Running the `exampleSite` gives you access to the theme's documentation at `localhost:1313/documentation`. You can also find it [online](#).
 
-[Click Here](./installing/) to get started, or scroll down to see all content.
 
 
 ## Attributions 

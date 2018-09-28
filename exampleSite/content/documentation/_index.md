@@ -12,7 +12,7 @@ BU[LMA] + BL[OG]
 
 Blog theme built with Bulma.css. Includes image gallery, site search (with lunr.js), and optional sidebar and footer in the layout. Handles page resources. Uses Hugo Pipes!
 
-![Theme Screenshot](https://github.com/pointyfar/pointybubl/blob/master/images/screenshot.png)
+![Theme Screenshot](https://github.com/pointyfar/pointybubl/raw/master/images/screenshot.png)
 
 ## Preview the theme
 

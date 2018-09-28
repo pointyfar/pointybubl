@@ -20,5 +20,5 @@ You can optionally add an author box on the sidebar
           """
   aboutSection = "/about/"
 ```
-![Author Box Screenshot](https://github.com/pointyfar/pointybubl/blob/master/images/screenshot-author-box.png)
+![Author Box Screenshot](https://github.com/pointyfar/pointybubl/raw/master/images/screenshot-author-box.png)
 

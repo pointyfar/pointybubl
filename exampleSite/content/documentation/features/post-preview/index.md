@@ -6,15 +6,15 @@ draft: false
 
 This theme takes the first image resource it finds for a post and uses that as a preview image of sorts. 
 
-![Section List](https://github.com/pointyfar/pointybubl/blob/master/images/screenshot-section-page.png) 
+![Section List](https://github.com/pointyfar/pointybubl/raw/master/images/screenshot-section-page.png) 
 
 
-![Image Preview](https://github.com/pointyfar/pointybubl/blob/master/images/screenshot-image-preview.png) 
+![Image Preview](https://github.com/pointyfar/pointybubl/raw/master/images/screenshot-image-preview.png) 
 
 
 You can configure a default placeholder image to use for pages that don't have images. You can also alternatively configure an svg to render instead.
 
-![Placeholder SVG](https://github.com/pointyfar/pointybubl/blob/master/images/screenshot-placeholder-svg.png) 
+![Placeholder SVG](https://github.com/pointyfar/pointybubl/raw/master/images/screenshot-placeholder-svg.png) 
 
 You can also disable the image preview entirely by setting `disabled = true` under `[params.placeholder]`
 

@@ -2,11 +2,17 @@
 @import "bulma/sass/utilities/initial-variables";
 @import "bulma/sass/utilities/functions";
 
+@import "bulma_overrides";
+
 $family-primary: $family-sans-serif!default;
 
 {{ with .Site.Params.scss.customFontBody }} 
 $custom-font-body: {{.}};
 $family-primary: {{.}};
+{{ end }}
+
+{{ with .Site.Params.scss.linkColor }}
+$link: {{.}};
 {{ end }}
 
 {{ with .Site.Params.scss.primary }} 
@@ -37,7 +43,7 @@ $bg: "{{.Site.Params.hero.background | absURL}}";
 }
 {{end}}
 
-@import "variables";
+@import "custom";
 
 
 @import "bulma/bulma";

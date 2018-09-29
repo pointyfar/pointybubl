@@ -1,0 +1,26 @@
+{{ $bulmacar := resources.Get "/js/external/bulma-carousel.min.js" }}
+{{ $vendors := slice $bulmacar | resources.Concat "/js/vendor.js" | minify | fingerprint }}
+<script src="{{ $vendors.Permalink }}"></script>
+carousel here
+<script>
+var carousels = bulmaCarousel.attach();
+</script>
+<script src="https://unpkg.com/lunr/lunr.js"></script>
+
+
+
+{{ if isset .Site.Params "search" }}
+  {{ if isset .Site.Params.search "enabled" }}
+    {{ if .Site.Params.search.enabled }}
+      {{ $search := resources.Get "/js/search.js" | resources.ExecuteAsTemplate "search.js" . }}
+      {{ $searchjs := $search | minify | fingerprint}}
+      <script src="{{ $searchjs.Permalink }}"></script>
+    {{ end }}
+  {{ end }}
+{{ end }}
+
+
+
+{{ $navbartog := resources.Get "/js/navbar-toggle.js" }}
+{{ $userscript :=  $navbartog | minify | fingerprint }}
+<script src="{{ $userscript.Permalink }}"></script>

@@ -1,3 +1,24 @@
+var siteUrl = "{{"index.json" | absURL}}?nocache=" + (new Date()).toISOString().slice(0,10);
+
+var searchModal = document.getElementById("searchModal");
+document.getElementById("launchSearchModal").addEventListener("click", toggleModal);
+document.getElementById("closeModal").addEventListener("click", toggleModal);
+
+var modalBg = document.getElementsByClassName("modal-background");
+for (var i = 0; i < modalBg.length; i++) {
+  modalBg[i].addEventListener('click', toggleModal);
+}
+
+function toggleModal() {
+  if(searchModal.classList.contains("is-active")) {
+    searchModal.classList.remove("is-active")
+  } else {
+    var site = getSiteData(siteUrl);
+    searchModal.classList.add("is-active")
+  }
+  
+}
+
 function getSiteData(url) {
   fetch(url)
   .then(function(response) {

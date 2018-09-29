@@ -5,7 +5,7 @@ title = "Pointy's"
 # Only use if exampleSite is inside theme folder
 themesDir = "../../"
 
-theme = "pointybubl-clean2"
+theme = "pointybubl"
 paginate = 8
 
 pygmentsUseClassic = false
@@ -59,7 +59,7 @@ pluralizeListTitles = false
   label = "fas fa-search"
   
 [params.placeholder]
-  #disabled = true
+  disabled = true
   ## use img 
   _img = "/img/placeholder-100.png"
   

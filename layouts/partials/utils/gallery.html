@@ -1,69 +1,24 @@
-<div>
+<div class="gallery-container">
 {{ $.Scratch.Set "hasImg" false }}
 
 <div class="card gallery">
-  <header class="card-header">
-    <div class="tabs">
-      <ul>
-        {{ range $i, $e := ( sort (.Resources.ByType "image") ".Params.weight")  }}
-        <li class="{{if eq $i 0}}is-active{{end}}"><a class="gallery-tab" data-target="tab-{{$i}}">{{add $i 1}}</a></li>
-        {{ end }}
-      </ul>
+  <div class='carousel carousel-animated carousel-animate-slide'>
+    <div class='carousel-container'>
+      {{ range $i, $e := ( sort (.Resources.ByType "image") ".Params.weight")  }}
+      <div class='carousel-item has-background is-active'>
+        <img class="is-background"  src="{{($e.Fill "300x300").Permalink}}" alt="{{ with $e.Title }}{{.}}{{else}}{{$e.Name}}{{end}}" width="640" height="310" />
+        <div class="title">{{ with $e.Title }}{{.}}{{else}}{{$e.Name}}{{end}}</div>
+      </div>
+      {{ end }}
     </div>
-  </header>
-  {{ range $i, $e := ( sort (.Resources.ByType "image") ".Params.weight")  }}
-  <div class="gallery-content {{if eq $i 0}}gallery-content-show{{end}}" id="tab-{{$i}}">
-    <div class="card-image">
-      <img class="gallery-img" src="{{$e.Permalink}}">      
+    <div class="carousel-navigation">
+      <div class="carousel-nav-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+      </div>
+      <div class="carousel-nav-right">
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </div>
     </div>
-    <div class="card-content has-text-centered">
-      {{ $e.Title }}
-    </div>
+  </div>
 </div>
-{{ end }}
 </div>
-
-<script>
-
-var gt = document.getElementsByClassName('gallery-tab');
-for(let i=0; i<gt.length; i++){
-  gt[i].addEventListener("click",show_gallery);
-  gt[i].addEventListener("click",toggle_active);
-  
-}
-function toggle_active(){
-
-  for(let i=0; i<gt.length; i++){
-    gt[i].parentElement.classList.remove('is-active')
-  }
-  if(!this.parentElement.classList.contains('is-active')) {
-    this.parentElement.classList.add('is-active')
-    
-  }
-  
-}
-function show_gallery() {
-  event = event || window.event;
-  var source = event.target || event.srcElement;
-  var gc = document.getElementsByClassName('gallery-content');
-  var show_class="gallery-content-show";
-  var target = this.dataset.target;
-  
-  
-  for(let i=0; i<gc.length; i++){
-    if(gc[i].id == target) {
-      if(!(gc[i].classList).contains(show_class)) {
-        gc[i].classList.add(show_class)
-      }
-    } else {
-      if(gc[i].classList.contains(show_class)) {
-        gc[i].classList.remove(show_class);
-      }
-    }
-  }
-}
-</script>
-
-
-</div>
-

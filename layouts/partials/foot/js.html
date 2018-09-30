@@ -1,7 +1,6 @@
 {{ $bulmacar := resources.Get "/js/external/bulma-carousel.min.js" }}
 {{ $vendors := slice $bulmacar | resources.Concat "/js/vendor.js" | minify | fingerprint }}
 <script src="{{ $vendors.Permalink }}"></script>
-carousel here
 <script>
 var carousels = bulmaCarousel.attach();
 </script>

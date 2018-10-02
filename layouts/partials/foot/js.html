@@ -11,7 +11,7 @@ var carousels = bulmaCarousel.attach();
 {{ if isset .Site.Params "search" }}
   {{ if isset .Site.Params.search "enabled" }}
     {{ if .Site.Params.search.enabled }}
-      {{ $search := resources.Get "/js/search.js" | resources.ExecuteAsTemplate "search.js" . }}
+      {{ $search := resources.Get "/js/search.js" | resources.ExecuteAsTemplate "/js/search.js" . }}
       {{ $searchjs := $search | minify | fingerprint}}
       <script src="{{ $searchjs.Permalink }}"></script>
     {{ end }}

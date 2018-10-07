@@ -1,7 +1,7 @@
 {{ define "main" }}
 {{ $isNodeOrHome := (or .IsNode .IsHome )}}
 
-{{ partial "content/card.html" ( dict "context" . "isNodeOrHome" $isNodeOrHome "sp" .Site.Params ) }}
+{{ partial "content/card-full.html" . }}
 
 
 {{ end }}

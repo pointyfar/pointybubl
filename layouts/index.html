@@ -2,13 +2,13 @@
 
 {{ $pages := where .Site.RegularPages "Type" "in" .Site.Params.mainSections }}
 {{ $paginator := .Paginate $pages  }}
-{{ $isNodeOrHome := (or .IsNode .IsHome )}}
+
 {{ $.Scratch.Set "postCount" ( $paginator.PageSize ) }}
 
 <div class="columns is-multiline">
 {{- range first ( $.Scratch.Get "postCount" ) ( $pages.ByPublishDate.Reverse ) -}}
 <div class="column is-12">
-  {{ partial "content/card.html" ( dict "context" . "isNodeOrHome" $isNodeOrHome ) }}
+  {{ partial "content/card-summary.html" . }}
 </div>
 
 {{- end -}}

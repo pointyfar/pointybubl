@@ -1,0 +1,40 @@
+{{- if  .Content -}}
+<div class="card post-card">
+  <header class="post-header card-header">
+    <div class="card-header-title">
+      <a href="{{- .Permalink}}">{{- .Title}}</a>
+    </div>
+    <span class="card-header-author has-text-weight-normal">
+      {{- with  .Params.authors -}}{{- delimit . ", "}}
+      {{- else -}}{{-  .Site.Params.author.name -}}
+      {{- end -}}&emsp;&middot;&emsp;
+      {{- with  .PublishDate -}}<time datetime="{{- .Format "2006-01-02T15:04:05-07:00" -}}">{{- .Format "02 Jan 2006" -}}</time>{{- end -}}
+    </span>
+  </header>
+  
+  <div class="card-content">
+    {{- partial "content/tagwrapper.html" (dict "context" . "sp" .Site.Params "position" "head") -}}
+    
+    {{- if .Params.show_gallery -}}
+      {{- partial "utils/gallery.html" . -}}
+    {{- end -}}
+
+    <div class="content">{{- .Content -}}</div>
+  </div>
+
+  <footer class="card-footer">
+    {{- with  .PrevInSection -}}
+    <a href="{{.Permalink}}" class="card-footer-item">Previously: {{.Title}}</a>
+    {{end}}
+    <a href="{{- if .Section -}}{{- .Section | absURL}}{{else}}{{- .Site.BaseURL}}{{end}}" class="card-footer-item">
+      {{- if  .Section -}}See all: {{- .Section}}
+      {{- else -}}Home{{end}}
+    </a>
+    {{- with  .NextInSection -}}
+    <a href="{{.Permalink}}" class="card-footer-item">Up Next: {{.Title}}</a>
+    {{end}}
+  </footer>
+
+
+</div>
+{{- end -}}

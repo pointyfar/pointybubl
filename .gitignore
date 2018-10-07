@@ -6,5 +6,5 @@ hugo*
 _tmp/
 
 # Theme exampleSite
-/exampleSite/public/
+/exampleSite/
 

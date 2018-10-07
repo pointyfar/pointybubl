@@ -1,0 +1,27 @@
+{{- if .Content -}}
+<div class="card post-card">
+  <header class="post-header card-header">
+    <div class="card-header-title">
+      <a href="{{.Permalink}}">{{.Title}}</a>
+    </div>
+    <span class="card-header-author has-text-weight-normal">
+      {{- with .Params.authors -}}{{- delimit . ", " -}}
+      {{- else -}}{{.Site.Params.author.name}}
+      {{- end -}}
+      {{- with .PublishDate -}}<time datetime="{{- .Format "2006-01-02T15:04:05-07:00" -}}">{{- .Format "02 Jan 2006" -}}</time>{{- end -}}
+    </span>
+  </header>
+  
+  <div class="card-content">
+    <div class="content">
+      {{- if .Truncated -}}
+        {{- .Summary -}}
+      {{- else -}}
+        {{- .Content -}}
+      {{- end -}}
+      <p><em><a class="content is-small" href="{{- .RelPermalink -}}">{{- if .Truncated -}} Read More... {{- else -}}Go to page{{- end -}}</a></em></p>
+    </div>
+  </div>
+
+</div>
+{{- end -}}

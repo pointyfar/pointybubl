@@ -1,6 +1,19 @@
-{{ if or ( isset .Site.Params "author" ) ( isset .Site.Params "socialdata" ) }}
+{{/* list of valid box types */}}
+{{ $valid :=  .Site.Data._pointybublconfig.sideboxes }}
+{{ $context := . }}
 <div class="column sidebar">
-  {{ partial "aside/profile.html" . }}
-  {{ partial "aside/social.html" . }}
+  {{ range .Site.Params.sidebar.box}}
+    {{ if in $valid .type }}
+      {{ $partial := printf "side/%s" .type }}
+      {{ partial $partial (dict "context" $context "config" .) }}
+    {{ else if and ( eq .type "custom" ) (isset . "partial") }}
+      {{ partial .partial . }}
+    {{ else }}
+    <div class="card">
+      <div class="card-content">
+        <code>{{.type}}</code> is not a valid sidebar box type.
+      </div>
+    </div>
+    {{ end }}
+  {{ end }}
 </div>
-{{ end }}

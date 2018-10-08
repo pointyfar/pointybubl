@@ -1,17 +1,36 @@
-{{ partial "head.html" . }}
+{{ $showsidebar := false }}
+{{ $leftsidebar := false }}
+
+{{- if isset .Site.Params "sidebar" -}}
+  {{- if isset .Site.Params.sidebar "display" -}}
+    {{- $showsidebar = true -}}
+  {{- end -}}
+  {{- if isset .Site.Params.sidebar "position" -}}
+    {{- if eq "left" .Site.Params.sidebar.position -}}
+      {{- $leftsidebar = true -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+
+{{- partial "head.html" . -}}
 <div class="wrapper">
-  {{ partial "header.html" . }}
+  {{- partial "header.html" . -}}
   <section class="section">
     <div class="container">
       <div class="columns">
-        <div class="column {{ if or ( isset .Site.Params "author" ) ( isset .Site.Params "socialdata" ) }}is-three-quarters{{ end }}">
-          {{ block "main" . }}
-          {{ end }}
+        {{- if and $showsidebar $leftsidebar -}}
+        {{- partial "sidebar.html" . -}}
+        {{- end -}}
+        <div class="column {{ if $showsidebar }}is-three-quarters{{ end }}">
+          {{- block "main" . -}}
+          {{- end -}}
         </div>
-        {{ partial "sidebar.html" . }}
+        {{- if and $showsidebar (not $leftsidebar) -}}
+        {{- partial "sidebar.html" . -}}
+        {{- end -}}
       </div>
     </div>
   </section>
 </div>
-{{ partial "footer.html" . }}
-{{ partial "foot.html" . }}
+{{- partial "footer.html" . -}}
+{{- partial "foot.html" . -}}

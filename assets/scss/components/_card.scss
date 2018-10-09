@@ -5,6 +5,11 @@
 
 .card {
   margin-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  .card-content {
+    flex: 1 0 auto;
+  }
 }
 
 .sidebar > .card {
@@ -36,9 +41,16 @@
   }
 }
 
+.card-header-right {
+  padding: 0 1rem;
+}
 .modal-title-wrapper {
   display: flex;
   flex-direction: row;
   align-items: flex-start;
   justify-content: space-between;
+}
+
+.card-list-container {
+  height: 100%;
 }

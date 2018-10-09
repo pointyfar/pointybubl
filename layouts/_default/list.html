@@ -1,33 +1,22 @@
 {{ define "main" }}      
 
-{{ $pages := where .Site.RegularPages "Type" "in" .Section }}
-{{ $paginator := .Paginate $pages  }}
-{{ $isNodeOrHome := (or .IsNode .IsHome )}}
-{{ $.Scratch.Set "postCount" ( $paginator.PageSize ) }}
-        
-{{ if gt $paginator.TotalPages 1 }}
-  {{ partial "utils/paginator.html" ( dict "paginator" $paginator ) }}
-{{ end }}
-
-{{ if eq $paginator.PageNumber 1 }}
-{{ with .Content }}
-<div class="content">
-<hr>{{ . }}<hr>
+<div class="card card-list-container">
+  <header class="card-header">
+    <div class="card-header-title">
+      List of all {{ .Type  }}
+    </div>
+  </header>
+  <div class="card-content">
+    <div class="content">
+      <ul>
+        {{ range .Pages }}
+          <li>
+            <a href="{{.Permalink}}">{{.Title}}</a>
+          </li>
+        {{ end }}
+      </ul>
+    </div>
+  </div>
 </div>
-{{ end }}
-{{ end }}
-
-{{ range ($paginator.Pages.GroupByDate "2006") }}
-  <h2 class="is-size-2">{{ .Key }}</h2>
-  <div class="columns is-multiline">
-  {{ range .Pages }}
-    {{ .Render "card-list" }}
-  {{ end }}
-</div>
-{{ end }}
-
-{{ if gt $paginator.TotalPages 1 }}
-  {{ partial "utils/paginator.html" ( dict "paginator" $paginator ) }}
-{{ end }}
     
 {{ end }}

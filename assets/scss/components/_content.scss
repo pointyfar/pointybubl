@@ -39,3 +39,7 @@
     @if $i >  20 { $size: 3em; }
     .font_size_#{$i} { font-size: $size; }
 }
+
+nav.pagination {
+  margin: 1rem;
+}

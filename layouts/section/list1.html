@@ -1,0 +1,60 @@
+{{ define "main" }}      
+
+{{ $pages := where .Site.RegularPages "Type" "in" .Section }}
+{{ $paginated := false }}
+
+{{ if isset .Params "paginatelist" }}
+{{ if .Params.paginatelist }}
+{{ $paginated = true }}
+{{ end }}
+{{ end }}
+
+{{ $paginator := .Paginate $pages  }}
+{{ $.Scratch.Set "postCount" ( $paginator.PageSize ) }}
+
+<div class="card card-list-container">
+  {{ if $paginated }}        
+  {{ if gt $paginator.TotalPages 1 }}
+  <div class="card-header">
+    {{ partial "utils/paginator.html" ( dict "paginator" $paginator ) }}
+  </div>
+  {{ end }}
+  {{ end }}
+  <div class="card-content">
+    <div class="content">
+      <div class="columns is-multiline is-desktop">
+        {{ if $paginated }}
+          {{ range $paginator.Pages }}
+            {{ .Render "list-items/cardlist" }}
+          {{ end }}
+        {{ else }}
+          {{ range .Pages }}
+          {{ .Render "list-items/cardlist" }}
+          {{ end }}
+        {{ end }}
+      </div>  
+    </div>
+  </div>
+  {{ if $paginated }}        
+  {{ if gt $paginator.TotalPages 1 }}
+  <footer class="card-footer">
+    {{ partial "utils/paginator.html" ( dict "paginator" $paginator ) }}
+  </footer>
+  {{ end }}
+  {{ end }}
+</div>
+
+    
+{{ end }}
+
+
+
+
+
+
+
+
+
+
+
+

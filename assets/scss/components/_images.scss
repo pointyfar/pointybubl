@@ -8,3 +8,7 @@ figure.author-image {
 .author-image > img {
   max-width: 450px;
 }
+
+.image.is-4by3 > svg.placeholder {
+  margin-top: -75%
+}

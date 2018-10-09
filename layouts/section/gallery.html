@@ -21,15 +21,20 @@
   {{ end }}
   {{ end }}
   <div class="card-content">
+    {{ if or (eq $paginator.PageNumber 1) (eq $paginated false) }}
+    {{ with .Content }}
+      <div class="content">{{ . }}<hr></div>
+    {{ end }}
+    {{ end }}
     <div class="content">
       <div class="columns is-multiline is-desktop">
         {{ if $paginated }}
           {{ range $paginator.Pages }}
-            {{ .Render "list-items/cardlist" }}
+            {{ .Render "list-items/gallcard" }}
           {{ end }}
         {{ else }}
           {{ range .Pages }}
-          {{ .Render "list-items/cardlist" }}
+          {{ .Render "list-items/gallcard" }}
           {{ end }}
         {{ end }}
       </div>  

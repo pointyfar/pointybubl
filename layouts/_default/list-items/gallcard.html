@@ -1,0 +1,48 @@
+{{ $.Scratch.Set "hasImg" false }}
+{{ if ( gt ( len (.Resources.ByType "image")) 0 ) }}
+  {{ $.Scratch.Set "hasImg" true }}
+{{ end }}
+<div class="column is-half-desktop">
+    
+  <div class="card">
+    <div class="card-image">
+      {{ $hasplaceholder := false }}
+      
+      {{ if isset $.Site.Params "placeholder"  }}
+        {{ $hasplaceholder = true }}
+        {{ if isset $.Site.Params.placeholder "disabled" }}
+          {{ if eq true $.Site.Params.placeholder.disabled }}{{ $hasplaceholder = false }}{{ end }}
+        {{ end }}
+      {{ end }}
+      
+        {{if $.Scratch.Get "hasImg"}} 
+          <figure class="image is-4by3">
+            {{ range first 1 (.Resources.ByType "image")  }}
+            <img src="{{ ( .Fill "400x300" ).Permalink }}" >
+            {{ end }}
+          </figure>
+        {{ else if isset .Site.Params.placeholder "img" }}
+        <figure class="image is-4by3">
+          <img src="{{.Site.Params.placeholder.img | absURL}}" >
+        </figure>
+        {{ else }}
+          {{ $w := (cond (isset $.Site.Params.placeholder "width") ($.Site.Params.placeholder.width) "400" ) }}
+          {{ $h := (cond (isset $.Site.Params.placeholder "height") ($.Site.Params.placeholder.height) "300" ) }}
+          {{ $ts := (cond (isset $.Site.Params.placeholder "test_size") ($.Site.Params.placeholder.text_size) "30px" ) }}
+          {{ $label := (cond (isset $.Site.Params.placeholder "label") ($.Site.Params.placeholder.label) "No Image" ) }}
+          <div class="placeholder-wrapper image is-4by3">
+          {{ partial "utils/placeholder-svg.html" (dict "w" $w "h" $h "ts" $ts "label" $label) }}
+          </div>
+
+        {{ end }}
+
+
+    </div>
+    <div class="card-content">
+      
+      <div class="content">
+        <a href="{{.Permalink}}">{{.Title}}</a>
+      </div>
+    </div>
+  </div>
+</div>

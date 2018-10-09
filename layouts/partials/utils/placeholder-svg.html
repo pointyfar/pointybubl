@@ -1,12 +1,14 @@
-<svg  width="{{with $.Site.Params.placeholder.size}}{{.}}{{else}}100{{end}}" 
-      height="{{with $.Site.Params.placeholder.size}}{{.}}{{else}}100{{end}}">
+<svg  class="placeholder"
+      viewBox="0 0 {{with .w}}{{.}}{{else}}100{{end}} {{with .h}}{{.}}{{else}}100{{end}}"
+      preserveAspectRatio="slice"
+      >
   <rect x="0" y="0" 
         fill="#888"
-        width="{{with $.Site.Params.placeholder.size}}{{.}}{{else}}100{{end}}" 
-        height="{{with $.Site.Params.placeholder.size}}{{.}}{{else}}100{{end}}" 
+        width="{{with .w}}{{.}}{{else}}100{{end}}" 
+        height="{{with .h}}{{.}}{{else}}100{{end}}" 
         />
   <text x="50%" y="50%" alignment-baseline="middle" text-anchor="middle" fill="#fff" 
-        style="font-size: {{with $.Site.Params.placeholder.text_size}}{{.|safeHTMLAttr}}{{else}}10px{{end}}">
-    {{with $.Site.Params.placeholder.text}}{{.}}{{end}}
+        style="font-size: {{with .ts}}{{.|safeHTMLAttr}}{{else}}10px{{end}}">
+    {{with .label}}{{.}}{{end}}
   </text>    
 </svg>

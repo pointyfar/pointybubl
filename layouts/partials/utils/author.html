@@ -1,0 +1,34 @@
+{{ $hasauthor := false }}
+
+{{ $authortaxo := "" }}
+{{- with .Site.Params.authorstaxonomy }}{{ $authortaxo = . }}{{ end }}
+
+{{- with .Params.authors }}
+  {{ $hasauthor = true }}
+  {{ $authcount := len . }}by 
+  {{ range $i, $e := . }}
+    {{ with $authortaxo }}
+    <a href="{{ (printf "%s/%s" (.|urlize) ( $e |urlize)) | absURL}}">{{$e}}</a>
+    {{ else }}
+    {{$e}}
+    {{ end }}
+    {{ if gt $authcount (add 1 $i) }},{{end}}
+  {{ end }}
+{{- else }}
+  {{ with .Site.Params.authors }}
+    {{ range . }}
+      {{ if .default }}
+      {{ $hasauthor = true }}
+        {{ $authorpage := (printf "authors/%s" .name )}}
+        {{ with $.Site.GetPage $authorpage }}by <a href="{{ $authorpage | absURL}}">{{.Title}}</a>{{ end }}
+      {{ end }}
+    {{ end }}
+  {{ else }}
+  {{ end }}
+{{- end }}
+
+{{ if not $hasauthor }}
+  {{ with .Site.Author }}
+    by {{.name}}
+  {{ end }}
+{{ end }}  

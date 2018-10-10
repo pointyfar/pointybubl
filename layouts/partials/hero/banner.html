@@ -11,23 +11,9 @@
             {{- .Site.Params.subtitle }}
             {{- end }}
           {{- else if .IsPage }}
-            {{- with .Params.authors }}
-            {{ $authcount := len . }}by 
-              {{ range $i, $e := . }}
-              <a href="{{ (printf "authors/%s" ( $e |urlize)) | absURL}}">{{$e}}</a>
-              {{ if gt $authcount (add 1 $i) }},{{end}}
-              {{ end }}
-            {{- else }}
-              {{ with .Site.Params.authors }}
-                {{ range . }}
-                  {{ if .default }}
-                    {{ $authorpage := (printf "authors/%s" .name )}}
-                    {{ with $.Site.GetPage $authorpage }}by <a href="{{ $authorpage | absURL}}">{{.Title}}</a>{{ end }}
-                  {{ end }}
-                {{ end }}
-              {{ end }}
-            {{- end }}
-          {{- end }}
+            {{ partial "utils/author.html" . }}
+          {{ end }}
+
         </h2>
       </div>
     </div>

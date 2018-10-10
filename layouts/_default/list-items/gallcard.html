@@ -26,12 +26,10 @@
           <img src="{{.Site.Params.placeholder.img | absURL}}" >
         </figure>
         {{ else }}
-          {{ $w := (cond (isset $.Site.Params.placeholder "width") ($.Site.Params.placeholder.width) "400" ) }}
-          {{ $h := (cond (isset $.Site.Params.placeholder "height") ($.Site.Params.placeholder.height) "300" ) }}
-          {{ $ts := (cond (isset $.Site.Params.placeholder "test_size") ($.Site.Params.placeholder.text_size) "30px" ) }}
+          {{ $ts := (cond (isset $.Site.Params.placeholder "test_size") ($.Site.Params.placeholder.text_size) "10px" ) }}
           {{ $label := (cond (isset $.Site.Params.placeholder "label") ($.Site.Params.placeholder.label) "No Image" ) }}
           <div class="placeholder-wrapper image is-4by3">
-          {{ partial "utils/placeholder-svg.html" (dict "w" $w "h" $h "ts" $ts "label" $label) }}
+          {{ partial "utils/placeholder-svg.html" (dict "w" "" "h" "" "ts" $ts "label" $label) }}
           </div>
 
         {{ end }}

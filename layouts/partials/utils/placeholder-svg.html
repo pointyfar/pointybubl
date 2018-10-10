@@ -1,11 +1,13 @@
 <svg  class="placeholder"
+      width="{{with .w}}{{.}}{{end}}"
+      height="{{with .h}}{{.}}{{end}}"
       viewBox="0 0 {{with .w}}{{.}}{{else}}100{{end}} {{with .h}}{{.}}{{else}}100{{end}}"
       preserveAspectRatio="slice"
       >
   <rect x="0" y="0" 
         fill="#888"
-        width="{{with .w}}{{.}}{{else}}100{{end}}" 
-        height="{{with .h}}{{.}}{{else}}100{{end}}" 
+        width="{{with .w}}{{.}}px{{else}}100px{{end}}" 
+        height="{{with .h}}{{.}}px{{else}}100px{{end}}" 
         />
   <text x="50%" y="50%" alignment-baseline="middle" text-anchor="middle" fill="#fff" 
         style="font-size: {{with .ts}}{{.|safeHTMLAttr}}{{else}}10px{{end}}">

@@ -2,7 +2,7 @@
 <nav class="navbar" role="navigation" aria-label="main navigation">
   <div class="navbar-brand">
     <a class="navbar-item brand brand-title" href="{{ .Site.BaseURL }}">
-      {{ .Site.Title }}
+      {{ with .Site.Params.brand }}{{.}}{{else}}{{.Site.Title}}{{end}}
     </a>
 
     <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navMenu">

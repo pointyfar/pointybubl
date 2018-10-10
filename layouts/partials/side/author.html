@@ -7,48 +7,66 @@
 {{ $header := "" }}
 {{ $url := "" }}
 
-{{ $authortaxo := "" }}
-{{- if isset $context.Site.Params "authorstaxonomy" -}}
-  {{ $authortaxo = $context.Site.Params.authorstaxonomy}}
-  {{- if isset $context.Site.Params "authors" -}}
-    {{- range $context.Site.Params.authors -}}
-      {{- if .featured -}}
-        {{- $author = .name -}}
-        {{- $authors := where $context.Site.Pages "Section" $authortaxo -}}
-        {{- range $authors -}}
-          {{- $furl := .Permalink -}}
-          {{if eq $author .Data.Term -}}
-            {{ $a := .Params }}
-            {{ if .Content }}{{ $url = .Permalink }}{{ end }}
-            {{ with $a.name }}{{ $author = . }}{{ end }}
-            {{ with $a.blurb }}{{ $blurb = . }}{{ end }}
-            {{ with $a.header }}{{ $header = . }}{{ end }}
-            {{ with $a.image }}{{ $img = . }}{{ end }}
-          {{- end -}}
-        {{end}}
-      {{- end -}}
+{{- if isset $context.Site.Params "authors" -}}
+  {{ $authortaxo := "" }}
+  {{- if isset $context.Site.Params "authorstaxonomy" -}}
+    {{ $authortaxo = $context.Site.Params.authorstaxonomy}}
+    {{- if isset $context.Site.Params "authors" -}}
+      {{- range $context.Site.Params.authors -}}
+        {{- if .featured -}}
+          {{- $author = .name -}}
+          {{- $authors := where $context.Site.Pages "Section" $authortaxo -}}
+          {{- range $authors -}}
+            {{- $furl := .Permalink -}}
+            {{if eq $author .Data.Term -}}
+              {{ $a := .Params }}
+              {{ if .Content }}{{ $url = .Permalink }}{{ end }}
+              {{ with $a.name }}{{ $author = . }}{{ end }}
+              {{ with $a.blurb }}{{ $blurb = . }}{{ end }}
+              {{ with $a.header }}{{ $header = . }}{{ end }}
+              {{ with $a.image }}{{ $img = . }}{{ end }}
+            {{- end -}}
+          {{end}}
+        {{- end -}}
+        {{- end -}}
     {{- end -}}
-  {{- else if $context.Site.Author }}
-    {{ $a := $context.Site.Author }}
-    {{ with $a.name }}{{ $author = . }}{{ end }}
-    {{ with $a.blurb }}{{ $blurb = . }}{{ end }}
-    {{ with $a.header }}{{ $header = . }}{{ end }}
-    {{ with $a.url }}{{ $url = . }}{{ end }}
-    {{ with $a.image }}{{ $img = . }}{{ end }}
   {{ else }}
-  <div class="card">
-  <div class="card-content">
-    No featured authors configured.
-  </div>
-  </div>
-  {{- end -}}
+    <div class="card">
+      <div class="card-content">
+        No authors taxonomy configured
+      </div>
+    </div>
+  {{ end }}
+
+{{- else if $context.Site.Author }}
+  {{ $a := $context.Site.Author }}
+  {{ with $a.name }}{{ $author = . }}{{ end }}
+  {{ with $a.blurb }}{{ $blurb = . }}{{ end }}
+  {{ with $a.header }}{{ $header = . }}{{ end }}
+  {{ with $a.url }}{{ $url = . }}{{ end }}
+  {{ with $a.image }}{{ $img = . }}{{ end }}
+  
 {{ else }}
-<div class="card">
-<div class="card-content">
-  No authors taxonomy configured
-</div>
-</div>
+  <div class="card">
+    <div class="card-content">
+      No featured authors configured.
+    </div>
+  </div>
 {{ end }}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 {{ with $author }}
 <div class="card author-sidebar">

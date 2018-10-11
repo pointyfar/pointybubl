@@ -1,6 +1,14 @@
 <section class="hero is-primary {{- if .IsHome }} is-medium {{ end }}">
   <div class="hero-wrapper {{if .IsHome}} hero-wrapper-bg{{end}}">
     <div class="hero-body {{ if and .IsHome (isset .Site.Params.hero "background") }}transparent{{end}} {{with .Site.Params.hero.bgislight }}{{if .}}light-bg{{end}}{{else}}dark-bg{{end}}">
+      
+      {{ if .Site.Params.brandimage }}
+      <div class="image-brand-container">
+        <div class="image-brand">
+          <img src="{{ .Site.Params.brandimage.image }}">
+        </div>
+      </div>
+      {{ else }}
       <div class="container brand">
         <h1 class="title brand-title">
           <a href="{{.RelPermalink}}">{{ .Title  }}</a>
@@ -13,9 +21,9 @@
           {{- else if .IsPage }}
             {{ partial "utils/author.html" . }}
           {{ end }}
-
         </h2>
       </div>
+      {{ end }}
     </div>
   </div>
   {{ partial "hero/subnav.html" . }}

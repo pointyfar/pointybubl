@@ -1,1 +1,24 @@
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, maximum-scale=1.0, user-scalable=no">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, maximum-scale=3.0, user-scalable=yes">
+<meta name="referrer" content="same-origin">
+
+{{ if (.Params.description) }}
+<meta name="description" content="{{.Params.description}}">
+{{ else }}
+<meta name="description" content="{{.Site.Params.description}}">
+{{ end }}
+
+{{ if .Site.Copyright }}
+  <meta name="copyright" content="{{ .Site.Copyright }}">
+{{ end }}
+
+{{ if eq .Kind "home" }}
+  <title>{{ .Site.Params.brand }}</title>
+{{ else }}
+  <title>{{ .Title }}{{with .Site.Params.brand}} – {{ . }} {{ end }}</title>
+{{ end }}
+
+
+{{ with .Site.Params.scss.primary }}
+<meta name="theme-color" content="{{.}}" />
+{{ end }}
+

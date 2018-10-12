@@ -3,11 +3,7 @@
     <div class="hero-body {{ if and .IsHome (isset .Site.Params.hero "background") }}transparent{{end}} {{with .Site.Params.hero.bgislight }}{{if .}}light-bg{{end}}{{else}}dark-bg{{end}}">
       
       {{ if and .IsHome .Site.Params.brandimage }}
-      <div class="image-brand-container">
-        <div class="image-brand">
-          <img src="{{ .Site.Params.brandimage.image }}">
-        </div>
-      </div>
+        {{ partial "hero/brand-image.html" . }}
       {{ else }}
       <div class="container brand">
         <h1 class="title brand-title">

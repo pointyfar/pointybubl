@@ -1,3 +1,6 @@
+<!DOCTYPE html>
+<html{{ with .Site.LanguageCode }} lang="{{ . }}"{{ end }}>
+
 {{ $showsidebar := false }}
 {{ $leftsidebar := false }}
 
@@ -13,6 +16,9 @@
 {{- end -}}
 
 {{- partial "head.html" . -}}
+
+<body>
+
 <div class="wrapper">
   {{- partial "header.html" . -}}
   <section class="section">
@@ -22,8 +28,10 @@
         {{- partial "sidebar.html" . -}}
         {{- end -}}
         <div class="column {{ if $showsidebar }}is-three-quarters{{ end }}">
+          <main>
           {{- block "main" . -}}
           {{- end -}}
+          </main>
         </div>
         {{- if and $showsidebar (not $leftsidebar) -}}
         {{- partial "sidebar.html" . -}}
@@ -34,3 +42,7 @@
 </div>
 {{- partial "footer.html" . -}}
 {{- partial "foot.html" . -}}
+
+</body>
+
+</html>

@@ -4,16 +4,12 @@
 }
 
 .card {
-  margin-bottom: 2rem;
+  
   display: flex;
   flex-direction: column;
   .card-content {
     flex: 1 0 auto;
   }
-}
-
-.sidebar > .card {
-  margin-bottom: 1rem;
 }
 
 .card-figure {

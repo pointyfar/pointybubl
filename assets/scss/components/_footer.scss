@@ -6,3 +6,13 @@
   background: none;
 }
 
+@include until(400px)  {
+  .card-footer {
+    display: flex;
+    flex-direction: column;
+    .card-footer-item {
+      flex: 1 0 auto;
+    }
+  }
+  
+}

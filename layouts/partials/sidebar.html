@@ -3,6 +3,7 @@
 {{ $context := . }}
 <div class="column sidebar">
   {{ range .Site.Params.sidebar.box}}
+  <div class="side-box">
     {{ if in $valid .type }}
       {{ $partial := printf "side/%s" .type }}
       {{ partial $partial (dict "context" $context "config" .) }}
@@ -15,5 +16,6 @@
       </div>
     </div>
     {{ end }}
+    </div>
   {{ end }}
 </div>

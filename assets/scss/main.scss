@@ -43,7 +43,6 @@ $bg: "{{.Site.Params.hero.background | absURL}}";
 }
 {{end}}
 
-@import "custom";
 
 
 @import "bulma/bulma";
@@ -59,3 +58,5 @@ $bg: "{{.Site.Params.hero.background | absURL}}";
 @import "components/footer";
 @import "components/gallery";
 @import "components/images";
+@import "sharing";
+@import "custom";

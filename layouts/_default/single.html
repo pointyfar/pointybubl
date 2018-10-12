@@ -1,7 +1,3 @@
 {{ define "main" }}
-{{ $isNodeOrHome := (or .IsNode .IsHome )}}
-
 {{ partial "content/card-full.html" . }}
-
-
 {{ end }}

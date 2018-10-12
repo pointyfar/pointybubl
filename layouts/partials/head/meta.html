@@ -12,7 +12,7 @@
 {{ end }}
 
 {{ if eq .Kind "home" }}
-  <title>{{ .Site.Params.brand }}</title>
+  <title>{{.Site.Title}}</title>
 {{ else }}
   <title>{{ .Title }}{{with .Site.Params.brand}} – {{ . }} {{ end }}</title>
 {{ end }}

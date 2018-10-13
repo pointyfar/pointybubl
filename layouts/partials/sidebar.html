@@ -8,7 +8,7 @@
       {{ $partial := printf "side/%s" .type }}
       {{ partial $partial (dict "context" $context "config" .) }}
     {{ else if and ( eq .type "custom" ) (isset . "partial") }}
-      {{ partial .partial . }}
+      {{ partial .partial (dict "context" $context "config" .) }}
     {{ else }}
     <div class="card">
       <div class="card-content">

@@ -2,9 +2,9 @@
 {{- if .Site.IsServer -}}
   {{- $cssOpts := (dict "targetPath" "css/main.css" "enableSourceMap" true ) -}}
   {{- $styles := resources.Get "scss/main.scss" | resources.ExecuteAsTemplate "style.main.scss" . | toCSS $cssOpts -}}
-  <link rel="stylesheet" href="{{- $styles.Permalink -}}" media="screen">
+  <link rel="stylesheet" href="{{- $styles.RelPermalink -}}" media="screen">
 {{- else -}}
   {{- $cssOpts := (dict "targetPath" "css/main.css" ) -}}
   {{- $styles := resources.Get "scss/main.scss" | resources.ExecuteAsTemplate "style.main.scss" . | toCSS $cssOpts | minify | fingerprint -}}
-  <link rel="stylesheet" href="{{- $styles.Permalink -}}" integrity="{{- $styles.Data.Integrity -}}" media="screen">
+  <link rel="stylesheet" href="{{- $styles.RelPermalink -}}" integrity="{{- $styles.Data.Integrity -}}" media="screen">
 {{- end -}}

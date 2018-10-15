@@ -1,0 +1,49 @@
+{{ define "main" }}
+{{ $sec := .Site.GetPage .Section }}
+{{ $event := cond (isset $sec.Params "eventdate" ) ($sec.Params.eventdate) "date" }}
+
+{{- if  .Content -}}
+<div class="card post-card">
+  <div class="card-content">
+    {{- partial "content/tagwrapper.html" (dict "context" . "sp" .Site.Params "position" "head") -}}
+    <div class="content">
+      <h1><a href="{{- .Permalink}}">{{- .Title}}</a></h1>
+      <h1>{{with .Params.location}}{{.}}{{else}}Venue TBD{{end}}</h1>
+        {{- if isset .Params $event -}}
+        <h1><time datetime="{{- index .Params $event | dateFormat "2006-01-02T15:04:05-07:00" -}}">
+          {{- index .Params $event | dateFormat "3:04 PM on 02 Jan 2006" -}}
+        </time></h1>
+        {{- end -}}
+        <hr>
+      {{- .Content -}}
+    </div>
+  </div>
+  
+  {{ $share := false }}
+  
+  {{ if .Params.sharing }}{{ $share = true }}{{ end }}
+  {{ with .Site.Params.sharing }}{{ with .enabled }}{{ if gt (len .) 0 }}{{$share = true }}{{ end }}{{ end }}{{ end }}
+
+  {{ if $share }}
+  <footer class="card-footer">
+    <div class="sharing-wrapper">
+    {{ partial "utils/sharing.html" . }}
+    </div>
+  </footer>
+  {{ end }}
+  <footer class="card-footer">
+    {{- with  .PrevInSection -}}
+    <a href="{{.Permalink}}" class="card-footer-item">Previously: {{.Title}}</a>
+    {{end}}
+    <a href="{{- if .Section -}}{{- .Section | absURL}}{{else}}{{- .Site.BaseURL}}{{end}}" class="card-footer-item">
+      {{- if  .Section -}}See all: {{ .Section}}
+      {{- else -}}Home{{end}}
+    </a>
+    {{- with  .NextInSection -}}
+    <a href="{{.Permalink}}" class="card-footer-item">Up Next: {{.Title}}</a>
+    {{end}}
+  </footer>
+  
+  </div>
+  {{- end -}}
+{{ end }}

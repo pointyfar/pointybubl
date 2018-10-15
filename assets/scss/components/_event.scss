@@ -1,0 +1,14 @@
+.event {
+  height: 100%;
+}
+.eventbox {
+  text-align: center;
+  
+  &.event-day {
+    font-size: 4rem;
+    line-height: 1;
+  }
+  &.event-diff {
+    font-style: italic;
+  }
+}

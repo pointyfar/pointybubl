@@ -1,0 +1,192 @@
+{{ define "main" }}      
+
+{{ $event := cond (isset .Params "eventdate" ) (.Params.eventdate) "date" }}
+
+{{ $pages := (where .Site.RegularPages "Type" "in" .Section).ByParam ($event)  }}
+
+{{ $paginated := false }}
+
+{{ if isset .Params "paginatelist" }}
+{{ if .Params.paginatelist }}
+{{ $paginated = true }}
+{{ end }}
+{{ end }}
+
+{{ $paginator := .Paginate $pages  }}
+
+
+{{ $futurepages := slice }}
+{{ $pastpages := slice }}
+{{ $pagesrange := slice }}
+
+{{ if $paginated }}
+  {{ $pagesrange = $paginator.Pages }}
+{{ else }}
+  {{ $pagesrange = $pages }}
+{{ end }}
+
+
+{{ range $pagesrange }}
+  {{ $now := now.Format "2006-01-02" }}
+  {{ $start := (dateFormat "2006-01-02" (index .Params $event) ) }}
+  {{ if ge $start $now }}
+    {{ $futurepages = $futurepages | append . }}
+  {{ else }}
+    {{ $pastpages = $pastpages | append . }}
+  {{ end }}
+{{ end }}
+
+
+<div class="card card-list-container">
+  {{ if $paginated }}        
+  {{ if gt $paginator.TotalPages 1 }}
+  <div class="card-header">
+    {{ partial "utils/paginator.html" ( dict "paginator" $paginator ) }}
+  </div>
+  {{ end }}
+  {{ end }}
+  <div class="card-content">
+    {{ if or (eq $paginator.PageNumber 1) (eq $paginated false) }}
+    {{ with .Content }}
+      <div class="content">{{ . }}<hr></div>
+    {{ end }}
+    {{ end }}
+    <div class="content">
+      <h5>Upcoming events:</h5>
+      <div class="columns is-multiline">
+          {{ range $i, $e := $futurepages }}
+          <div class="column is-half-tablet is-one-third-desktop">
+            {{ template "eventbox" (dict "event" (index $e.Params $event) "context" $e "i" $i )}}
+          </div>
+          {{ end }}
+      </div>
+      <div>
+        <hr>
+        <h5>Past events:</h5>
+        
+        <ul>
+        {{ range ($pastpages.ByParam $event).Reverse }}
+        <li><a href="{{.Permalink}}">{{.Title}}: {{index .Params $event | dateFormat "Jan 2 2006"}}</a>
+        </li>
+        {{ end }}
+        </ul>
+      </div>
+    </div>
+  </div>
+  {{ if $paginated }}        
+  {{ if gt $paginator.TotalPages 1 }}
+  <footer class="card-footer">
+    {{ partial "utils/paginator.html" ( dict "paginator" $paginator ) }}
+  </footer>
+  {{ end }}
+  {{ end }}
+</div>
+
+    
+
+<script>
+
+
+var t = document.getElementsByClassName("timefromnow");
+console.log(t)
+
+for(var i=0; i< t.length; i++) {
+  var then = new Date(parseInt(t[i].dataset.time * 1000));
+  var now = new Date;
+  var diff = Math.round((then - now) / (1000 * 60 * 60 * 24)); // round the amount of days
+  console.log(i, then)
+  
+  var tfn = "";
+  if (diff < 14) {
+    tfn = diff == 1 ? "1 day" : `${diff} days`;
+  } else if ( diff < 60 ) {
+    var text = Math.floor(diff / 7);
+    tfn = `${text} weeks`;
+  } else if ( diff < 365 ) {
+    var text = Math.floor(diff / 30);
+    tfn = `${text} months`;
+  } else {
+    var text = Math.floor(diff / 365);
+    tfn = text == 1 ? `${text}+ year` : `${text}+ years`;
+  }
+  console.log(t[i],tfn)
+
+  t[i].innerHTML = tfn;
+  
+}
+
+</script>
+{{ end }}
+
+
+
+
+
+
+
+
+
+
+
+{{ define "eventbox" }}
+<div class="card event">
+<div class="card-content">
+  <article class="media">
+    <div class="media-left">
+      <div class="eventbox event-my">
+        <strong>{{ dateFormat "Jan" .event | upper }}</strong> {{ dateFormat "2006" .event }}
+      </div>
+      <div class="eventbox event-day">
+        {{ dateFormat "02" .event }}
+      </div>
+      <div class="eventbox event-t">
+      {{ dateFormat "3:04 PM" .event }}
+      </div>
+      <div class="eventbox event-diff">
+        in <span class="timefromnow" data-time="{{(time .event).Unix}}">{{(time .event).Unix}}</span>
+      </div>
+      
+    </div>
+    <div class="media-content">
+      <div class="content">
+        <p>
+          <strong><a href="{{.context.Permalink}}">{{.context.Title}}</a></strong>
+        </p>
+        <p>
+        {{ with .context.Params.location }}{{.}}
+        {{ else }}Venue TBD
+        {{end}}
+      </p>
+      {{ if le .i 2 }}
+        <p>
+          {{with .context.Summary}}{{.}}{{else}}{{.context.Content}}{{end}}
+        </p>
+        
+      {{ end }}
+      <em><a href="{{.context.Permalink}}">More details</a>
+      </em>
+      </div>
+      <nav class="level is-mobile">
+        <div class="level-left">
+          <a class="level-item" aria-label="reply">
+            <span class="icon is-small">
+              <i class="fas fa-reply" aria-hidden="true"></i>
+            </span>
+          </a>
+          <a class="level-item" aria-label="retweet">
+            <span class="icon is-small">
+              <i class="fas fa-retweet" aria-hidden="true"></i>
+            </span>
+          </a>
+          <a class="level-item" aria-label="like">
+            <span class="icon is-small">
+              <i class="fas fa-heart" aria-hidden="true"></i>
+            </span>
+          </a>
+        </div>
+      </nav>
+    </div>
+  </article>
+</div>
+</div>
+{{ end }}

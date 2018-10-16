@@ -7,19 +7,17 @@ var carousels = bulmaCarousel.attach();
 <script src="https://unpkg.com/lunr/lunr.js"></script>
 
 
+{{ $tfn := resources.Get "/js/timefromnow.js" }}
+{{ $navbartog := resources.Get "/js/navbar-toggle.js" }}
 
-{{ if isset .Site.Params "search" }}
-  {{ if isset .Site.Params.search "enabled" }}
-    {{ if .Site.Params.search.enabled }}
-      {{ $search := resources.Get "/js/search.js" | resources.ExecuteAsTemplate "/js/search.js" . }}
-      {{ $searchjs := $search | minify | fingerprint}}
-      <script src="{{ $searchjs.RelPermalink }}"></script>
-    {{ end }}
-  {{ end }}
+{{ $scripts := slice $tfn $navbartog }}
+
+{{ with .Site.Params.search.enabled }}
+{{ if . }}
+  {{ $search := resources.Get "/js/search.js" | resources.ExecuteAsTemplate "/js/search.js" . }}
+  {{ $scripts = $scripts | append $search }}
+{{ end }}
 {{ end }}
 
-
-
-{{ $navbartog := resources.Get "/js/navbar-toggle.js" }}
-{{ $userscript :=  $navbartog | minify | fingerprint }}
+{{ $userscript := $scripts | resources.Concat "/js/userscript.js" | minify | fingerprint }}
 <script src="{{ $userscript.RelPermalink }}"></script>

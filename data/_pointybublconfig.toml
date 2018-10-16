@@ -1,5 +1,6 @@
 sideboxes = [
   "author",
   "social",
-  "tagcloud"
+  "tagcloud",
+  "events"
 ]

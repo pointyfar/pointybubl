@@ -36,7 +36,7 @@
     <a href="{{.Permalink}}" class="card-footer-item">Previously: {{.Title}}</a>
     {{end}}
     <a href="{{- if .Section -}}{{- .Section | absURL}}{{else}}{{- .Site.BaseURL}}{{end}}" class="card-footer-item">
-      {{- if  .Section -}}See all: {{ .Section}}
+      {{- if  .Section -}}See all: {{ (.Site.GetPage .Section).Title }}
       {{- else -}}Home{{end}}
     </a>
     {{- with  .NextInSection -}}

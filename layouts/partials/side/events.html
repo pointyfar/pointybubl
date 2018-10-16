@@ -1,0 +1,39 @@
+
+{{ $eventsection := cond (isset .config "section") .config.section "events" }}
+{{ $eventpage := .context.Site.GetPage $eventsection }}
+{{ $event := cond (isset $eventpage.Params "eventdate") ($eventpage.Params.eventdate) "date" }}
+{{ $count := cond (isset .config "count") .config.count 2 }}
+{{ $label := cond (isset .config "label") .config.label "Upcoming events"}}
+{{ $pages := (where .context.Site.RegularPages "Type" "in" $eventsection).ByParam ($event)  }}
+
+{{ $pagesrange := $pages }}
+{{ $futurepages := slice }}
+{{ range $pagesrange }}
+  {{ $now := now.Format "2006-01-02" }}
+  {{ $start := (dateFormat "2006-01-02" (index .Params $event) ) }}
+  {{ if ge $start $now }}
+    {{ $futurepages = $futurepages | append . }}
+  {{ end }}
+{{ end }}
+
+  <div class="content">
+    <div class="columns is-multiline is-gapless">
+      <div class="column is-full">
+        <div class="card">
+          <header class="card-header">
+            <div class="card-header-title">
+              {{$label}}
+            </div>
+          </header>
+        </div>
+      </div>
+        {{ range $i, $e := $futurepages }}
+          {{ if lt $i $count}}
+          <div class="column is-full">
+            {{ partial "content/card-event.html" (dict "event" (index $e.Params $event) "context" $e "hasdesc" false )}}
+          </div>
+          {{ end }}
+        {{ end }}
+    </div>
+      
+  </div>

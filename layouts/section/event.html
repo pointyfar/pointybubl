@@ -56,7 +56,11 @@
       <div class="columns is-multiline">
           {{ range $i, $e := $futurepages }}
           <div class="column is-half-tablet is-one-third-desktop">
-            {{ template "eventbox" (dict "event" (index $e.Params $event) "context" $e "i" $i )}}
+            {{ $hasdesc := true }}
+            {{ if gt $i 2 }}
+              {{ $hasdesc = false }}
+            {{ end }}
+            {{ partial "content/card-event.html" (dict "event" (index $e.Params $event) "context" $e "hasdesc" $hasdesc )}}
           </div>
           {{ end }}
       </div>
@@ -81,112 +85,5 @@
   {{ end }}
   {{ end }}
 </div>
-
-    
-
-<script>
-
-
-var t = document.getElementsByClassName("timefromnow");
-console.log(t)
-
-for(var i=0; i< t.length; i++) {
-  var then = new Date(parseInt(t[i].dataset.time * 1000));
-  var now = new Date;
-  var diff = Math.round((then - now) / (1000 * 60 * 60 * 24)); // round the amount of days
-  console.log(i, then)
-  
-  var tfn = "";
-  if (diff < 14) {
-    tfn = diff == 1 ? "1 day" : `${diff} days`;
-  } else if ( diff < 60 ) {
-    var text = Math.floor(diff / 7);
-    tfn = `${text} weeks`;
-  } else if ( diff < 365 ) {
-    var text = Math.floor(diff / 30);
-    tfn = `${text} months`;
-  } else {
-    var text = Math.floor(diff / 365);
-    tfn = text == 1 ? `${text}+ year` : `${text}+ years`;
-  }
-  console.log(t[i],tfn)
-
-  t[i].innerHTML = tfn;
-  
-}
-
-</script>
 {{ end }}
 
-
-
-
-
-
-
-
-
-
-
-{{ define "eventbox" }}
-<div class="card event">
-<div class="card-content">
-  <article class="media">
-    <div class="media-left">
-      <div class="eventbox event-my">
-        <strong>{{ dateFormat "Jan" .event | upper }}</strong> {{ dateFormat "2006" .event }}
-      </div>
-      <div class="eventbox event-day">
-        {{ dateFormat "02" .event }}
-      </div>
-      <div class="eventbox event-t">
-      {{ dateFormat "3:04 PM" .event }}
-      </div>
-      <div class="eventbox event-diff">
-        in <span class="timefromnow" data-time="{{(time .event).Unix}}">{{(time .event).Unix}}</span>
-      </div>
-      
-    </div>
-    <div class="media-content">
-      <div class="content">
-        <p>
-          <strong><a href="{{.context.Permalink}}">{{.context.Title}}</a></strong>
-        </p>
-        <p>
-        {{ with .context.Params.location }}{{.}}
-        {{ else }}Venue TBD
-        {{end}}
-      </p>
-      {{ if le .i 2 }}
-        <p>
-          {{with .context.Summary}}{{.}}{{else}}{{.context.Content}}{{end}}
-        </p>
-        
-      {{ end }}
-      <em><a href="{{.context.Permalink}}">More details</a>
-      </em>
-      </div>
-      <nav class="level is-mobile">
-        <div class="level-left">
-          <a class="level-item" aria-label="reply">
-            <span class="icon is-small">
-              <i class="fas fa-reply" aria-hidden="true"></i>
-            </span>
-          </a>
-          <a class="level-item" aria-label="retweet">
-            <span class="icon is-small">
-              <i class="fas fa-retweet" aria-hidden="true"></i>
-            </span>
-          </a>
-          <a class="level-item" aria-label="like">
-            <span class="icon is-small">
-              <i class="fas fa-heart" aria-hidden="true"></i>
-            </span>
-          </a>
-        </div>
-      </nav>
-    </div>
-  </article>
-</div>
-</div>
-{{ end }}

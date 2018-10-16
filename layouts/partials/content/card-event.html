@@ -1,0 +1,40 @@
+<div class="card event">
+<div class="card-content">
+  <article class="media">
+    <div class="media-left">
+      <div class="eventbox event-my">
+        <strong>{{ dateFormat "Jan" .event | upper }}</strong> {{ dateFormat "2006" .event }}
+      </div>
+      <div class="eventbox event-day">
+        {{ dateFormat "02" .event }}
+      </div>
+      <div class="eventbox event-t">
+        {{ dateFormat "3:04 PM" .event }}<br>
+        {{ dateFormat "MST" .event }}
+      </div>
+      <div class="eventbox event-diff">
+        in <span class="timefromnow" data-time="{{(time .event).Unix}}">{{(time .event).Unix}}</span>
+      </div>
+      
+    </div>
+    <div class="media-content">
+      <div class="content">
+        <p>
+          <strong><a href="{{.context.Permalink}}">{{.context.Title}}</a></strong>
+        </p>
+        <p><strong>
+        {{ with .context.Params.location }}{{.}}
+        {{ else }}Venue TBD
+        {{end}}
+        </strong>
+        </p>
+      {{ if .hasdesc }}
+        <p>{{with .context.Summary}}{{.}}{{else}}{{.context.Content}}{{end}}</p>
+      {{ end }}
+      <em><a href="{{.context.Permalink}}">More details</a>
+      </em>
+      </div>
+    </div>
+  </article>
+</div>
+</div>

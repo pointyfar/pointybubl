@@ -12,3 +12,15 @@
     font-style: italic;
   }
 }
+
+.side-event {
+  .media {
+    display: flex;
+    flex-direction: row;
+  }
+  .media-left {
+    width: 40%;
+    max-width: 120px
+  }
+  
+}

@@ -29,11 +29,18 @@
       </div>
         {{ range $i, $e := $futurepages }}
           {{ if lt $i $count}}
-          <div class="column is-full">
+          <div class="column is-full side-event">
             {{ partial "content/card-event.html" (dict "event" (index $e.Params $event) "context" $e "hasdesc" false )}}
           </div>
           {{ end }}
         {{ end }}
+        <div class="column is-full">
+          <div class="card">
+            <div class="card-content">
+              <a href="{{$eventpage.Permalink}}">See all {{ $eventpage.Title }}</a>
+            </div>
+          </div>
+        </div>
     </div>
       
   </div>

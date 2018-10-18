@@ -2,15 +2,14 @@
 <div class="card-content">
   <article class="media">
     <div class="media-left">
-      <div class="eventbox event-my">
-        <strong>{{ dateFormat "Jan" .event | upper }}</strong> {{ dateFormat "2006" .event }}
+      <div class="eventbox event-t">
+        {{ dateFormat "3:04 PM" .event }} {{ dateFormat "MST" .event }}
       </div>
       <div class="eventbox event-day">
         {{ dateFormat "02" .event }}
       </div>
-      <div class="eventbox event-t">
-        {{ dateFormat "3:04 PM" .event }}<br>
-        {{ dateFormat "MST" .event }}
+      <div class="eventbox event-my">
+        <strong>{{ dateFormat "Jan" .event | upper }}</strong> {{ dateFormat "2006" .event }}
       </div>
       <div class="eventbox event-diff">
         in <span class="timefromnow" data-time="{{(time .event).Unix}}">{{(time .event).Unix}}</span>

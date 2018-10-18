@@ -1,7 +1,7 @@
 name = "pointybubl"
 license = "MIT"
 licenselink = "https://github.com/pointyfar/pointybubl/blob/master/LICENSE.md"
-description = "BUBL: A BUlma BLog theme for Hugo. Ideal for blogs, includes image gallery, and can handle page resources."
+description = "BUBL: A Bulma Blog theme for Hugo. Configurable sidebar boxes and list layouts."
 homepage = "https://pointy.netlify.com/"
 tags = ["blog", "bulma", "page bundles", "food", "photography", "images", "print-friendly" ]
 features = ["page bundles", "image gallery", "Hugo pipes"]

@@ -14,13 +14,36 @@
 }
 
 .side-event {
-  .media {
+  .event-wrapper {
     display: flex;
     flex-direction: row;
   }
-  .media-left {
+  .event-when {
     width: 40%;
-    max-width: 120px
+    max-width: 120px;
+    margin-right: 1rem;
+  }
+  
+}
+
+.main-event {
+    
+  .event-wrapper {
+    display: flex;
+    flex-direction: column;
+  }
+  .event-when {
+    margin-bottom: 2rem;
+  }
+  .event-title {
+    text-align: center;
+    font-size: 150%;
+  }
+  .event-location {
+    text-align: center;
+    margin-bottom: 1rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid #999;
   }
   
 }

@@ -1,7 +1,7 @@
 <div class="card event">
 <div class="card-content">
-  <article class="media">
-    <div class="media-left">
+  <article class="event-wrapper">
+    <div class="event-when">
       <div class="eventbox event-t">
         {{ dateFormat "3:04 PM" .event }} {{ dateFormat "MST" .event }}
       </div>
@@ -18,10 +18,10 @@
     </div>
     <div class="media-content">
       <div class="content">
-        <p>
+        <p class="event-title">
           <strong><a href="{{.context.Permalink}}">{{.context.Title}}</a></strong>
         </p>
-        <p><strong>
+        <p class="event-location"><strong>
         {{ with .context.Params.location }}{{.}}
         {{ else }}Venue TBD
         {{end}}

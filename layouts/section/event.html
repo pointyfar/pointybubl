@@ -55,7 +55,7 @@
       <h5>Upcoming events:</h5>
       <div class="columns is-multiline">
           {{ range $i, $e := $futurepages }}
-          <div class="column is-half-tablet is-one-third-desktop">
+          <div class="column is-half-tablet is-one-third-desktop main-event">
             {{ $hasdesc := true }}
             {{ if gt $i 2 }}
               {{ $hasdesc = false }}

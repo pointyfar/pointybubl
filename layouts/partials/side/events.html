@@ -27,12 +27,10 @@
           </header>
         </div>
       </div>
-        {{ range $i, $e := $futurepages }}
-          {{ if lt $i $count}}
+        {{ range $i, $e := (first $count $futurepages) }}
           <div class="column is-full side-event">
             {{ partial "content/card-event.html" (dict "event" (index $e.Params $event) "context" $e "hasdesc" false )}}
           </div>
-          {{ end }}
         {{ end }}
         <div class="column is-full">
           <div class="card">

@@ -15,6 +15,9 @@
       <div class="card-content">
         
         <div class="content">
+          <div class="columns is-multiline">
+            <div class="column is-12">
+            
           <p class="title">{{$author}}</p>
               {{ with .Resources.ByType "image" }}
                 <div class="" style="float:left; padding-right: 2rem; padding-bottom: 2rem;">
@@ -28,7 +31,9 @@
             {{with .Content}}
             <div class="" >{{.}}</div>
             {{end}}
-          <hr>
+          </div>
+          <div class="column is-12">
+            <hr>
           {{ range $key, $taxonomy := (index .Site.Taxonomies .Type )}}
             {{ if eq $currentTerm $key }}
             <h4>
@@ -70,6 +75,8 @@
             {{ end }}
           {{ end }}
           
+        </div>
+        </div>
         </div>
       </div>
       <footer class="card-footer">

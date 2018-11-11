@@ -19,7 +19,7 @@
     {{ range . }}
       {{ if .default }}
       {{ $hasauthor = true }}
-        {{ $authorpage := (printf "authors/%s" .name )}}
+        {{ $authorpage := (printf "%s/%s" $authortaxo .name )}}
         {{ with $.Site.GetPage $authorpage }}by <a href="{{ $authorpage | absURL}}">{{.Title}}</a>{{ end }}
       {{ end }}
     {{ end }}

@@ -30,7 +30,7 @@
             
             {{ range ($scratch.Get "terms") }}
             {{ $url := printf "%s/%s" $taxonomy .term }}
-              <span class="font_size_{{.count}}"><a href="{{$url | absURL}}">
+              <span class="font_size_{{.count}}"><a href="{{$url | urlize | absURL}}">
                 {{if $humanize}}{{ .term | humanize }}{{ else }}{{.term}}{{end}}
               </a></span>
             {{ end }}

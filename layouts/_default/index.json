@@ -5,14 +5,14 @@
   {{- range $i, $e := .Site.RegularPages -}}
   {
     "i": {{$i}},
-    "contents":{{ .Content | plainify | jsonify }},
-    "permalink": "{{ .Permalink }}",
-    "title": "{{ .Title }}"
-    {{- if .Params.tags -}},
-    "tags":{{- .Params.tags | jsonify -}}
+    "contents":{{ $e.Content | plainify | jsonify }},
+    "permalink": "{{ $e.Permalink }}",
+    "title": "{{ $e.Title }}"
+    {{- if $e.Params.tags -}},
+    "tags":{{- $e.Params.tags | jsonify -}}
     {{end}}
-    {{- if .Params.categories -}},
-    "categories" : {{- .Params.categories | jsonify -}}
+    {{- if $e.Params.categories -}},
+    "categories" : {{- $e.Params.categories | jsonify -}}
     {{end}}
   }
     {{if lt $i (sub $len 1) }},{{end}}

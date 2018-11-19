@@ -15,7 +15,7 @@
         <div class="content">
           <div class="social-container">
             {{ range $list.social }}
-              <a class="icon" href="{{.url}}" {{with .color}}style="color:{{.}}"{{end}} >
+              <a class="icon" href="{{.url}}" aria-label="{{with .label}}{{.}}{{else}}.icon{{end}}" {{with .color}}style="color:{{.}}"{{end}} >
                 <i class="{{.icon}}"></i>
               </a>
             {{ end }}

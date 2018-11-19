@@ -22,7 +22,7 @@
     {{ if isset .Site.Params.search "enabled" }}
     {{ if .Site.Params.search.enabled }}
     <div class="navbar-item">
-      <button class="button" id="launchSearchModal">
+      <button class="button" aria-label="launch search" id="launchSearchModal">
         {{if isset .Site.Params.search "icon"}}
         <i class="{{ .Site.Params.search.label | default "fas fa-search"}}"></i>
         {{ else }}

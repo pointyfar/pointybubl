@@ -1,0 +1,20 @@
+{{$config := .config.config}}
+
+{{ $innerclass := (cond (eq $config.style "button") "button is-light" "")  }}
+
+
+
+{{ $tag := ( cond (or (eq $config.style "ol") (eq $config.style "ul")) "li" $config.style ) }}
+{{ $outertag := cond (or (eq $config.style "ol") (eq $config.style "ul")) $config.style "div"  }}
+{{ $aclass := cond (eq $config.style "button") "button is-light" "" }}
+
+<h1>{{with $config.label}}{{.}}{{else}}Links{{end}}</h1>
+{{ printf "<%s class=\"%s\">" $outertag ($config.class | default "") | safeHTML }}
+  {{range $config.list}}
+    {{cond (eq $config.style "button") "" (printf "<%s>" $tag | safeHTML) }}
+    <a href="{{.url}}" class="{{$aclass | safeHTMLAttr}}">
+    {{ .text }}
+    </a>
+    {{cond (eq $config.style "button") "" (printf "</%s>" $tag | safeHTML) }}
+  {{end}}
+{{ printf "</%s>" $outertag | safeHTML}}

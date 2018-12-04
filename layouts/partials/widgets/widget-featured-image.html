@@ -1,0 +1,5 @@
+{{ $config := .config.config }}
+
+<div class="card-image">
+  <figure class="image"><img class="" src="{{- $config.url | absURL -}}" alt="{{$config.alt}}"></figure>
+</div>

@@ -1,0 +1,44 @@
+{{ $context := .context }}
+{{ $config := .config.config }}
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item brand brand-title" href="{{ $context.Site.BaseURL }}">
+      {{ with $context.Site.Params.brand }}{{.}}{{else}}{{$context.Site.Title}}{{end}}
+    </a>
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navMenu">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+  <div class="navbar-menu" id="navMenu">
+  <div class="navbar-start">
+    
+  </div>
+  <div class="navbar-end">
+    {{ range $context.Site.Menus.main }}
+    <a class="navbar-item {{if or ($context.IsMenuCurrent "main" .) ($context.HasMenuCurrent "main" .) }} active{{end}}" href="{{ .URL }}" title="{{ .Title }}">{{ .Name }}</a>
+    {{ end}}
+    {{ if isset $config "enabled" }}
+    {{ if $config.enabled }}
+    <div class="navbar-item">
+      <button class="button" aria-label="launch search" id="launchSearchModal">
+        {{if isset $config "icon"}}
+        <i class="{{ $config.label | default "fas fa-search"}}"></i>
+        {{ else }}
+        {{ $config.label | default "Search"}}
+        {{ end }}
+      </button>
+    </div>
+    {{ end }}
+    {{ end }}
+
+  </div>
+</div>
+</nav>
+
+{{ if isset $config "enabled" }}
+{{ if $config.enabled }}
+  {{partial "utils/search-modal.html" .context }}
+{{ end }}
+{{ end }}

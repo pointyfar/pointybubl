@@ -1,0 +1,28 @@
+{{ $context := .context }}
+{{ $config := .config.config }}
+
+<section class="hero is-primary {{- if $context.IsHome }} is-medium {{ end }}">
+  <div class="hero-wrapper {{if $context.IsHome}} hero-wrapper-bg{{end}}">
+    <div class="hero-body {{ if and $context.IsHome (isset $config.hero "background") }}transparent{{end}} {{with $config.bgislight }}{{if .}}light-bg{{end}}{{else}}dark-bg{{end}}">
+      {{ if and $context.IsHome $context.Site.Params.brandimage }}
+        {{ partial "hero/brand-image.html" $context }}
+      {{ else }}
+      <div class="container brand">
+        <h1 class="title brand-title">
+          <a href="{{$context.RelPermalink}}">{{ $context.Title  }}</a>
+        </h1>
+        <h2 class="subtitle">
+          {{- if $context.IsHome }} 
+            {{- if (isset $context.Site.Params "subtitle") }}
+            {{- $context.Site.Params.subtitle }}
+            {{- end }}
+          {{- else if $context.IsPage }}
+            {{ partial "utils/author.html" $context }}
+          {{ end }}
+        </h2>
+      </div>
+      {{ end }}
+    </div>
+  </div>
+  {{ partial "hero/subnav.html" $context }}
+</section>

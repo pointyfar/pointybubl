@@ -1,0 +1,37 @@
+{{ $config := .config }}
+{{ $mainSection := .context.Section}}
+
+{{ $pages := where .context.Site.RegularPages "Type" "in" .context.Section }}
+
+{{ $paginator := .context.Paginate ($pages.ByPublishDate)  }}
+{{ $postCount := $paginator.PageSize }}
+
+<div class="card post-card">
+  <div class="card-content content">
+  <ul>
+{{- range first $postCount ( $pages.ByPublishDate.Reverse ) -}}
+
+    <li><a href="{{.Permalink}}">{{.Title}}</a>
+    {{ if isset $config "display" }}
+      <span class="has-text-weight-normal">
+        {{ if in $config.display "authors" }}
+          &emsp;&middot;&emsp;
+          {{ partial "utils/author.html" . }}
+        {{ end }}
+        {{ if in $config.display "date" }}
+          &emsp;&middot;&emsp;
+          {{- with .PublishDate -}}<time datetime="{{- .Format "2006-01-02T15:04:05-07:00" -}}">{{- .Format "02 Jan 2006" -}}</time>{{- end -}}
+        {{ end }}
+      </span>
+    {{ end }}
+    
+    
+    </li>
+  
+  
+{{ end }}
+</ul>
+
+</div>
+</div>
+

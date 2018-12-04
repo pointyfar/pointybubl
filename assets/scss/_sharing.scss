@@ -24,7 +24,10 @@ a.resp-sharing-button__link {
   border-radius: 5px;
   transition: 25ms ease-out;
   padding: 0.5em 0.75em;
-  font-family: Helvetica Neue,Helvetica,Arial,sans-serif
+  font-family: Helvetica Neue,Helvetica,Arial,sans-serif;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
 .resp-sharing-button__icon svg {

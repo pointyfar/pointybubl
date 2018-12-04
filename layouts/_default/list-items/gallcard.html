@@ -21,10 +21,6 @@
             <img src="{{ ( .Fill "400x300" ).Permalink }}" >
             {{ end }}
           </figure>
-        {{ else if isset .Site.Params.placeholder "img" }}
-        <figure class="image is-4by3">
-          <img src="{{.Site.Params.placeholder.img | absURL}}" >
-        </figure>
         {{ else }}
           {{ $ts := (cond (isset $.Site.Params.placeholder "test_size") ($.Site.Params.placeholder.text_size) "10px" ) }}
           {{ $label := (cond (isset $.Site.Params.placeholder "label") ($.Site.Params.placeholder.label) "No Image" ) }}

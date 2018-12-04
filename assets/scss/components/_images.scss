@@ -10,5 +10,10 @@ figure.author-image {
 }
 
 .image.is-4by3 > svg.placeholder {
-  margin-top: -75%
+  margin-top: -75%;
+  height: auto;
+}
+
+.carousel .carousel-container .carousel-item.has-background .is-background {
+  height: auto;
 }

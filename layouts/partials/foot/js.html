@@ -19,5 +19,3 @@ var carousels = bulmaCarousel.attach();
 {{ end }}
 {{ end }}
 
-{{ $userscript := $scripts | resources.Concat "/js/userscript.js" | minify | fingerprint }}
-<script src="{{ $userscript.RelPermalink }}"></script>

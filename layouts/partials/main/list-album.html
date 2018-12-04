@@ -1,0 +1,36 @@
+{{ $config := .config }}
+
+{{ $pages := where .context.Site.RegularPages "Type" "in" .context.Section }}
+{{ $paginator := .context.Paginate ($pages.ByPublishDate)  }}
+{{ $postCount := $paginator.PageSize }}
+
+
+
+<div class="card card-list-container">
+
+  {{ if gt $paginator.TotalPages 1 }}
+  <div class="card-header">
+    {{ partial "utils/paginator.html" ( dict "paginator" $paginator ) }}
+  </div>
+  {{ end }}
+
+  <div class="card-content">
+    <div>
+    {{ if eq $paginator.PageNumber 1 }}
+      {{ with .context.Content }}{{ . }}<hr>{{ end }}
+    {{ end }}
+  </div>
+    <div class="columns is-multiline">
+      {{ range $paginator.Pages }}
+        {{ .Render "list-items/gallcard" }}
+      {{ end }}
+    </div>  
+  </div>
+
+  {{ if gt $paginator.TotalPages 1 }}
+  <footer class="card-footer">
+    {{ partial "utils/paginator.html" ( dict "paginator" $paginator ) }}
+  </footer>
+  {{ end }}
+
+</div>

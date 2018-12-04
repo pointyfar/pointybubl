@@ -1,0 +1,21 @@
+{{ $context := .context }}
+{{ $config := .config.config }}
+{{ $list := $config.list }}
+<div class="card">
+  <header class="card-header">
+    <div class="card-header-title">
+      {{  $config.label | default "Follow me!" }}
+    </div>
+  </header>
+  <div class="card-content">
+    <div class="content">
+      <div class="social-container">
+        {{ range $list }}
+          <a class="icon" href="{{.url}}" aria-label="{{with .label}}{{.}}{{else}}.icon{{end}}" {{with .color}}style="color:{{.}}"{{end}} >
+            <i class="{{.icon}}"></i>
+          </a>
+        {{ end }}
+      </div>
+    </div>
+  </div>
+</div>

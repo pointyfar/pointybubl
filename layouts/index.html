@@ -1,22 +1,4 @@
 {{ define "main" }}
 
-{{ $mainSections := .Site.Params.mainSections }}
-
-{{ $pages := where .Site.RegularPages "Type" "in" $mainSections }}
-{{ $pages = $pages | append (where (where .Site.RegularPages "Type" "page") "Title" "in" $mainSections) }}
-
-{{ $paginator := .Paginate ($pages.ByPublishDate)  }}
-
-{{ $.Scratch.Set "postCount" ( $paginator.PageSize ) }}
-
-<div class="columns is-multiline">
-  {{ if gt (len $pages) 0 }}
-    {{- range first ( $.Scratch.Get "postCount" ) ( $pages.ByPublishDate.Reverse ) -}}
-    <div class="column is-12">
-      {{ partial "content/card-summary.html" . }}
-    </div>
-    {{- end -}}
-  {{- end -}}
-</div>
 
 {{ end }}

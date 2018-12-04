@@ -36,12 +36,17 @@ $foot-note: "{{.}}";
 $foot-note: "Notes:";
 {{ end }}
 
-{{ if isset .Site.Params.hero "background" }}
-$bg: "{{.Site.Params.hero.background | absURL}}";
+{{ range .Site.Data.config.params.widgets }}
+{{ if eq .widgetName "widget-hero" }}
+{{ $hero := . }}
+{{ with $hero.config.background }}
+$bg: "{{. | absURL}}";
 .hero-wrapper-bg {
   background:url($bg) no-repeat center; background-size: cover;
 }
-{{end}}
+{{ end }}
+{{ end }}
+{{ end }}
 
 
 
@@ -59,5 +64,6 @@ $bg: "{{.Site.Params.hero.background | absURL}}";
 @import "components/gallery";
 @import "components/images";
 @import "components/event";
+@import "components/pagination";
 @import "sharing";
 @import "custom";

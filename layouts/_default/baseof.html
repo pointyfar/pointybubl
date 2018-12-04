@@ -1,48 +1,40 @@
-<!DOCTYPE html>
-<html{{ with .Site.LanguageCode }} lang="{{ . }}"{{ end }}>
-
-{{ $showsidebar := false }}
-{{ $leftsidebar := false }}
-
-{{- if isset .Site.Params "sidebar" -}}
-  {{- if isset .Site.Params.sidebar "display" -}}
-    {{- $showsidebar = true -}}
-  {{- end -}}
-  {{- if isset .Site.Params.sidebar "position" -}}
-    {{- if eq "left" .Site.Params.sidebar.position -}}
-      {{- $leftsidebar = true -}}
-    {{- end -}}
-  {{- end -}}
-{{- end -}}
-
+<html>
 {{- partial "head.html" . -}}
+<style>
 
+.widget {
+  width: 100%;
+}
+</style>
 <body>
+  
+<div class="content main">
+{{ $config := .Site.Data.config.params.widgets }}
 
-<div class="wrapper">
-  {{- partial "header.html" . -}}
-  <section class="section">
-    <div class="container">
-      <div class="columns">
-        {{- if and $showsidebar $leftsidebar -}}
-        {{- partial "sidebar.html" . -}}
-        {{- end -}}
-        <div class="column {{ if $showsidebar }}is-three-quarters{{ end }}">
-          <main>
-          {{- block "main" . -}}
-          {{- end -}}
-          </main>
-        </div>
-        {{- if and $showsidebar (not $leftsidebar) -}}
-        {{- partial "sidebar.html" . -}}
-        {{- end -}}
-      </div>
-    </div>
-  </section>
+{{ template "layout" (dict "config" $config "context" . "sitex" $.Site ) }}
+
 </div>
-{{- partial "footer.html" . -}}
-{{- partial "foot.html" . -}}
 
+{{ define "layout" }}
+
+{{ $config := .config }}
+{{ $context := .context }}
+{{ $sitex := .sitex }}
+<div class="columns is-multiline">
+  {{ range $config }}
+      {{ if eq .type "section" }}
+      <div class="{{.class|safeHTMLAttr}} wrap {{with .config}}{{with .class}}{{.}}{{end}}{{end}}">
+        {{template "layout" (dict "config" .items "context" $context "sitex" $sitex )}} 
+      </div>
+      {{ else }}
+      <div class="{{.class|safeHTMLAttr}} column is-full">
+        {{ partial (printf "widgets/%s" .widgetName ) (dict "config" . "context" $context) }}
+      </div>
+      {{ end }}
+  {{ end }}
+</div>
+{{ end }}
+
+{{ partial "foot.html" . }}
 </body>
-
 </html>

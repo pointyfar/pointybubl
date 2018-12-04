@@ -1,0 +1,43 @@
+{{ $context := .context }}
+{{ $config := .config.config }}
+{{$context.Kind}}
+{{ if eq $context.Kind "page" }}
+
+{{ partial "content/card-full.html" $context }}
+
+{{ else if eq $context.Kind "home"}}
+<div>
+  <h1>Home</h1>
+{{ if isset $config "homepage" }}
+{{ partial "main/homepage.html" (dict "context" $context "config" $config.homepage) }}
+{{ end }}
+</div>
+{{ else if eq $context.Kind "section" }}
+{{ if isset $config "section" }}
+{{ partial "main/list.html" (dict "context" $context "config" $config.section) }}
+
+{{ end }}
+
+{{ else }}
+<div class="card card-list-container">
+  <div class="card-content">
+    {{ with $context.Content }}
+    <div class="content">
+      {{.}}
+    </div>
+    <hr>
+    {{ end }}
+    <div class="content">
+      <ul>
+        {{ range $context.Pages }}
+          <li>
+            <a href="{{.Permalink}}">{{.Title}}</a>
+          </li>
+        {{ end }}
+      </ul>
+    </div>
+  </div>
+</div>
+
+{{ end }}
+

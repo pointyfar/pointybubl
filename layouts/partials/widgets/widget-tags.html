@@ -1,0 +1,42 @@
+{{ $context := .context }}
+{{ $config := .config.config }}
+{{ $threshold := 1 }}
+{{ $humanize := false }}
+
+{{ if (index $context.Site.Taxonomies $config.taxonomy) }}
+  {{ if isset $config "threshold" }}{{ $threshold = $config.threshold }}{{ end }}
+  {{ if isset $config "humanize" }}{{ $humanize = true }}{{ end }}
+    
+  {{ $taxonomy := $config.taxonomy }}
+  {{ $terms := index $context.Site.Taxonomies $config.taxonomy }}
+  
+  <div class="card">
+    <header class="card-header">
+      <div class="card-header-title">
+        {{with $config.label}}{{.}}{{else}}{{ $taxonomy }}{{end}}
+      </div>
+    </header>
+    <div class="card-content">
+      <div class="content">
+        <div class="social-container">
+          {{ $scratch := newScratch }} 
+          {{ $scratch.Set "terms" slice }}
+          {{ range $term, $p := $terms }}
+            {{ if ge (len $p) $threshold}}
+              {{ $scratch.Add "terms" (dict "term" $term "count" (len $p)) }}
+            {{ end }}
+          {{ end }}
+          
+          {{ range ($scratch.Get "terms") }}
+          {{ $url := printf "%s/%s" $taxonomy .term }}
+            <span class="font_size_{{.count}}"><a href="{{$url | urlize | absURL}}">
+              {{if $humanize}}{{ .term | humanize }}{{ else }}{{.term}}{{end}}
+            </a></span>
+          {{ end }}
+        </div>
+      </div>
+    </div>
+  </div>
+{{ else }}
+  No terms found with taxonomy {{$config.taxonomy}}
+{{ end }}  

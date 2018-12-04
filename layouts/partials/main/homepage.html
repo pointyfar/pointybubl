@@ -1,0 +1,50 @@
+{{ $config := .config }}
+
+{{ $mainSections := $config.sections }}
+
+
+{{ $pages := where .context.Site.RegularPages "Type" "in" $mainSections }}
+{{ $pages = $pages | append (where (where .context.Site.RegularPages "Type" "page") "Title" "in" $mainSections) }}
+{{ $paginator := .context.Paginate ($pages.ByPublishDate)  }}
+{{ $postCount := $paginator.PageSize }}
+
+{{- range first $postCount ( $pages.ByPublishDate.Reverse ) -}}
+<div class="card post-card">
+  <header class="post-header card-header">
+    {{ if isset $config "display" }}
+      {{ if in $config.display "title" }}
+      <div class="card-header-title"><a href="{{.Permalink}}">{{.Title}}</a></div>
+      {{ end }}
+      <span class="card-header-author has-text-weight-normal">
+        {{ if in $config.display "authors" }}
+          {{ partial "utils/author.html" . }}
+          &emsp;&middot;&emsp;
+        {{ end }}
+        {{ if in $config.display "date" }}
+          {{- with .PublishDate -}}<time datetime="{{- .Format "2006-01-02T15:04:05-07:00" -}}">{{- .Format "02 Jan 2006" -}}</time>{{- end -}}
+        {{ end }}
+      </span>
+    {{ end }}
+  </header>
+  
+  <div class="card-content">
+    <div class="content">
+      {{ if isset $config "display" }}
+        {{ if in $config.display "content" }}
+          {{- .Content -}}
+        {{ else if in $config.display "summary" }}
+          {{- if .Truncated -}}
+          {{- .Summary -}}
+          <p><em><a class="content is-small" href="{{- .RelPermalink -}}">Read More... </a></em></p>
+          {{- else -}}
+          {{- .Content -}}
+          <p><em><a class="content is-small" href="{{- .RelPermalink -}}">Go to page</a></em></p>
+          {{- end -}}
+        {{- end -}}
+      {{- end -}}
+    </div>
+  </div>
+  
+</div>
+{{ end }}
+

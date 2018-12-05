@@ -1,38 +1,29 @@
 <html>
 {{- partial "head.html" . -}}
-<style>
-
-.widget {
-  width: 100%;
-}
-</style>
 <body>
   
 <div class="content main">
-{{ $config := .Site.Data.config.params.widgets }}
-
-{{ template "layout" (dict "config" $config "context" . "sitex" $.Site ) }}
-
+  {{ $config := .Site.Data.config.params.widgets }}
+  {{ template "layout" (dict "config" $config "context" . "sitex" $.Site ) }}
 </div>
 
 {{ define "layout" }}
-
-{{ $config := .config }}
-{{ $context := .context }}
-{{ $sitex := .sitex }}
-<div class="columns is-multiline">
-  {{ range $config }}
-      {{ if eq .type "section" }}
-      <div class="{{.class|safeHTMLAttr}} wrap {{with .config}}{{with .class}}{{.}}{{end}}{{end}}">
-        {{template "layout" (dict "config" .items "context" $context "sitex" $sitex )}} 
-      </div>
-      {{ else }}
-      <div class="{{.class|safeHTMLAttr}} column is-full">
-        {{ partial (printf "widgets/%s" .widgetName ) (dict "config" . "context" $context) }}
-      </div>
-      {{ end }}
-  {{ end }}
-</div>
+  {{ $config := .config }}
+  {{ $context := .context }}
+  {{ $sitex := .sitex }}
+  <div class="columns is-multiline">
+    {{- range $config -}}
+        {{- if eq .type "section" -}} {{/* Container */}}
+        <div class="{{.class|safeHTMLAttr}} wrap {{with .config}}{{with .class}}{{.}}{{end}}{{end}}">
+          {{ template "layout" (dict "config" .items "context" $context "sitex" $sitex ) }} 
+        </div>
+        {{- else -}} {{/* Widget */}}
+        <div class="{{with .class}}{{.|safeHTMLAttr}}{{end}} column is-full">
+          {{ partial (printf "widgets/%s" .widgetName ) (dict "config" . "context" $context) }}
+        </div>
+        {{- end -}}
+    {{- end -}}
+  </div>
 {{ end }}
 
 {{ partial "foot.html" . }}

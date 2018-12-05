@@ -67,3 +67,7 @@ $bg: "{{. | absURL}}";
 @import "components/pagination";
 @import "sharing";
 @import "custom";
+
+.widget {
+  width: 100%;
+}

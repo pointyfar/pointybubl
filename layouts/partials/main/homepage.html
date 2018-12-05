@@ -5,10 +5,17 @@
 
 {{ $pages := where .context.Site.RegularPages "Type" "in" $mainSections }}
 {{ $pages = $pages | append (where (where .context.Site.RegularPages "Type" "page") "Title" "in" $mainSections) }}
-{{ $paginator := .context.Paginate ($pages.ByPublishDate)  }}
+{{ $pages = $pages.ByPublishDate.Reverse }}
+{{ $paginator := .context.Paginate $pages }}
 {{ $postCount := $paginator.PageSize }}
 
-{{- range first $postCount ( $pages.ByPublishDate.Reverse ) -}}
+{{ if and (gt $paginator.TotalPages 1) (ne $paginator.PageNumber 1) }}
+<div>
+  {{ partial "utils/paginator.html" ( dict "paginator" $paginator ) }}
+</div>
+{{ end }}
+
+{{- range ( $paginator.Pages.ByPublishDate.Reverse ) -}}
 <div class="card post-card">
   <header class="post-header card-header">
     {{ if isset $config "display" }}
@@ -21,7 +28,7 @@
           &emsp;&middot;&emsp;
         {{ end }}
         {{ if in $config.display "date" }}
-          {{- with .PublishDate -}}<time datetime="{{- .Format "2006-01-02T15:04:05-07:00" -}}">{{- .Format "02 Jan 2006" -}}</time>{{- end -}}
+          {{- with .PublishDate -}}<time datetime="{{- .Format "2006-01-02T15:04:05-07:00" -}}">{{- .Format "02 Jan 2006 3:04:05PM" -}}</time>{{- end -}}
         {{ end }}
       </span>
     {{ end }}
@@ -48,3 +55,8 @@
 </div>
 {{ end }}
 
+{{ if gt $paginator.TotalPages 1 }}
+<div>
+  {{ partial "utils/paginator.html" ( dict "paginator" $paginator ) }}
+</div>
+{{ end }}

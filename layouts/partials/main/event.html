@@ -1,0 +1,80 @@
+{{ $context := .context }}
+{{ $config := .config }}
+
+{{ $event := cond (isset $context.Params "eventdate" ) ($context.Params.eventdate) "date" }}
+
+{{ $pages := (where $context.Site.RegularPages "Type" "in" $context.Section).ByParam ($event)  }}
+
+{{ $paginated := false }}
+
+{{ $paginator := $context.Paginate $pages  }}
+
+
+{{ $futurepages := slice }}
+{{ $pastpages := slice }}
+{{ $pagesrange := slice }}
+
+{{ if $paginated }}
+  {{ $pagesrange = $paginator.Pages }}
+{{ else }}
+  {{ $pagesrange = $pages }}
+{{ end }}
+
+
+{{ range $pagesrange }}
+  {{ $now := now.Format "2006-01-02" }}
+  {{ $start := (dateFormat "2006-01-02" (index .Params $event) ) }}
+  {{ if ge $start $now }}
+    {{ $futurepages = $futurepages | append . }}
+  {{ else }}
+    {{ $pastpages = $pastpages | append . }}
+  {{ end }}
+{{ end }}
+
+
+<div class="card card-list-container">
+  {{ if $paginated }}        
+  {{ if gt $paginator.TotalPages 1 }}
+  <div class="card-header">
+    {{ partial "utils/paginator.html" ( dict "paginator" $paginator ) }}
+  </div>
+  {{ end }}
+  {{ end }}
+  <div class="card-content">
+    {{ if or (eq $paginator.PageNumber 1) (eq $paginated false) }}
+    {{ with .Content }}
+      <div class="content">{{ . }}<hr></div>
+    {{ end }}
+    {{ end }}
+    <div class="content">
+      <h5>Upcoming events:</h5>
+      <div class="columns is-multiline">
+          {{ range $i, $e := $futurepages }}
+          <div class="column is-half-tablet is-one-third-desktop main-event">
+            {{ $hasdesc := true }}
+            {{ if gt $i 2 }}
+              {{ $hasdesc = false }}
+            {{ end }}
+            {{ partial "content/card-event.html" (dict "event" (index $e.Params $event) "context" $e "hasdesc" $hasdesc )}}
+          </div>
+          {{ end }}
+      </div>
+      <hr>
+      <h5>Past events:</h5>
+      <div>
+        <ul>
+        {{ range (sort $pastpages (printf ".Params.%s" $event) "desc")  }}
+          <li><a href="{{.Permalink}}">{{.Title}}: {{index .Params $event | dateFormat "Jan 2 2006"}}</a></li>
+        {{ end }}
+        </ul>
+      </div>
+    </div>
+  </div>
+  {{ if $paginated }}        
+  {{ if gt $paginator.TotalPages 1 }}
+  <footer class="card-footer">
+    {{ partial "utils/paginator.html" ( dict "paginator" $paginator ) }}
+  </footer>
+  {{ end }}
+  {{ end }}
+</div>

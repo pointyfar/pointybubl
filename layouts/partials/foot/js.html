@@ -11,11 +11,17 @@ var carousels = bulmaCarousel.attach();
 {{ $navbartog := resources.Get "/js/navbar-toggle.js" }}
 
 {{ $scripts := slice $tfn $navbartog }}
+{{ $scripts = $scripts | resources.Concat "js/scripts.js" | minify | fingerprint }}
 
-{{ with .Site.Params.search.enabled }}
-{{ if . }}
-  {{ $search := resources.Get "/js/search.js" | resources.ExecuteAsTemplate "/js/search.js" . }}
-  {{ $scripts = $scripts | append $search }}
-{{ end }}
-{{ end }}
+<script src="{{ $scripts.RelPermalink }}"></script>
+
+{{range .Site.Data.config.params.widgets }}
+{{ if eq .widgetName "widget-navigation"}}
+  {{ with .config }}{{ with .enabled }}{{ if . }}
+    {{ $search := resources.Get "/js/search.js" | resources.ExecuteAsTemplate "/js/search.js" . }}
+    <script src="{{ $search.RelPermalink }}"></script>
+  {{end}}{{end}}{{end}}
+{{end}}
+{{end}}
+
 

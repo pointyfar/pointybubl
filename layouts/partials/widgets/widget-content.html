@@ -1,24 +1,28 @@
 {{ $context := .context }}
 {{ $config := .config.config }}
-{{$context.Kind}}
+
 {{ if eq $context.Kind "page" }}
+  {{ partial "content/card-full.html" $context }}
+{{ else if eq $context.Kind "home"}} {{/* Homepage */}}
+  {{ if isset $config "homepage" }}
+  <div>{{ partial "main/homepage.html" (dict "context" $context "config" $config.homepage) }}</div>
+  {{ end }}
+{{ else if eq $context.Kind "section" }} {{/* Section Page */}}
+  {{ $layout := "list" }}
+  {{ if isset $config "section" }}
+    {{ $layout = $config.section.listStyle }}
+    {{ if isset $context.Params "layout" }}
+      {{ $layout = $context.Params.layout }}
+    {{ end }}
+  {{ end }}
 
-{{ partial "content/card-full.html" $context }}
+  {{ $layout = cond (or (eq $layout "ol") (eq $layout "ul")) "list" $layout }}
+  {{ partial (printf "main/%s.html" $layout) (dict "context" $context "config" $config.section) }}
 
-{{ else if eq $context.Kind "home"}}
-<div>
-  <h1>Home</h1>
-{{ if isset $config "homepage" }}
-{{ partial "main/homepage.html" (dict "context" $context "config" $config.homepage) }}
-{{ end }}
-</div>
-{{ else if eq $context.Kind "section" }}
-{{ if isset $config "section" }}
-{{ partial "main/list.html" (dict "context" $context "config" $config.section) }}
-
-{{ end }}
-
-{{ else }}
+{{ else if eq $context.Kind "taxonomy" }}
+  {{ partial "main/taxonomy.html" (dict "context" $context "config" $config.section) }}
+{{ else }} {{/* Fallback */}}
+<hr>Fallback Layout
 <div class="card card-list-container">
   <div class="card-content">
     {{ with $context.Content }}
@@ -27,15 +31,15 @@
     </div>
     <hr>
     {{ end }}
+    {{ with $context.Pages }}
     <div class="content">
       <ul>
-        {{ range $context.Pages }}
-          <li>
-            <a href="{{.Permalink}}">{{.Title}}</a>
-          </li>
+        {{ range . }}
+          <li><a href="{{.Permalink}}">{{.Title}}</a></li>
         {{ end }}
       </ul>
     </div>
+    {{ end }}
   </div>
 </div>
 

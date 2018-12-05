@@ -1,20 +1,2 @@
 {{ define "main" }}      
-
-<div class="card card-list-container">
-  <header class="card-header">
-    <div class="card-header-title">
-      List of all {{ .Type  }}
-    </div>
-  </header>
-  <div class="card-content">
-    <div class="content">
-      <ul>
-      {{ range .Pages }}
-        {{ .Render "list-items/li" }}
-      {{ end }}
-      </ul>
-    </div>
-  </div>
-</div>
-    
 {{ end }}

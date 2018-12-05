@@ -1,4 +1,11 @@
 {{ $config := .config }}
+{{ $context := .context }}
+
+{{ $tag := "ul" }}
+
+{{ with $context.Params.layout }}
+{{ $tag = . }}
+{{ end }}
 {{ $mainSection := .context.Section}}
 
 {{ $pages := where .context.Site.RegularPages "Type" "in" .context.Section }}
@@ -8,8 +15,8 @@
 
 <div class="card post-card">
   <div class="card-content content">
-  <ul>
-{{- range first $postCount ( $pages.ByPublishDate.Reverse ) -}}
+  {{ printf "<%s>" $tag | safeHTML }}
+  {{- range first $postCount ( $pages.ByPublishDate.Reverse ) -}}
 
     <li><a href="{{.Permalink}}">{{.Title}}</a>
     {{ if isset $config "display" }}
@@ -24,13 +31,10 @@
         {{ end }}
       </span>
     {{ end }}
-    
-    
     </li>
-  
-  
-{{ end }}
-</ul>
+  {{ end }}
+  {{ printf "</%s>" $tag | safeHTML }}
+
 
 </div>
 </div>

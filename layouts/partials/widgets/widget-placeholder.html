@@ -1,0 +1,5 @@
+{{ $bg := .config.config.background | default "AliceBlue" }}
+{{ $color := .config.config.color | default "black" }}
+<div style="height: auto; flex: 1 0 auto; padding: 2rem; background: {{$bg | safeHTMLAttr}}; color: {{$color | safeHTMLAttr}};">
+  {{ .config.config.label | default "Placeholder" }}
+</div>

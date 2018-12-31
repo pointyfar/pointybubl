@@ -1,5 +1,5 @@
 <div class="image-brand-container">
   <div class="image-brand">
-    <img src="{{ .Site.Params.brandimage.image }}" alt="{{with .Site.Title}}{{.}}{{end}}">
+    <img src="{{ .Site.Params.brandImage | absURL }}" alt="{{with .Site.Title}}{{.}}{{end}}">
   </div>
 </div>

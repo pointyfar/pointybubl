@@ -18,10 +18,8 @@
 {{- range ( $paginator.Pages.ByPublishDate.Reverse ) -}}
 <div class="card post-card">
   <header class="post-header card-header">
+    <div class="card-header-title"><a href="{{.Permalink}}">{{.Title}}</a></div>
     {{ if isset $config "display" }}
-      {{ if in $config.display "title" }}
-      <div class="card-header-title"><a href="{{.Permalink}}">{{.Title}}</a></div>
-      {{ end }}
       <span class="card-header-author has-text-weight-normal">
         {{ if in $config.display "authors" }}
           {{ partial "utils/author.html" . }}
@@ -34,23 +32,27 @@
     {{ end }}
   </header>
   
-  <div class="card-content">
-    <div class="content">
-      {{ if isset $config "display" }}
-        {{ if in $config.display "content" }}
+  {{ if isset $config "display" }}
+      {{ if in $config.display "content" }}
+      <div class="card-content">
+        <div class="content">
           {{- .Content -}}
-        {{ else if in $config.display "summary" }}
-          {{- if .Truncated -}}
-          {{- .Summary -}}
-          <p><em><a class="content is-small" href="{{- .RelPermalink -}}">Read More... </a></em></p>
-          {{- else -}}
-          {{- .Content -}}
-          <p><em><a class="content is-small" href="{{- .RelPermalink -}}">Go to page</a></em></p>
-          {{- end -}}
+        </div>
+      </div>
+      {{ else if in $config.display "summary" }}
+      <div class="card-content">
+        <div class="content">
+        {{- if .Truncated -}}
+        {{- .Summary -}}
+        <p><em><a class="content is-small" href="{{- .RelPermalink -}}">Read More... </a></em></p>
+        {{- else -}}
+        {{- .Content -}}
+        <p><em><a class="content is-small" href="{{- .RelPermalink -}}">Go to page</a></em></p>
         {{- end -}}
+        </div>
+      </div>
       {{- end -}}
-    </div>
-  </div>
+  {{- end -}}
   
 </div>
 {{ end }}

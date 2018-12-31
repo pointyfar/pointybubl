@@ -15,7 +15,7 @@ var carousels = bulmaCarousel.attach();
 
 <script src="{{ $scripts.RelPermalink }}"></script>
 
-{{range .Site.Data.config.params.widgets }}
+{{range .Site.Params.widgets }}
 {{ if eq .widgetName "widget-navigation"}}
   {{ with .config }}{{ with .enabled }}{{ if . }}
     {{ $search := resources.Get "/js/search.js" | resources.ExecuteAsTemplate "/js/search.js" . }}

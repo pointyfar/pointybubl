@@ -5,7 +5,7 @@ description = "BUBL: A Bulma Blog theme for Hugo. Configurable sidebar boxes and
 homepage = "https://pointy.netlify.com/"
 tags = ["blog", "bulma", "page bundles", "food", "photography", "images", "print-friendly" ]
 features = ["page bundles", "image gallery", "Hugo pipes"]
-min_version = "0.49"
+min_version = "0.53"
 
 [author]
   name = "PointyFar"

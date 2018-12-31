@@ -71,3 +71,13 @@ $bg: "{{. | absURL}}";
 .widget {
   width: 100%;
 }
+
+body > .main {
+  min-height: 100vh;
+  height: 100%;
+}
+
+.main-container {
+  flex: 1 0 auto !important;
+  min-height: 70vh
+}

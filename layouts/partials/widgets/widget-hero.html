@@ -4,7 +4,7 @@
 <section class="hero is-primary {{- if $context.IsHome }} is-medium {{ end }}">
   <div class="hero-wrapper {{if $context.IsHome}} hero-wrapper-bg{{end}}">
     <div class="hero-body {{ if and $context.IsHome (isset $config.hero "background") }}transparent{{end}} {{with $config.bgislight }}{{if .}}light-bg{{end}}{{else}}dark-bg{{end}}">
-      {{ if and $context.IsHome $context.Site.Params.brandimage }}
+      {{ if and $context.IsHome $context.Site.Params.brandImage }}
         {{ partial "hero/brand-image.html" $context }}
       {{ else }}
       <div class="container brand">

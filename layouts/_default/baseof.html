@@ -1,13 +1,18 @@
 <html>
 {{- partial "head.html" . -}}
 <body>
-  
-<div class="content main">
-  {{ $config := .Site.Data.config.params.widgets }}
-  {{ template "layout" (dict "config" $config "context" . "sitex" $.Site ) }}
+
+<div class="content main is-marginless">
+  {{ $config := .Site.Params.widgets }}
+  {{ $context := . }}
+  {{ with $config }}
+    {{ template "widget-layout" (dict "config" $config "context" $context "sitex" $.Site ) }}
+  {{ else }}
+    No widgets configuration found.
+  {{ end }}
 </div>
 
-{{ define "layout" }}
+{{ define "widget-layout" }}
   {{ $config := .config }}
   {{ $context := .context }}
   {{ $sitex := .sitex }}
@@ -15,7 +20,7 @@
     {{- range $config -}}
         {{- if eq .type "section" -}} {{/* Container */}}
         <div class="{{.class|safeHTMLAttr}} wrap {{with .config}}{{with .class}}{{.}}{{end}}{{end}}">
-          {{ template "layout" (dict "config" .items "context" $context "sitex" $sitex ) }} 
+          {{ template "widget-layout" (dict "config" .items "context" $context "sitex" $sitex ) }} 
         </div>
         {{- else -}} {{/* Widget */}}
         <div class="{{with .class}}{{.|safeHTMLAttr}}{{end}} column is-full">

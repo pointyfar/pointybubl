@@ -21,7 +21,7 @@
     <span class="card-header-title">
       {{ range $key, $taxonomy := (index $context.Site.Taxonomies $context.Type )}}
         {{ if eq $currentTerm $key }}
-          Found {{$taxonomy.Count}} {{cond (gt $taxonomy.Count 1) "entries" "entry" }} in {{ $currentTerm }} {{ $currentTaxonomy | singularize }}
+          Found {{$taxonomy.Count}} {{cond (gt $taxonomy.Count 1) "entries" "entry" }} with {{ $currentTerm }} {{ $currentTaxonomy | singularize }}
         {{ end }}
       {{ end }}
 
@@ -30,8 +30,16 @@
       <span class="card-header-right"><strong><a href="{{$currentTaxonomy | absURL}}"> See all {{$currentTaxonomy}}</a></strong></span>
     
   </header>
+  {{ if isset $context.Params "image" }}
+  <div class="card-image">
+    <figure class="image is-marginless">
+      <img src="{{$context.Params.image | absURL }}" alt="{{$currentTerm | default "Image"}}">
+    </figure>
+  </div>
+  {{ end }}
   <div class="card-content">
     <div class="content">
+      <div>{{ with  $context.Content }}{{.}}{{ end }}</div>
       {{ if eq $layout "gallery" }}
       <div class="columns is-multiline is-desktop">
         {{ range $context.Pages }}
@@ -46,8 +54,6 @@
       {{ printf "</%s>" $layout | safeHTML }}
       {{ end }}
       
-      
-
     </div>
   </div>
 </div>

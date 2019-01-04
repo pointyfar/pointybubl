@@ -7,45 +7,39 @@
 {{ $header := "" }}
 {{ $url := "" }}
 
-{{- if isset $context.Site.Params "authors" -}}
-  {{ $authortaxo := "" }}
-  {{- if isset $context.Site.Params "authorstaxonomy" -}}
-    {{ $authortaxo = $context.Site.Params.authorstaxonomy}}
-    {{- if isset $context.Site.Params "authors" -}}
-      {{- range $context.Site.Params.authors -}}
-        {{- if .featured -}}
-          {{- $author = .name -}}
-          {{- $authors := where $context.Site.Pages "Section" $authortaxo -}}
-          {{- range $authors -}}
-            {{- $furl := .Permalink -}}
-            {{if eq $author .Data.Term -}}
-              {{ $a := .Params }}
-              {{ if .Content }}{{ $url = .Permalink }}{{ end }}
-              {{ with $a.name }}{{ $author = . }}{{ end }}
-              {{ with $a.blurb }}{{ $blurb = . }}{{ end }}
-              {{ with $a.header }}{{ $header = . }}{{ end }}
-              {{ with $a.image }}{{ $img = . }}{{ end }}
-            {{- end -}}
-          {{end}}
-        {{- end -}}
-        {{- end -}}
-    {{- end -}}
-  {{ else }}
-    <div class="card">
-      <div class="card-content">
-        No authors taxonomy configured
-      </div>
-    </div>
-  {{ end }}
+{{ $usetaxo := false }}
 
-{{- else if $context.Site.Author }}
-  {{ $a := $context.Site.Author }}
-  {{ with $a.name }}{{ $author = . }}{{ end }}
-  {{ with $a.blurb }}{{ $blurb = . }}{{ end }}
-  {{ with $a.header }}{{ $header = . }}{{ end }}
-  {{ with $a.url }}{{ $url = . }}{{ end }}
-  {{ with $a.image }}{{ $img = . }}{{ end }}
-  
+{{ with $config.usetaxo }}
+{{ $usetaxo = (cond . true false) }}
+{{ end }}
+
+{{- if $usetaxo -}}
+<!-- Use Taxo -->
+  {{ $authortaxo := $config.authortaxo | default "authors" }}
+  {{ $author = $config.featured }}
+  {{ $authors := where $context.Site.Pages "Section" $authortaxo }}
+  {{ with $context.Site.GetPage (printf "%s/%s" $authortaxo $author) }}
+    {{ $a := .Params }}
+    {{ if .Content }}{{ $url = .Permalink }}{{ end }}
+    {{ with $a.name }}{{ $author = . }}{{ end }}
+    {{ with $a.blurb }}{{ $blurb = . }}{{ end }}
+    {{ with $a.header }}{{ $header = . }}{{ end }}
+    {{ with $a.image }}{{ $img = . }}{{ end }}
+  {{ else }}
+  <div class="card">
+    <div class="card-content">
+      No authors taxonomy configured
+    </div>
+  </div>
+  {{ end }} 
+{{ else if (or $config.authorname (or $config.authorblurb (or $config.authorheader (or $config.authorimg $config.authorurl))) ) }}
+  {{ $a := $config }}
+  {{ with $a.authorurl }}{{ $url = . }}{{ end }}
+  {{ with $a.authorname }}{{ $author = . }}{{ end }}
+  {{ with $a.authorblurb }}{{ $blurb = . }}{{ end }}
+  {{ with $a.authorheader }}{{ $header = . }}{{ end }}
+  {{ with $a.authorimage }}{{ $img = . }}{{ end }}
+
 {{ else }}
   <div class="card">
     <div class="card-content">
@@ -54,13 +48,7 @@
   </div>
 {{ end }}
 
-
-
-
-
-
-
-{{ with $author }}
+{{ with $author }} 
 <div class="card author-sidebar">
   {{- with $img -}}
   <div class="card-image">

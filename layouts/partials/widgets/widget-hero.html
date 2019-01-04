@@ -2,7 +2,7 @@
 {{ $config := .config.config }}
 <style>
   .hero-wrapper-bg {
-    background: url({{$config.background | safeCSS}}) no-repeat 50%;
+    background: url({{$config.background | relURL | safeCSS }}) no-repeat 50%;
   }
 </style>
   

@@ -1,11 +1,18 @@
+{{ $search := false }}
+
+{{ if isset .Site.Params "enable-search" }}
+  {{ $search = cond (index .Site.Params "enable-search") true false }}
+{{ end }}
+
 {{ $bulmacar := resources.Get "/js/external/bulma-carousel.min.js" }}
 {{ $vendors := slice $bulmacar | resources.Concat "/js/vendor.js" | minify | fingerprint }}
 <script src="{{ $vendors.RelPermalink }}"></script>
 <script>
 var carousels = bulmaCarousel.attach();
 </script>
+{{ if $search }}
 <script src="https://unpkg.com/lunr/lunr.js"></script>
-
+{{ end }}
 
 {{ $tfn := resources.Get "/js/timefromnow.js" }}
 {{ $navbartog := resources.Get "/js/navbar-toggle.js" }}
@@ -15,13 +22,7 @@ var carousels = bulmaCarousel.attach();
 
 <script src="{{ $scripts.RelPermalink }}"></script>
 
-{{range .Site.Params.widgets }}
-{{ if eq .widgetName "widget-navigation"}}
-  {{ with .config }}{{ with .enabled }}{{ if . }}
-    {{ $search := resources.Get "/js/search.js" | resources.ExecuteAsTemplate "/js/search.js" . }}
-    <script src="{{ $search.RelPermalink }}"></script>
-  {{end}}{{end}}{{end}}
-{{end}}
-{{end}}
-
-
+{{ if $search }}
+{{ $searchjs := resources.Get "/js/search.js" | resources.ExecuteAsTemplate "/js/search.js" . }}
+<script src="{{ $searchjs.RelPermalink }}"></script>
+{{ end }}

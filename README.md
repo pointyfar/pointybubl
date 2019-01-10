@@ -5,8 +5,6 @@ Blog theme built with Bulma.css. Includes image gallery, site search (with lunr.
 
 ![Theme Screenshot](https://github.com/pointyfar/pointybubl/blob/master/images/screenshot.png)
 
-# This is a work in progress. Features are subject to change without notice. 
-
 ## Preview the theme
 
 Grab the theme from https://github.com/pointyfar/pointybubl
@@ -21,8 +19,7 @@ You can see the theme at work in the [demo site](#).
 
 ## Documentation 
 
-Running the `exampleSite` gives you access to the theme's documentation at `localhost:1313/documentation`. You can also find it [online](#).
-
+The documentation can be found at the [demo site](https://pointybubl-demo.netlify.com/) ([repo](https://github.com/pointyfar/pointybubl-demo)).
 
 
 ## Attributions 
@@ -33,10 +30,14 @@ Open source is awesome! This theme would not be possible without the efforts of 
 - [Bulma](https://bulma.io/)
 - [lunr.js](https://lunrjs.com/)
 
-This theme's exampleSite also uses 
+This theme's demo site also uses 
 
 - [Fontawesome](https://fontawesome.com/)
-- Stock images from [pexels](https://www.pexels.com/) (Full list in `exampleSite/content/attributions`)
+- Stock images from [pexels](https://www.pexels.com/) (Full list in `/content/attributions`)
+
+### Hubrix 
+
+This theme's demo site uses **Hubrix** for config and widget building. Run the demo site and navigate to `/config` to see this in action.
 
 ## License 
 

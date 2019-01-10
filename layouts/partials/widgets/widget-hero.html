@@ -1,11 +1,13 @@
 {{ $context := .context }}
 {{ $config := .config.config }}
+{{ with $config.background }}
 <style>
   .hero-wrapper-bg {
-    background: url({{$config.background | relURL | safeCSS }}) no-repeat 50%;
+    background: url({{ . | relURL | safeCSS }}) no-repeat 50%;
+    background-size: cover;
   }
 </style>
-  
+{{ end }}
 <section class="hero is-primary {{- if $context.IsHome }} is-medium {{ end }}">
   <div class="hero-wrapper {{if $context.IsHome}} hero-wrapper-bg{{end}}">
     <div class="hero-body {{ if and $context.IsHome (isset $config "background") }}transparent{{end}} {{with $config.bgislight }}{{if .}}light-bg{{end}}{{else}}dark-bg{{end}}">

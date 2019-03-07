@@ -1,8 +1,13 @@
 var siteUrl = "{{"index.json" | absURL}}?nocache=" + (new Date()).toISOString().slice(0,10);
 
 var searchModal = document.getElementById("searchModal");
-document.getElementById("launchSearchModal").addEventListener("click", toggleModal);
+var launchers = document.getElementsByClassName("search-launcher");
+console.log(launchers)
 document.getElementById("closeModal").addEventListener("click", toggleModal);
+
+for (var i = 0; i < launchers.length; i++) {
+  launchers[i].addEventListener('click', toggleModal);
+}
 
 var modalBg = document.getElementsByClassName("modal-background");
 for (var i = 0; i < modalBg.length; i++) {

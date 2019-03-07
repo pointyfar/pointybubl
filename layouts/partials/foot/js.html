@@ -1,7 +1,12 @@
 {{ $search := false }}
 
-{{ if isset .Site.Params "enable-search" }}
-  {{ $search = cond (index .Site.Params "enable-search") true false }}
+{{ with .Site.Params.enablesearch }}
+{{ with .enable }}
+  {{ $search = . }}
+  {{ if eq true . }}
+    {{ partial "utils/search-modal.html" $ }}
+  {{ end }}
+{{ end }}
 {{ end }}
 
 {{ $bulmacar := resources.Get "/js/external/bulma-carousel.min.js" }}

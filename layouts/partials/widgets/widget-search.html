@@ -1,0 +1,21 @@
+{{ $context := .context }}
+{{ $config := .config.config }}
+
+<div class="card">
+<div class="card-content">
+<div class="search-wrapper">
+  {{with $config.text}}
+    <div class="search-text">{{.}}</div>
+  {{end}}
+  
+  <button class="button search-launcher" aria-label="launch search">
+    {{if isset $config "icon"}}
+    <i class="{{ $config.icon | default "fas fa-search"}}"></i>
+    {{ else }}
+    {{ $config.label | default "Search"}}
+    {{ end }}
+  </button>
+
+</div>
+</div>
+</div>

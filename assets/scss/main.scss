@@ -11,17 +11,23 @@ $custom-font-body: {{.}};
 $family-primary: {{.}};
 {{ end }}
 
-{{ with .Site.Params.scss.linkColor }}
-$link: {{.}};
-{{ end }}
-
 {{ with .Site.Params.scss.primary }} 
 $primary: {{.}};
 $link: $primary;
 {{ end }}
 
+{{ with .Site.Params.scss.linkColor }}
+$link: {{.}};
+{{ end }}
+
 {{ with .Site.Params.scss.primaryInvert }} 
 $primary-invert: {{.}};
+{{ end }}
+
+{{ with .Site.Params.scss.accentColor }} 
+.hero.is-primary {
+  background: {{.}} !important;
+}
 {{ end }}
 
 {{ with .Site.Params.scss.brandFont }} 
@@ -35,19 +41,6 @@ $foot-note: "{{.}}";
 {{ else }}
 $foot-note: "Notes:";
 {{ end }}
-
-{{ range .Site.Data.config.params.widgets }}
-{{ if eq .widgetName "widget-hero" }}
-{{ $hero := . }}
-{{ with $hero.config.background }}
-$bg: "{{. | absURL}}";
-.hero-wrapper-bg {
-  background:url($bg) no-repeat center; background-size: cover;
-}
-{{ end }}
-{{ end }}
-{{ end }}
-
 
 
 @import "bulma/bulma";

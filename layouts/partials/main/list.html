@@ -10,6 +10,8 @@
 
 {{ $pages := .context.Pages }}
 
+{{ with $context.Sections }}{{ $pages = $pages | append .}}{{ end }}
+
 {{ $paginator := .context.Paginate ($pages.ByPublishDate)  }}
 {{ $postCount := $paginator.PageSize }}
 

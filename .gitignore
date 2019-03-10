@@ -3,6 +3,7 @@ hugo*
 
 # Generated files at default location
 /public/
+/exampleSite/public/
 _tmp/
 
 

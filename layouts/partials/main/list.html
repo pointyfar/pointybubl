@@ -8,7 +8,7 @@
 {{ end }}
 {{ $mainSection := .context.Section}}
 
-{{ $pages := where .context.Site.RegularPages "Type" "in" .context.Section }}
+{{ $pages := .context.Pages }}
 
 {{ $paginator := .context.Paginate ($pages.ByPublishDate)  }}
 {{ $postCount := $paginator.PageSize }}

@@ -2,7 +2,7 @@
 <div class="card card-figure">
   <div class="card-image">
     <figure class="image is-marginless">
-      <img src="{{$config.image | absURL }}" alt="{{$config.alt | default "Image"}}">
+      <img src="{{$config.image | relURL }}" alt="{{$config.alt | default "Image"}}">
       {{ with $config.caption}}
       <figcaption>{{.}}</figcaption>
       {{ end }}

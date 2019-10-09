@@ -1,0 +1,20 @@
+pre {
+	padding: 0.1em 0.5em 0.3em 0.7em;
+	border-left: 11px solid #ccc;
+	margin: 1.7em 0 1.7em 0.3em;
+	overflow: auto;
+  width: 100%;
+	max-width: 500px;
+	}
+/* target IE7 and IE6 */
+*:first-child+html pre {
+	padding-bottom: 2em;
+	overflow-y: hidden;
+	overflow: visible;
+	overflow-x: auto; 
+	}
+* html pre { 
+	padding-bottom: 2em;
+	overflow: visible;
+	overflow-x: auto;
+	}

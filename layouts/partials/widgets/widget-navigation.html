@@ -27,7 +27,11 @@
     <div class="navbar-item">
       <button class="button search-launcher" aria-label="launch search">
         {{if isset $config "icon"}}
-        <i class="{{ $config.label | default "fas fa-search"}}"></i>
+          {{if $config.icon}}
+            <i class="{{ $config.label | default "fas fa-search"}}"></i>
+          {{ else }}
+          {{ $config.label | default "Search"}}
+          {{ end }}
         {{ else }}
         {{ $config.label | default "Search"}}
         {{ end }}

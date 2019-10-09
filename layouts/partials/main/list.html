@@ -10,7 +10,7 @@
 
 {{ $pages := .context.Pages }}
 
-{{ with $context.Sections }}{{ $pages = $pages | append .}}{{ end }}
+
 
 {{ $paginator := .context.Paginate ($pages.ByPublishDate)  }}
 {{ $postCount := $paginator.PageSize }}
@@ -18,7 +18,7 @@
 <div class="card post-card">
   <div class="card-content content">
   {{ printf "<%s>" $tag | safeHTML }}
-  {{- range first $postCount ( $pages.ByPublishDate.Reverse ) -}}
+  {{- range ( $paginator.Pages.ByPublishDate.Reverse ) -}}
 
     <li><a href="{{.Permalink}}">{{.Title}}</a>
     {{ if isset $config "display" }}
@@ -37,6 +37,11 @@
   {{ end }}
   {{ printf "</%s>" $tag | safeHTML }}
 
+  {{ if and (gt $paginator.TotalPages 1) }}
+  <div>
+    {{ partial "utils/paginator.html" ( dict "paginator" $paginator ) }}
+  </div>
+  {{ end }}
 
 </div>
 </div>

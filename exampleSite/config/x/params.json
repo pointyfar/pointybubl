@@ -1,0 +1,16 @@
+{
+  "subtitle": "an awesome drag-n-drop site",
+  "enableSearch": {
+    "enable": true
+  },
+  "mainSections": [
+    "posts"
+  ],
+  "scss": {
+    "brandFont": "'Oswald', sans-serif",
+    "primary": "violet",
+    "primaryInvert": "#fff",
+    "linkColor": "#3e282f",
+    "accentColor": "#204a55"
+  }
+}

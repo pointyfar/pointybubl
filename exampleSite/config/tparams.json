@@ -1,0 +1,270 @@
+{
+  "copyright": "(c) Me",
+  "subtitle": "My Awesome Site",
+  "brandImage": "img/awesome-logo.png",
+  "scss": {
+    "brandFont": "'Oswald', sans-serif",
+    "primary": "CadetBlue",
+    "primaryInvert": "#fff",
+    "linkColor": "navy"
+  },
+  "widgets": [{
+      "widgetName": "section-full",
+      "class": "column is-full",
+      "items": [{
+          "widgetName": "widget-navigation",
+          "class": "widget nav-container",
+          "config": {
+            "menuName": "main",
+            "enabled": true,
+            "icon": true,
+            "label": "fas fa-search"
+          },
+          "type": "widget"
+        },
+        {
+          "widgetName": "widget-hero",
+          "class": "widget",
+          "config": {
+            "background": "img/hero-background-dark.jpeg",
+            "bgislight": false
+          },
+          "type": "widget"
+        },
+        {
+          "widgetName": "section-full",
+          "class": "column is-full",
+          "config": {
+            "class": "container"
+          },
+
+          "items": [{
+              "widgetName": "section-flex",
+              "class": "column flex",
+              "items": [{
+                "widgetName": "widget-content",
+                "class": "widget",
+                "config": {
+                  "homepage": {
+                    "display": [
+                      "summary",
+                      "title"
+                    ],
+                    "listStyle": "card",
+                    "sections": [
+                      "food",
+                      "looking-glass"
+                    ]
+                  },
+                  "section": {
+                    "listStyle": "ol",
+                    "display": [
+                      "date"
+                    ]
+                  },
+                  "page": {
+                    "taxonomies": [{
+                      "taxonomy": "tags",
+                      "position": "top",
+                      "style": "text"
+                    }],
+                    "display": [
+                      "content",
+                      "title"
+                    ]
+                  },
+                  "taxonomyTerms": {
+                    "listStyle": "ul"
+                  },
+                  "taxonomy": {
+                    "listStyle": "ol",
+                    "display": [
+                      "title"
+                    ]
+                  }
+                },
+                "type": "widget"
+              }],
+              "flex": 25,
+              "type": "section"
+            },
+            {
+              "widgetName": "section-third",
+              "class": "column is-one-third",
+              "items": [{
+                  "widgetName": "widget-placeholder",
+                  "class": "widget",
+                  "config": {
+                    "label": "Placeholder Label",
+                    "background": "#FFBB00",
+                    "color": "black"
+                  },
+                  "type": "widget"
+                },
+                {
+                  "widgetName": "widget-placeholder",
+                  "class": "widget",
+                  "config": {
+                    "label": "Placeholder Label",
+                    "background": "#55BB00",
+                    "color": "black"
+                  },
+                  "type": "widget"
+                },
+                {
+                  "widgetName": "widget-placeholder",
+                  "class": "widget",
+                  "config": {
+                    "label": "Placeholder Label",
+                    "background": "#004455",
+                    "color": "white"
+                  },
+                  "type": "widget"
+                },
+                {
+                  "widgetName": "widget-author",
+                  "class": "widget",
+                  "config": {
+                    "usetaxo": true,
+                    "authortaxo": "authors",
+                    "featured": "pointy-far"
+                  },
+                  "type": "widget"
+                },
+                {
+                  "widgetName": "widget-author",
+                  "class": "widget",
+                  "config": {
+                    "usetaxo": false,
+                    "authorname": "Author Ipsum",
+                    "authorblurb": "Nam laborum ab probant eu o o veniam fabulas. Quae eu constias ad quis. Arbitror veniam nisi aut sint o cupidatat familiaritatem quo occaecat, dolore constias ex tractavissent ea e quem malis quo ingeniis ubi vidisse do tempor, occaecat minim probant id do eram iis legam, vidisse eram legam eu quem.Ab sed elit consequat, ex velit vidisse relinqueret, et minim nisi amet mandaremus, velit de onsequat si amet hic quae constias deserunt de ubi ut aute offendit non sed quem eiusmod praetermissum, qui ita despicationes. Id sed labore veniam veniam do incurreret qui duis, an enim quorum tempor eiusmod ex dolor si iudicem id velit. Et quis ne ipsum. Tamen te officia, iudicem export multos incididunt labore, nulla an laboris, export id laboris an ubi o irure fore quis, te aliqua ad velit iis mandaremus tempor nostrud consequat, iis labore incididunt.",
+                    "authorimg": "/img/hello.jpg",
+                    "authorheader": "Hello! I am author",
+                    "authorurl": "/about"
+                  },
+                  "type": "widget"
+                },
+                {
+                  "widgetName": "widget-social",
+                  "class": "widget",
+                  "config": {
+                    "message": "Follow me!",
+                    "list": [{
+                      "url": "http://www.twitter.com",
+                      "icon": "fab fa-twitter",
+                      "label": "twitter",
+                      "color": "#55acee"
+                    }]
+                  },
+                  "type": "widget"
+                },
+                {
+                  "widgetName": "widget-tags",
+                  "class": "widget",
+                  "config": {
+                    "label": "A Cloud of Tags",
+                    "taxonomy": "tags",
+                    "threshold": 1
+                  },
+                  "type": "widget"
+                }
+              ],
+              "flex": 33.33,
+              "type": "section"
+            }
+          ],
+          "flex": 100,
+          "type": "section"
+        }
+      ],
+      "flex": 100,
+      "type": "section",
+      "config": {
+        "class": "widget-container"
+      }
+    },
+    {
+      "widgetName": "section-full",
+      "class": "column is-full",
+      "items": [{
+          "widgetName": "section-full",
+          "class": "column is-full",
+          "config": {
+            "class": "container"
+          },
+          "items": [{
+              "widgetName": "section-quarter",
+              "class": "column is-one-quarter",
+              "items": [{
+                "widgetName": "widget-text",
+                "class": "widget",
+                "config": {
+                  "title": "Text Title",
+                  "content": "Lorem Ipsum "
+                },
+                "type": "widget"
+              }],
+              "flex": 25,
+              "type": "section"
+            },
+            {
+              "widgetName": "section-quarter",
+              "class": "column is-one-quarter",
+              "items": [{
+                "widgetName": "widget-links",
+                "class": "widget",
+                "config": {
+                  "label": "Links",
+                  "class": null,
+                  "style": "button",
+                  "list": [{
+                      "url": "http://www.twitter.com",
+                      "text": "twitter"
+                    },
+                    {
+                      "url": "#",
+                      "text": "Link 2"
+                    },
+                    {
+                      "url": "#",
+                      "text": "Link 3"
+                    }
+                  ]
+                },
+                "type": "widget"
+              }],
+              "flex": 25,
+              "type": "section"
+            },
+            {
+              "widgetName": "section-half",
+              "class": "column is-one-half",
+              "items": [{
+                "widgetName": "widget-image",
+                "class": "widget",
+                "config": {
+                  "image": "img/hero-background.jpeg",
+                  "alt": "Featured Image"
+                },
+                "type": "widget"
+              }],
+              "flex": 50,
+              "type": "section"
+            }
+          ],
+          "flex": 100,
+          "type": "section"
+        }
+
+      ],
+      "flex": 100,
+      "type": "section",
+      "config": {
+        "class": "footer"
+      }
+    }
+
+  ]
+
+
+}
